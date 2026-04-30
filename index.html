@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Murilabs — Performance Inteligente</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#home" class="nav-logo" onclick="showPage('home')">murilabs<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')">Início</a></li>
+      <li><a href="#" onclick="showPage('produtos')">Produtos</a></li>
+      <li><a href="#" onclick="showPage('sobre')">Sobre</a></li>
+    </ul>
+    <button class="nav-cta" onclick="showPage('produtos')">Explorar</button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#" onclick="showPage('home'); toggleMenu()">Início</a>
+    <a href="#" onclick="showPage('produtos'); toggleMenu()">Produtos</a>
+    <a href="#" onclick="showPage('sobre'); toggleMenu()">Sobre</a>
+  </div>
+
+  <!-- ======================== HOME ======================== -->
+  <div id="page-home" class="page active">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Performance Inteligente</p>
+        <h1 class="hero-title">Ciência aplicada<br>ao seu corpo.</h1>
+        <p class="hero-sub">Fórmulas limpas. Ingredientes reais.<br>Resultados que você sente.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showPage('produtos')">Ver produtos</button>
+          <button class="btn-ghost" onclick="showPage('sobre')">Nossa história</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-pill hero-pill--blue">CORE</div>
+        <div class="hero-pill hero-pill--green">PURE</div>
+        <div class="hero-pill hero-pill--purple">MIND+</div>
+        <div class="hero-pill hero-pill--cyan">NEXT</div>
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+      </div>
+    </section>
+
+    <!-- LINHAS -->
+    <section class="lines-section">
+      <p class="section-label">Nossas linhas</p>
+      <h2 class="section-title">Cada linha,<br>um propósito.</h2>
+      <div class="lines-grid">
+
+        <div class="line-card line-card--core" onclick="showProductsLine('core')">
+          <div class="line-card-tag">01</div>
+          <h3 class="line-card-name">CORE</h3>
+          <p class="line-card-desc">Os essenciais. Resultados consistentes.</p>
+          <div class="line-card-sub">Whey · Creatina · Pré-treino · Recover · Focus · Barras</div>
+          <span class="line-card-arrow">→</span>
+        </div>
+
+        <div class="line-card line-card--next" onclick="showProductsLine('next')">
+          <div class="line-card-tag">02</div>
+          <h3 class="line-card-name">NEXT</h3>
+          <p class="line-card-desc">O próximo nível da sua rotina.</p>
+          <div class="line-card-sub">Whey Next · Focus · Energy · Pre · Daily · Bar</div>
+          <span class="line-card-arrow">→</span>
+        </div>
+
+        <div class="line-card line-card--pure" onclick="showProductsLine('pure')">
+          <div class="line-card-tag">03</div>
+          <h3 class="line-card-name">PURE</h3>
+          <p class="line-card-desc">Naturalmente essencial. 100% Vegano.</p>
+          <div class="line-card-sub">Pure Protein · Pure Creatine · Pure Daily · Pure Bar</div>
+          <span class="line-card-arrow">→</span>
+        </div>
+
+        <div class="line-card line-card--hydrate" onclick="showProductsLine('hydrate')">
+          <div class="line-card-tag">04</div>
+          <h3 class="line-card-name">HYDRATE</h3>
+          <p class="line-card-desc">Hidrate. Reponha. Renda mais.</p>
+          <div class="line-card-sub">Electrolytes · Energy · Zero · Tablets · Sticks</div>
+          <span class="line-card-arrow">→</span>
+        </div>
+
+        <div class="line-card line-card--mind" onclick="showProductsLine('mind')">
+          <div class="line-card-tag">05</div>
+          <h3 class="line-card-name">MIND+</h3>
+          <p class="line-card-desc">Foco que conecta. Mente que evolui.</p>
+          <div class="line-card-sub">Focus · Memory · Calm · Drink · Focus Shot</div>
+          <span class="line-card-arrow">→</span>
+        </div>
+
+        <div class="line-card line-card--pro" onclick="showProductsLine('core')">
+          <div class="line-card-tag">06</div>
+          <h3 class="line-card-name">PRO</h3>
+          <p class="line-card-desc">Alta performance. Para quem busca mais.</p>
+          <div class="line-card-sub">Fórmulas avançadas para atletas</div>
+          <span class="line-card-arrow">→</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section class="featured-section">
+      <p class="section-label">Em destaque</p>
+      <h2 class="section-title">Os mais escolhidos.</h2>
+      <div class="featured-grid">
+
+        <div class="featured-card" onclick="showProduct('whey-core')">
+          <div class="featured-card-visual fc--dark">
+            <img src="images/whey-core.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+          <img src="images/whey-core.png" class="fc-img" alt="" onerror="this.style.display=\'none\'" />
+            <div class="product-mock pm--dark">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">WHEY<br>CORE.</span>
+              <span class="pm-size">900g · 21g proteína</span>
+            </div>
+          </div>
+          <div class="featured-card-info">
+            <span class="fc-line">CORE</span>
+            <h3>Whey Core</h3>
+            <p>Proteína concentrada do soro do leite.</p>
+            <span class="fc-link">Ver produto →</span>
+          </div>
+        </div>
+
+        <div class="featured-card" onclick="showProduct('pure-protein')">
+          <div class="featured-card-visual fc--green">
+            <img src="images/pure-protein.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--green">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">PURE<br>PROTEIN</span>
+              <span class="pm-size">900g · 20g proteína</span>
+            </div>
+          </div>
+          <div class="featured-card-info">
+            <span class="fc-line">PURE</span>
+            <h3>Pure Protein</h3>
+            <p>Proteína vegetal de alta qualidade.</p>
+            <span class="fc-link">Ver produto →</span>
+          </div>
+        </div>
+
+        <div class="featured-card" onclick="showProduct('focus-mind')">
+          <div class="featured-card-visual fc--purple">
+            <img src="images/mind-focus.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--purple">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">MIND+<br>FOCUS</span>
+              <span class="pm-size">60 cápsulas</span>
+            </div>
+          </div>
+          <div class="featured-card-info">
+            <span class="fc-line">MIND+</span>
+            <h3>Mind+ Focus</h3>
+            <p>Foco e concentração para o dia a dia.</p>
+            <span class="fc-link">Ver produto →</span>
+          </div>
+        </div>
+
+        <div class="featured-card" onclick="showProduct('hydrate-electrolytes')">
+          <div class="featured-card-visual fc--cyan">
+            <img src="images/hydrate-electrolytes.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>ELECTRO</span>
+              <span class="pm-size">300g · 30 doses</span>
+            </div>
+          </div>
+          <div class="featured-card-info">
+            <span class="fc-line">HYDRATE</span>
+            <h3>Hydrate Electrolytes</h3>
+            <p>Eletrólitos essenciais para hidratação.</p>
+            <span class="fc-link">Ver produto →</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VALORES -->
+    <section class="values-section">
+      <div class="values-inner">
+        <div class="values-text">
+          <p class="section-label">Por que Murilabs</p>
+          <h2>Transparência<br>sempre.</h2>
+          <p class="values-desc">Fórmulas inteligentes com ingredientes de origem real, testadas e aprovadas. Feito no Brasil, com orgulho.</p>
+          <button class="btn-primary" onclick="showPage('sobre')">Conhecer a marca</button>
+        </div>
+        <div class="values-grid-right">
+          <div class="value-item">
+            <div class="value-icon">◎</div>
+            <h4>Ciência que transforma</h4>
+            <p>Fórmulas baseadas em evidências.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">◈</div>
+            <h4>Qualidade sem excessos</h4>
+            <p>Sem corantes, sem aromas artificiais.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">◇</div>
+            <h4>Transparência sempre</h4>
+            <p>Você vê, você confia.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">△</div>
+            <h4>Evolução constante</h4>
+            <p>Desenvolvido no Brasil, para a nossa realidade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats-section">
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Linhas de produto</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Produtos ativos</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Feito no Brasil</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">Clean</span><span class="stat-label">Label garantido</span></div>
+    </section>
+
+  </div>
+  <!-- END HOME -->
+
+  <!-- ======================== PRODUTOS ======================== -->
+  <div id="page-produtos" class="page">
+
+    <section class="products-hero">
+      <p class="section-label" id="products-line-label">Todos os produtos</p>
+      <h1 class="products-hero-title">O que o seu corpo<br>precisa hoje.</h1>
+    </section>
+
+    <!-- LINE FILTER -->
+    <div class="line-filter">
+      <button class="filter-btn active" data-filter="all" onclick="filterProducts(this, 'all')">Todos</button>
+      <button class="filter-btn" data-filter="core" onclick="filterProducts(this, 'core')">Core</button>
+      <button class="filter-btn" data-filter="next" onclick="filterProducts(this, 'next')">Next</button>
+      <button class="filter-btn" data-filter="pure" onclick="filterProducts(this, 'pure')">Pure</button>
+      <button class="filter-btn" data-filter="hydrate" onclick="filterProducts(this, 'hydrate')">Hydrate</button>
+      <button class="filter-btn" data-filter="mind" onclick="filterProducts(this, 'mind')">Mind+</button>
+    </div>
+
+    <!-- PRODUCTS GRID -->
+    <section class="products-grid-section">
+      <div class="products-grid" id="productsGrid">
+
+        <!-- CORE -->
+        <div class="product-card" data-line="core" onclick="showProduct('whey-core')">
+          <div class="pc-visual pc--dark">
+            <img src="images/whey-core.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <img src="images/whey-core.png" class="pc-img" alt="" onerror="this.style.display=\'none\'" />
+            <div class="product-mock pm--dark pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">WHEY<br>CORE.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">CORE</span>
+            <h3 class="pc-name">Whey Core</h3>
+            <p class="pc-desc">Proteína concentrada · 900g · 21g/dose</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="core" onclick="showProduct('creatine-core')">
+          <div class="pc-visual pc--dark">
+            <img src="images/creatine-core.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--dark pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">CREATINE<br>CORE.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">CORE</span>
+            <h3 class="pc-name">Creatine Core</h3>
+            <p class="pc-desc">Creatina 100% pura · 300g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="core" onclick="showProduct('pre-ignite')">
+          <div class="pc-visual pc--dark">
+            <img src="images/pre-ignite.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--dark pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">PRE<br>IGNITE.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">CORE</span>
+            <h3 class="pc-name">Pre Ignite</h3>
+            <p class="pc-desc">Energia · Foco · Performance · 300g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="core" onclick="showProduct('recover-restore')">
+          <div class="pc-visual pc--dark">
+            <img src="images/recover-restore.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--dark pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">RECOVER<br>RESTORE.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">CORE</span>
+            <h3 class="pc-name">Recover Restore</h3>
+            <p class="pc-desc">Recuperação pós-treino · 500g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="core" onclick="showProduct('focus-mind-core')">
+          <div class="pc-visual pc--dark">
+            <img src="images/focus-mind-core.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--dark pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">FOCUS<br>MIND.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">CORE</span>
+            <h3 class="pc-name">Focus Mind</h3>
+            <p class="pc-desc">Foco · Memória · Clareza · 60 cáps</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="core" onclick="showProduct('fuel-bar')">
+          <div class="pc-visual pc--dark">
+            <img src="images/fuel-bar.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--dark pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">FUEL<br>BAR.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">CORE</span>
+            <h3 class="pc-name">Fuel Bar</h3>
+            <p class="pc-desc">Barra proteica · 12g proteína · 60g</p>
+          </div>
+        </div>
+
+        <!-- NEXT -->
+        <div class="product-card" data-line="next" onclick="showProduct('whey-next')">
+          <div class="pc-visual pc--blue">
+            <img src="images/whey-next.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--blue pm--sm">
+              <span class="pm-brand">murilabs next.</span>
+              <span class="pm-name">WHEY<br>NEXT.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">NEXT</span>
+            <h3 class="pc-name">Whey Next</h3>
+            <p class="pc-desc">Proteína concentrada · 900g · 21g/dose</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="next" onclick="showProduct('focus-next')">
+          <div class="pc-visual pc--blue">
+            <img src="images/focus-next.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--blue pm--sm">
+              <span class="pm-brand">murilabs next.</span>
+              <span class="pm-name">FOCUS<br>NEXT.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">NEXT</span>
+            <h3 class="pc-name">Focus Next</h3>
+            <p class="pc-desc">Foco e concentração · 60 cápsulas</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="next" onclick="showProduct('energy-next')">
+          <div class="pc-visual pc--teal">
+            <img src="images/energy-next.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--teal pm--sm">
+              <span class="pm-brand">murilabs next.</span>
+              <span class="pm-name">ENERGY<br>NEXT.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">NEXT</span>
+            <h3 class="pc-name">Energy Next</h3>
+            <p class="pc-desc">Energia para o dia · Low açúcar · 30 doses</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="next" onclick="showProduct('pre-next')">
+          <div class="pc-visual pc--purple">
+            <img src="images/pre-next.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--purple-dark pm--sm">
+              <span class="pm-brand">murilabs next.</span>
+              <span class="pm-name">PRE<br>NEXT.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">NEXT</span>
+            <h3 class="pc-name">Pre Next</h3>
+            <p class="pc-desc">Pré-treino · Energia · Foco · 300g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="next" onclick="showProduct('bar-next')">
+          <div class="pc-visual pc--teal">
+            <img src="images/bar-next.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--teal pm--sm">
+              <span class="pm-brand">murilabs next.</span>
+              <span class="pm-name">BAR<br>NEXT.</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">NEXT</span>
+            <h3 class="pc-name">Bar Next</h3>
+            <p class="pc-desc">Barra de proteína · 12g proteína · 60g</p>
+          </div>
+        </div>
+
+        <!-- PURE -->
+        <div class="product-card" data-line="pure" onclick="showProduct('pure-protein')">
+          <div class="pc-visual pc--green">
+            <img src="images/pure-protein.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--green pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">PURE<br>PROTEIN</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">PURE</span>
+            <h3 class="pc-name">Pure Protein</h3>
+            <p class="pc-desc">Proteína vegetal · 900g · 20g/dose</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="pure" onclick="showProduct('pure-creatine')">
+          <div class="pc-visual pc--green">
+            <img src="images/pure-creatine.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--green pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">PURE<br>CREATINE</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">PURE</span>
+            <h3 class="pc-name">Pure Creatine</h3>
+            <p class="pc-desc">Creatina 100% pura · Vegana · 200g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="pure" onclick="showProduct('pure-daily')">
+          <div class="pc-visual pc--green">
+            <img src="images/pure-daily.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--green pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">PURE<br>DAILY</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">PURE</span>
+            <h3 class="pc-name">Pure Daily</h3>
+            <p class="pc-desc">Multivitamínico · Vegano · 60 cápsulas</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="pure" onclick="showProduct('pure-bar')">
+          <div class="pc-visual pc--green">
+            <img src="images/pure-bar.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--green pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">PURE<br>BAR</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">PURE</span>
+            <h3 class="pc-name">Pure Bar</h3>
+            <p class="pc-desc">Cacau & Avelã · 10g proteína · 50g</p>
+          </div>
+        </div>
+
+        <!-- HYDRATE -->
+        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-drink')">
+          <div class="pc-visual pc--cyan">
+            <img src="images/hydrate-drink.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>DRINK</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">HYDRATE</span>
+            <h3 class="pc-name">Hydrate Drink</h3>
+            <p class="pc-desc">Bebida pronta · Eletrólitos · 500ml</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-electrolytes')">
+          <div class="pc-visual pc--cyan">
+            <img src="images/hydrate-electrolytes.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>ELECTRO</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">HYDRATE</span>
+            <h3 class="pc-name">Hydrate Electrolytes</h3>
+            <p class="pc-desc">Eletrólitos essenciais · 300g · 30 doses</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-energy')">
+          <div class="pc-visual pc--cyan">
+            <img src="images/hydrate-energy.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>ENERGY</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">HYDRATE</span>
+            <h3 class="pc-name">Hydrate Energy</h3>
+            <p class="pc-desc">Eletrólitos + Energia · 300g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-zero')">
+          <div class="pc-visual pc--cyan">
+            <img src="images/hydrate-zero.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>ZERO</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">HYDRATE</span>
+            <h3 class="pc-name">Hydrate Zero</h3>
+            <p class="pc-desc">Sem açúcar · Sem sabor · 300g</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-tablets')">
+          <div class="pc-visual pc--cyan">
+            <img src="images/hydrate-tablets.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>TABLETS</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">HYDRATE</span>
+            <h3 class="pc-name">Hydrate Tablets</h3>
+            <p class="pc-desc">Eletrólitos em tablet · 60 unidades</p>
+          </div>
+        </div>
+
+        <!-- MIND+ -->
+        <div class="product-card" data-line="mind" onclick="showProduct('mind-focus')">
+          <div class="pc-visual pc--lilac">
+            <img src="images/mind-focus.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--lilac pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">MIND+<br>FOCUS</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">MIND+</span>
+            <h3 class="pc-name">Mind+ Focus</h3>
+            <p class="pc-desc">Foco e concentração · 60 cápsulas</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="mind" onclick="showProduct('mind-memory')">
+          <div class="pc-visual pc--lilac">
+            <img src="images/mind-memory.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--lilac pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">MIND+<br>MEMORY</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">MIND+</span>
+            <h3 class="pc-name">Mind+ Memory</h3>
+            <p class="pc-desc">Memória e aprendizado · 60 cápsulas</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="mind" onclick="showProduct('mind-calm')">
+          <div class="pc-visual pc--lilac">
+            <img src="images/mind-calm.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--lilac pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">MIND+<br>CALM</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">MIND+</span>
+            <h3 class="pc-name">Mind+ Calm</h3>
+            <p class="pc-desc">Relaxamento e equilíbrio · 60 cápsulas</p>
+          </div>
+        </div>
+
+        <div class="product-card" data-line="mind" onclick="showProduct('mind-drink')">
+          <div class="pc-visual pc--lilac">
+            <img src="images/mind-drink.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--lilac pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">MIND+<br>DRINK</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">MIND+</span>
+            <h3 class="pc-name">Mind+ Drink</h3>
+            <p class="pc-desc">Foco e energia mental · 300ml</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <!-- END PRODUTOS -->
+
+  <!-- ======================== PRODUTO INDIVIDUAL ======================== -->
+  <div id="page-produto" class="page">
+    <div class="product-page-inner">
+      <button class="back-btn" onclick="goBack()">← Voltar</button>
+      <div class="product-detail" id="productDetail">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== SOBRE ======================== -->
+  <div id="page-sobre" class="page">
+
+    <section class="about-hero">
+      <p class="section-label">Sobre a Murilabs</p>
+      <h1 class="about-title">Performance<br>começa pela<br>mente.</h1>
+    </section>
+
+    <section class="about-content">
+      <div class="about-text-block">
+        <h2>Nossa missão</h2>
+        <p>A Murilabs nasceu da crença de que performance inteligente começa com transparência. Cada fórmula é desenvolvida com ciência aplicada, ingredientes reais e sem excessos — porque o seu corpo merece o melhor, sem complicação.</p>
+      </div>
+      <div class="about-text-block">
+        <h2>Feito no Brasil</h2>
+        <p>Desenvolvemos cada produto para a realidade brasileira. Testado, aprovado e feito com orgulho aqui dentro. Matérias-primas premium, processos rigorosos, resultado que você sente.</p>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <span class="pillar-num">01</span>
+          <h3>Ciência</h3>
+          <p>Fórmulas baseadas em evidências, não em tendências.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">02</span>
+          <h3>Transparência</h3>
+          <p>Você sabe o que coloca no corpo. Sempre.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">03</span>
+          <h3>Qualidade</h3>
+          <p>Sem corantes. Sem aromas artificiais. Sem excessos.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">04</span>
+          <h3>Evolução</h3>
+          <p>Inovação constante para um você melhor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <h2>Pronto para evoluir?</h2>
+      <button class="btn-primary" onclick="showPage('produtos')">Ver todos os produtos</button>
+    </section>
+
+  </div>
+  <!-- END SOBRE -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">murilabs<span class="dot">.</span></span>
+        <p>Performance inteligente.<br>Ciência aplicada ao seu corpo.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Linhas</h4>
+          <a href="#" onclick="showProductsLine('core')">Core</a>
+          <a href="#" onclick="showProductsLine('next')">Next</a>
+          <a href="#" onclick="showProductsLine('pure')">Pure</a>
+          <a href="#" onclick="showProductsLine('hydrate')">Hydrate</a>
+          <a href="#" onclick="showProductsLine('mind')">Mind+</a>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <a href="#" onclick="showPage('sobre')">Sobre</a>
+          <a href="#">Contato</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Murilabs. Todos os direitos reservados.</span>
+      <span>🇧🇷 Feito no Brasil</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
