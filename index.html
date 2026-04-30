@@ -4,10 +4,519 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Murilabs — Performance Inteligente</title>
-  <link rel="stylesheet" href="style.css" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================================
+       MURILABS — STYLESHEET v3
+       Dark · Premium · Unified
+       =================================== */
+
+    :root {
+      --bg:       #060810;
+      --bg-2:     #0a0d18;
+      --bg-3:     #0f1220;
+      --surface:  rgba(255,255,255,0.04);
+      --border:   rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.15);
+      --text:     #ffffff;
+      --text-2:   rgba(255,255,255,0.6);
+      --text-3:   rgba(255,255,255,0.35);
+      --blue:     #1E90FF;
+      --teal:     #00FFB2;
+      --purple:   #7B61FF;
+      --cyan:     #00D4FF;
+      --orange:   #FF6B35;
+      --green:    #4ADE80;
+      --yellow:   #FACC15;
+      --lilac:    #C4ACFF;
+      --core:     #FF6B35;
+      --next:     #1E90FF;
+      --pure:     #4ADE80;
+      --hydrate:  #38BDF8;
+      --mind:     #A78BFA;
+      --pro:      #FACC15;
+      --font: 'Montserrat', sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --page-px: 5vw;
+      --section-pad: 120px 5vw;
+    }
+
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;border:none;background:none;font-family:var(--font)}
+    ul{list-style:none}
+    img{display:block;max-width:100%}
+
+    .page{display:none;animation:fadeIn .4s var(--ease)}
+    .page.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 var(--page-px);height:68px;background:rgba(6,8,16,0.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-size:1.2rem;font-weight:900;letter-spacing:-0.03em;color:var(--text)}
+    .dot{color:var(--blue)}
+    .nav-links{display:flex;gap:36px;align-items:center}
+    .nav-links a{font-size:0.82rem;font-weight:500;color:var(--text-2);letter-spacing:0.02em;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{font-size:0.78rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text);border:1px solid var(--border-strong);padding:9px 22px;border-radius:100px;transition:all .22s var(--ease);background:var(--surface)}
+    .nav-cta:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:8px}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--bg-2);border-bottom:1px solid var(--border);z-index:999;flex-direction:column;padding:20px var(--page-px) 28px;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1rem;font-weight:600;color:var(--text-2);padding:12px 0;border-bottom:1px solid var(--border);transition:color .2s}
+    .mobile-menu a:hover{color:var(--text)}
+
+    /* SHARED */
+    .section-label{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:16px}
+    .section-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.03em;line-height:1.1;color:var(--text);margin-bottom:60px}
+
+    /* BUTTONS */
+    .btn-primary{font-family:var(--font);font-size:0.82rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;background:var(--text);color:var(--bg);padding:14px 32px;border-radius:100px;transition:all .25s var(--ease);border:none;cursor:pointer}
+    .btn-primary:hover{background:var(--blue);color:var(--text);transform:translateY(-2px);box-shadow:0 12px 32px rgba(30,144,255,0.35)}
+    .btn-ghost{font-family:var(--font);font-size:0.82rem;font-weight:600;color:var(--text-2);padding:14px 0;background:none;border:none;cursor:pointer;transition:color .2s}
+    .btn-ghost:hover{color:var(--text)}
+    .btn-outline{font-family:var(--font);font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);border:1px solid var(--border-strong);padding:12px 28px;border-radius:100px;background:var(--surface);cursor:pointer;transition:all .22s var(--ease)}
+    .btn-outline:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;background:var(--bg);padding-top:68px}
+    .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+    .hero-glow{position:absolute;border-radius:50%;filter:blur(110px)}
+    .hero-glow--1{width:650px;height:650px;background:rgba(30,144,255,0.16);top:-150px;left:-150px;animation:glowDrift1 14s ease-in-out infinite}
+    .hero-glow--2{width:450px;height:450px;background:rgba(123,97,255,0.12);bottom:80px;right:-100px;animation:glowDrift2 17s ease-in-out infinite}
+    .hero-glow--3{width:280px;height:280px;background:rgba(0,255,178,0.07);top:55%;left:55%;animation:glowDrift1 11s ease-in-out infinite 3s}
+    .hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse at 50% 40%,black 20%,transparent 70%);opacity:0.5}
+    @keyframes glowDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,35px) scale(1.12)}}
+    @keyframes glowDrift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-35px,-45px) scale(1.09)}}
+
+    .hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:90px var(--page-px) 70px;text-align:center;display:flex;flex-direction:column;align-items:center;flex:1;justify-content:center}
+    .hero-top{margin-bottom:28px;animation:fadeUp .6s var(--ease) both}
+    .hero-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border);padding:7px 16px;border-radius:100px;background:var(--surface)}
+    .hero-title{display:flex;flex-direction:column;align-items:center;font-size:clamp(3.8rem,8.5vw,8.5rem);font-weight:900;letter-spacing:-0.045em;line-height:0.93;margin-bottom:32px}
+    .ht-line{display:block;white-space:nowrap}
+    .ht-line--1{color:var(--text-3);animation:fadeUp .6s var(--ease) .1s both}
+    .ht-line--2{background:linear-gradient(100deg,#fff 25%,var(--blue) 65%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp .6s var(--ease) .2s both}
+    .ht-dot{background:linear-gradient(135deg,var(--teal),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:1.05rem;color:var(--text-2);line-height:1.8;max-width:520px;margin-bottom:44px;animation:fadeUp .6s var(--ease) .3s both}
+    .hero-cta{display:flex;align-items:center;gap:16px;margin-bottom:68px;animation:fadeUp .6s var(--ease) .4s both}
+    .btn-hero-primary{display:inline-flex;align-items:center;gap:10px;background:var(--text);color:var(--bg);font-size:0.88rem;font-weight:800;letter-spacing:0.01em;padding:15px 30px;border-radius:100px;cursor:pointer;border:none;font-family:var(--font);transition:all 0.2s ease}
+    .btn-hero-primary:hover{background:#ddeeff;transform:translateY(-2px);box-shadow:0 14px 44px rgba(30,144,255,0.28)}
+    .btn-arrow{transition:transform 0.2s}
+    .btn-hero-primary:hover .btn-arrow{transform:translateX(4px)}
+    .btn-hero-ghost{font-size:0.88rem;font-weight:600;color:var(--text-2);background:none;border:none;font-family:var(--font);cursor:pointer;padding:15px 8px;transition:color 0.2s}
+    .btn-hero-ghost:hover{color:var(--text)}
+    .hero-stats{display:flex;align-items:center;gap:44px;animation:fadeUp .6s var(--ease) .5s both}
+    .hstat{display:flex;flex-direction:column;align-items:center;gap:5px}
+    .hstat-num{font-size:1.9rem;font-weight:900;color:var(--text);letter-spacing:-0.03em;line-height:1}
+    .hstat-plus{font-size:1.1rem;color:var(--blue)}
+    .hstat-label{font-size:0.64rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3)}
+    .hstat-div{width:1px;height:34px;background:var(--border)}
+
+
+    /* LINES SECTION */
+    .lines-section{padding:100px var(--page-px) 120px;background:#0a0c14;position:relative;overflow:hidden}
+    .lines-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
+    /* subtle ambient glow behind cards */
+    .lines-section::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 60%, rgba(30,144,255,0.05) 0%, transparent 70%);pointer-events:none}
+    .lines-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;position:relative;z-index:1}
+    .lines-header-left .section-label{margin-bottom:12px}
+    .lines-header-left h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.035em;line-height:1.05;color:var(--text)}
+    .lines-header-right{font-size:0.82rem;color:var(--text-3);max-width:260px;line-height:1.7;text-align:right}
+
+    .lines-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative;z-index:1}
+
+    /* color tokens per line */
+    :root{
+      --c-core:   #6B8CFF;
+      --c-next:   #3B9EFF;
+      --c-pure:   #3ECFA4;
+      --c-hydrate:#38C8F0;
+      --c-mind:   #A78BFA;
+      --c-pro:    #FF7A59;
+    }
+
+    .line-card{
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 22px;
+      padding: 28px 20px 24px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all .35s var(--ease);
+      display: flex;
+      flex-direction: column;
+      min-height: 310px;
+    }
+
+    /* glass shine at top */
+    .line-card::before{
+      content:'';
+      position:absolute;
+      top:0;left:0;right:0;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      border-radius:22px 22px 0 0;
+    }
+
+    /* large background icon */
+    .line-card::after{
+      content: attr(data-icon);
+      position:absolute;
+      bottom:-16px;right:-8px;
+      font-size:5.5rem;
+      opacity:0.06;
+      line-height:1;
+      pointer-events:none;
+      transition: opacity .35s, transform .35s var(--ease);
+    }
+
+    .line-card:hover{
+      border-color: rgba(255,255,255,0.18);
+      transform:translateY(-6px);
+      background: rgba(255,255,255,0.07);
+    }
+    .line-card:hover::after{opacity:0.11;transform:scale(1.1) rotate(-5deg)}
+
+    /* color accent strip at bottom edge */
+    .line-card--core  {border-bottom:2px solid rgba(107,140,255,0.35)}
+    .line-card--next  {border-bottom:2px solid rgba(59,158,255,0.35)}
+    .line-card--pure  {border-bottom:2px solid rgba(62,207,164,0.35)}
+    .line-card--hydrate{border-bottom:2px solid rgba(56,200,240,0.35)}
+    .line-card--mind  {border-bottom:2px solid rgba(167,139,250,0.35)}
+    .line-card--pro   {border-bottom:2px solid rgba(255,122,89,0.35)}
+
+    .line-card:hover.line-card--core   {box-shadow:0 28px 64px rgba(107,140,255,0.15), inset 0 0 40px rgba(107,140,255,0.04)}
+    .line-card:hover.line-card--next   {box-shadow:0 28px 64px rgba(59,158,255,0.15), inset 0 0 40px rgba(59,158,255,0.04)}
+    .line-card:hover.line-card--pure   {box-shadow:0 28px 64px rgba(62,207,164,0.15), inset 0 0 40px rgba(62,207,164,0.04)}
+    .line-card:hover.line-card--hydrate{box-shadow:0 28px 64px rgba(56,200,240,0.15), inset 0 0 40px rgba(56,200,240,0.04)}
+    .line-card:hover.line-card--mind   {box-shadow:0 28px 64px rgba(167,139,250,0.15), inset 0 0 40px rgba(167,139,250,0.04)}
+    .line-card--pro    {box-shadow:0 28px 64px rgba(255,122,89,0.13),  inset 0 0 40px rgba(255,122,89,0.04)}
+
+    .lc-num{font-size:0.55rem;font-weight:700;letter-spacing:0.16em;color:rgba(255,255,255,0.25);margin-bottom:22px;display:block}
+
+    /* color pill badge replacing the dot */
+    .lc-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      padding:4px 10px;border-radius:100px;
+      margin-bottom:16px;
+      width:fit-content;
+    }
+    .line-card--core   .lc-badge{background:rgba(107,140,255,0.15);color:#8faaff;border:1px solid rgba(107,140,255,0.25)}
+    .line-card--next   .lc-badge{background:rgba(59,158,255,0.15); color:#7dc4ff;border:1px solid rgba(59,158,255,0.25)}
+    .line-card--pure   .lc-badge{background:rgba(62,207,164,0.15); color:#5ddfc0;border:1px solid rgba(62,207,164,0.25)}
+    .line-card--hydrate.lc-badge{background:rgba(56,200,240,0.15); color:#5ed8f8;border:1px solid rgba(56,200,240,0.25)}
+    .line-card--mind   .lc-badge{background:rgba(167,139,250,0.15);color:#c4acff;border:1px solid rgba(167,139,250,0.25)}
+    .line-card--pro    .lc-badge{background:rgba(255,122,89,0.15); color:#ffaa8f;border:1px solid rgba(255,122,89,0.25)}
+    .line-card--hydrate .lc-badge{background:rgba(56,200,240,0.15);color:#5ed8f8;border:1px solid rgba(56,200,240,0.25)}
+
+    .lc-name{
+      font-size:1.9rem;font-weight:900;letter-spacing:-0.04em;
+      margin-bottom:8px;line-height:1;
+    }
+    .line-card--core   .lc-name{color:#8faaff}
+    .line-card--next   .lc-name{color:#7dc4ff}
+    .line-card--pure   .lc-name{color:#5ddfc0}
+    .line-card--hydrate .lc-name{color:#5ed8f8}
+    .line-card--mind   .lc-name{color:#c4acff}
+    .line-card--pro    .lc-name{color:#ffaa8f}
+
+    .lc-desc{font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:18px;flex:1}
+
+    .lc-products{display:flex;flex-direction:column;gap:4px;margin-bottom:20px}
+    .lc-product{
+      font-size:0.62rem;font-weight:500;
+      color:rgba(255,255,255,0.4);
+      letter-spacing:0.02em;
+      padding:6px 0;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .lc-product:last-child{border-bottom:none}
+    .lc-product:hover{color: var(--text); transform: translateX(4px);}
+
+    .lc-arrow{
+      font-size:0.7rem;font-weight:700;
+      color:rgba(255,255,255,0.25);
+      letter-spacing:0.04em;
+      transition:all .25s var(--ease);
+      align-self:flex-start;
+      margin-top:auto;
+    }
+    .line-card:hover .lc-arrow{color:rgba(255,255,255,0.7);transform:translateX(5px)}
+
+
+    /* FEATURED */
+    .featured-section{padding:100px var(--page-px) 50px;background:#f7f8fc}
+    .featured-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px}
+    .featured-header h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.035em;color:#0d0f1a}
+    .featured-header-link{font-size:0.82rem;font-weight:600;color:#9ca3b4;cursor:pointer;transition:color .2s}
+    .featured-header-link:hover{color:#0d0f1a}
+    
+    .featured-carousel-wrapper { position:relative; z-index: 10; }
+    
+    /* Espaçamentos ajustados para criar uma área de 'respiro' para as sombras */
+    .featured-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding:24px 20px 48px 20px;margin:-24px -20px -16px -20px;scrollbar-width:none;-ms-overflow-style:none;}
+    .featured-grid::-webkit-scrollbar { display: none; }
+    
+    .featured-card{min-width:calc(25% - 15px);flex-shrink:0;scroll-snap-align:start;cursor:pointer;border-radius:20px;overflow:hidden;border:1px solid #e8eaf2;transition:all .35s var(--ease);background:#fff;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,50,0.02);position:relative; z-index:1;}
+    .featured-card:hover{transform:translateY(-8px);border-color:#d0d4e8;box-shadow:0 24px 60px rgba(0,0,50,0.1); z-index:2;}
+    
+    /* Botões reposicionados e minimalistas */
+    .carousel-btn { position:absolute; top:40%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.35); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.6); color:#0d0f1a; box-shadow:0 4px 16px rgba(0,0,50,0.05); z-index:100; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s var(--ease); font-size: 1.2rem;}
+    .carousel-btn:hover { background:rgba(255,255,255,0.9); transform:translateY(-50%) scale(1.05); }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    
+    .featured-card-visual{height:300px;position:relative;overflow:hidden}
+    .fc-badge { position:absolute; top:20px; left:20px; z-index:10; background:var(--blue); color:#fff; font-size:0.65rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:6px 14px; border-radius:100px; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+    .fc-badge.hot { background: var(--orange); }
+    
+    .fc--dark{background:linear-gradient(145deg,#0f1628,#1a2040)}
+    .fc--green{background:linear-gradient(145deg,#071a0f,#0d2d18)}
+    .fc--purple{background:linear-gradient(145deg,#110d24,#1c1438)}
+    .fc--cyan{background:linear-gradient(145deg,#071520,#0d2538)}
+    .fc-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:2}
+    .featured-card-visual .product-mock{border-radius:0;min-height:100%;position:relative;z-index:1}
+    
+    .featured-card-info { padding:24px; background:#fff; border-top:1px solid #e8eaf2; display:flex; flex-direction:column; flex:1; }
+    .fc-line { font-size:0.65rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#bbc0d4; margin-bottom:8px; }
+    .featured-card-info h3 { font-size:1.15rem; font-weight:900; letter-spacing:-0.02em; color:#0d0f1a; margin:0 0 8px; }
+    .featured-card-info p { font-size:0.8rem; color:#6b7280; margin-bottom:16px; line-height:1.6; flex:1; }
+    .fc-link { font-size:0.8rem; font-weight:800; color:#9ca3b4; transition:color .2s; margin-top:auto; }
+    .featured-card:hover .fc-link { color:var(--blue); }
+
+    /* PROVA SOCIAL (REVIEWS) */
+    .reviews-section { padding: 60px var(--page-px) 80px; background: #f7f8fc; position: relative; }
+    .reviews-section::before { content: ''; position: absolute; top: 0; left: var(--page-px); right: var(--page-px); height: 1px; background: #dde0eb; }
+    .reviews-header { margin-bottom: 56px; }
+    .reviews-header h2 { font-size: clamp(2rem,4vw,3.2rem); font-weight: 900; letter-spacing: -0.035em; color: #0d0f1a; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { background: #fff; padding: 32px; border-radius: 20px; border: 1px solid #e8eaf2; box-shadow: 0 10px 30px rgba(0,0,50,0.02); display: flex; flex-direction: column; gap: 16px; transition: transform .3s var(--ease); }
+    .review-card:hover { transform: translateY(-5px); border-color: #d0d4e8; box-shadow: 0 20px 50px rgba(0,0,50,0.06); }
+    .review-stars { color: #FACC15; font-size: 1.1rem; letter-spacing: 2px; }
+    .review-text { font-size: 0.9rem; color: #555; line-height: 1.7; font-style: italic; flex: 1; }
+    .review-author { display: flex; align-items: center; gap: 12px; margin-top: 8px; border-top: 1px solid #f0f2f8; padding-top: 16px; }
+    .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eef0f8; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--blue); font-size: 0.85rem; }
+    .review-name { font-size: 0.85rem; font-weight: 800; color: #0d0f1a; display: block; }
+    .review-badge { font-size: 0.6rem; background: rgba(74,222,128,0.15); color: #2E7D4F; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; margin-top: 2px; display: inline-block; }
+
+    /* VALUES */
+    .values-section{background:#eef0f8;padding:var(--section-pad);border-top:1px solid #e0e4ef;border-bottom:1px solid #e0e4ef}
+    .values-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .values-text .section-label{margin-bottom:16px;color:#9ca3b4}
+    .values-text h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.035em;line-height:1.1;color:#0d0f1a;margin-bottom:20px}
+    .values-desc{font-size:0.95rem;line-height:1.85;color:#555;margin-bottom:36px;max-width:380px}
+    .values-grid-right{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .value-item{padding:24px;background:#fff;border:1px solid #e0e4ef;border-radius:16px;transition:border-color .2s}
+    .value-item:hover{border-color:#c0c8de}
+    .value-icon{font-size:1.3rem;margin-bottom:14px;color:var(--blue)}
+    .value-item h4{font-size:0.85rem;font-weight:700;color:#0d0f1a;margin-bottom:8px}
+    .value-item p{font-size:0.76rem;color:#777;line-height:1.6}
+
+    /* STATS */
+    .stats-section{display:flex;align-items:center;padding:72px var(--page-px);border-bottom:1px solid #e0e4ef;background:#f7f8fc}
+    .stat{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .stat-num{font-size:clamp(2rem,3vw,2.6rem);font-weight:900;letter-spacing:-0.04em;color:#0d0f1a}
+    .stat-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4}
+    .stat-divider{width:1px;height:50px;background:#dde0ef}
+
+    /* PRODUCT MOCK */
+    .product-mock{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:24px;border-radius:16px;height:100%;min-height:200px;position:relative}
+    .pc-visual{position:relative;overflow:hidden}
+    .pc-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:2}
+    .pd-visual{position:relative;overflow:hidden}
+    .pd-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:2}
+    .pm-brand{font-size:0.58rem;font-weight:600;letter-spacing:0.08em;opacity:0.5;margin-bottom:6px}
+    .pm-name{font-size:1.3rem;font-weight:900;letter-spacing:-0.02em;line-height:1.1}
+    .pm-size{font-size:0.6rem;font-weight:500;opacity:0.5;margin-top:8px}
+    .pm--dark{background:linear-gradient(145deg,#0f1628,#1e2a4a);color:white}
+    .pm--blue{background:linear-gradient(135deg,#0a2a5e,#1060c8);color:white}
+    .pm--teal{background:linear-gradient(135deg,#003d28,#00804a);color:white}
+    .pm--green{background:linear-gradient(135deg,#0a2e14,#1a5c2a);color:white}
+    .pm--cyan{background:linear-gradient(135deg,#003050,#006090);color:white}
+    .pm--lilac{background:linear-gradient(135deg,#1e1040,#3d2080);color:white}
+    .pm--purple-dark{background:linear-gradient(135deg,#160d38,#2d1a70);color:white}
+    .pm--sm{min-height:140px}
+    .pm--sm .pm-name{font-size:0.95rem}
+
+    /* PRODUCTS PAGE */
+    .products-hero{padding:140px var(--page-px) 48px;background:#f7f8fc;border-bottom:1px solid rgba(0,0,0,0.05)}
+    .products-hero-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;letter-spacing:-0.04em;line-height:1.0;color:#0d0f1a}
+    .line-filter{display:flex;gap:12px;padding:24px var(--page-px) 40px;flex-wrap:wrap;background:#f7f8fc;border-bottom:1px solid rgba(0,0,0,0.05)}
+    .filter-btn{font-family:var(--font);font-size:0.76rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:10px 24px;border-radius:100px;border:1px solid rgba(0,0,0,0.08);color:#6b7280;background:rgba(255,255,255,0.6);cursor:pointer;transition:all .3s var(--ease);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .filter-btn:hover{border-color:#0d0f1a;color:#0d0f1a;background:rgba(255,255,255,0.9)}
+    .filter-btn.active{background:#0d0f1a;color:#fff;border-color:#0d0f1a;box-shadow:0 8px 20px rgba(0,0,0,0.15)}
+    .products-grid-section{padding:48px var(--page-px) 120px;background:#f7f8fc}
+    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .product-card{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.8);cursor:pointer;transition:all .35s var(--ease);background:rgba(255,255,255,0.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,50,0.03)}
+    .product-card:hover{transform:translateY(-8px);border-color:#fff;background:rgba(255,255,255,0.7);box-shadow:0 20px 50px rgba(0,0,50,0.08)}
+    .product-card.hidden{display:none}
+    .pc-visual{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .product-mock{transition: transform 0.4s var(--ease)}
+    .product-card:hover .product-mock{transform: scale(1.04)}
+    .pc--dark{background:linear-gradient(145deg,#0f1628,#1a2040)}
+    .pc--blue{background:linear-gradient(145deg,#071028,#0d2050)}
+    .pc--teal{background:linear-gradient(145deg,#041a10,#083020)}
+    .pc--green{background:linear-gradient(145deg,#071a0e,#0d2c18)}
+    .pc--cyan{background:linear-gradient(145deg,#061420,#0c2538)}
+    .pc--lilac{background:linear-gradient(145deg,#100c28,#201548)}
+    .pc--purple{background:linear-gradient(145deg,#0e0820,#1c1040)}
+    .pc-info{padding:24px;background:transparent;flex:1;display:flex;flex-direction:column}
+    .pc-line{font-size:0.65rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#bbc0d4;margin-bottom:8px}
+    .pc-name{font-size:1.1rem;font-weight:800;letter-spacing:-0.01em;color:#0d0f1a;margin:0 0 8px}
+    .pc-desc{font-size:0.75rem;color:#6b7280;line-height:1.6;margin:0}
+
+    /* PRODUCT DETAIL */
+    .product-page-inner{padding:110px var(--page-px) 80px;max-width:1200px;margin:0 auto}
+    #page-produto{background:#f7f8fc}
+    .back-btn{font-family:var(--font);font-size:0.82rem;font-weight:600;color:#9ca3b4;cursor:pointer;padding:0;margin-bottom:56px;transition:color .2s;display:block;background:none;border:none}
+    .back-btn:hover{color:#0d0f1a}
+    .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .pd-visual{border-radius:24px;overflow:hidden;height:500px;display:flex;align-items:center;justify-content:center}
+    .pd-visual .product-mock{border-radius:0;width:100%;height:100%;min-height:unset}
+    .pd-visual .pm-name{font-size:2.2rem}
+    .pd-line{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9ca3b4;margin-bottom:14px}
+    .pd-name{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.04em;color:#0d0f1a;line-height:1.0;margin-bottom:18px}
+    .pd-tagline{font-size:0.95rem;color:#555;line-height:1.75;margin-bottom:36px;max-width:380px}
+    .pd-benefits{display:flex;flex-direction:column;gap:10px;margin-bottom:44px}
+    .pd-benefit{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.8);border-radius:12px;transition:border-color .2s;box-shadow:0 4px 12px rgba(0,0,0,0.02)}
+    .pd-benefit:hover{border-color:#fff;background:rgba(255,255,255,0.9)}
+    .pd-benefit-icon{width:32px;height:32px;border-radius:50%;background:#eef0f8;color:#6b7280;display:flex;align-items:center;justify-content:center;font-size:0.72rem;flex-shrink:0}
+    .pd-benefit-text{font-size:0.84rem;font-weight:500;color:#0d0f1a}
+    .pd-meta{display:flex;gap:28px;margin-bottom:40px}
+    .pd-meta-item{display:flex;flex-direction:column;gap:4px}
+    .pd-meta-val{font-size:1.25rem;font-weight:900;color:#0d0f1a}
+    .pd-meta-key{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4}
+    .pd-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+    .pd-price{font-size:2rem;font-weight:900;color:#0d0f1a;letter-spacing:-0.03em}
+    .pd-price-label{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4;display:block;margin-bottom:4px}
+    .pd-price-block{display:flex;flex-direction:column;margin-right:8px}
+    #page-produto .btn-primary{font-family:var(--font);font-size:0.82rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;background:#0d0f1a;color:#fff;padding:14px 32px;border-radius:100px;transition:all .25s var(--ease);border:none;cursor:pointer}
+    #page-produto .btn-primary:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 12px 32px rgba(30,144,255,0.35)}
+    #page-produto .btn-ghost{font-family:var(--font);font-size:0.82rem;font-weight:600;color:#9ca3b4;padding:14px 0;background:none;border:none;cursor:pointer;transition:color .2s}
+    #page-produto .btn-ghost:hover{color:#0d0f1a}
+
+    /* SOBRE */
+    .about-hero{padding:180px var(--page-px) 100px;background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .about-hero::after{content:'';position:absolute;top:-50%;right:-10%;width:800px;height:800px;background:radial-gradient(circle, rgba(30,144,255,0.08) 0%, transparent 60%);pointer-events:none;}
+    .about-title{font-size:clamp(3.5rem,7vw,5.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.0;color:var(--text);position:relative;z-index:1;}
+    .about-title span{background:linear-gradient(100deg,var(--text) 20%,var(--blue) 60%,var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .about-content{padding:100px var(--page-px);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;background:var(--bg-2);border-bottom:1px solid var(--border)}
+    .about-text-block h2{font-size:1.6rem;font-weight:800;letter-spacing:-0.02em;color:var(--text);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+    .about-text-block h2::before{content:'';display:block;width:8px;height:8px;background:var(--blue);border-radius:50%;box-shadow:0 0 10px var(--blue)}
+    .about-text-block p{font-size:1rem;color:var(--text-2);line-height:1.85}
+    .about-pillars{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .pillar{padding:32px 24px;border:1px solid var(--border);border-radius:20px;background:var(--surface);transition:all .35s var(--ease);backdrop-filter:blur(10px);}
+    .pillar:hover{border-color:rgba(255,255,255,0.2);transform:translateY(-5px);background:rgba(255,255,255,0.06);box-shadow:0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(255,255,255,0.02)}
+    .pillar-num{font-size:0.65rem;font-weight:700;letter-spacing:0.16em;color:var(--blue);display:block;margin-bottom:16px}
+    .pillar h3{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:10px}
+    .pillar p{font-size:0.8rem;color:var(--text-2);line-height:1.6}
+    .about-cta{padding:120px var(--page-px);text-align:center;background:var(--bg);position:relative;overflow:hidden;}
+    .about-cta::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(circle, rgba(123,97,255,0.08) 0%, transparent 70%);pointer-events:none;}
+    .about-cta h2{font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;letter-spacing:-0.03em;color:var(--text);margin-bottom:40px;position:relative;z-index:1;}
+
+    /* CART UI */
+    .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; opacity: 0; pointer-events: none; transition: opacity .4s var(--ease); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-sidebar { position: fixed; top: 0; right: 0; width: 100%; max-width: 400px; height: 100vh; background: rgba(10, 13, 24, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-left: 1px solid var(--border); z-index: 2001; transform: translateX(100%); transition: transform .4s var(--ease); display: flex; flex-direction: column; }
+    .cart-sidebar.open { transform: translateX(0); }
+    .cart-header { padding: 24px var(--page-px); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .cart-header h3 { font-size: 1.2rem; font-weight: 800; color: var(--text); }
+    .cart-close { background: none; border: none; color: var(--text-2); font-size: 1.8rem; cursor: pointer; transition: color .2s; line-height: 1; }
+    .cart-close:hover { color: var(--text); }
+    .cart-items { flex: 1; overflow-y: auto; padding: 24px var(--page-px); display: flex; flex-direction: column; gap: 20px; }
+    .cart-item { display: flex; gap: 16px; align-items: center; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .cart-item-img { width: 64px; height: 64px; border-radius: 12px; object-fit: contain; background: var(--surface); padding: 5px; }
+    .cart-item-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .cart-item-title { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+    .cart-item-price { font-size: 0.8rem; color: var(--blue); font-weight: 600; }
+    .cart-item-qty { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
+    .cart-qty-btn { width: 24px; height: 24px; border-radius: 50%; background: var(--surface); color: var(--text); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.8rem; }
+    .cart-qty-btn:hover { background: var(--text); color: var(--bg); }
+    .cart-qty-val { font-size: 0.8rem; font-weight: 600; }
+    .cart-footer { padding: 24px var(--page-px); border-top: 1px solid var(--border); background: rgba(0,0,0,0.2); }
+    .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .cart-total-label { font-size: 0.9rem; color: var(--text-2); font-weight: 600; }
+    .cart-total-val { font-size: 1.4rem; font-weight: 900; color: var(--text); }
+    .w-full { width: 100%; justify-content: center; }
+
+    /* CHECKOUT UI */
+    .checkout-container { max-width: 1100px; margin: 0 auto; padding: 120px var(--page-px) 80px; }
+    .checkout-title { font-size: clamp(2rem,4vw,3.2rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 40px; color: var(--text); }
+    .checkout-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .checkout-summary, .checkout-form { background: var(--bg-2); padding: 40px; border-radius: 24px; border: 1px solid var(--border); }
+    .checkout-summary h2, .checkout-form h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 24px; color: var(--text); padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .checkout-items-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; max-height: 400px; overflow-y: auto; padding-right: 10px; }
+    .checkout-item { display: flex; justify-content: space-between; align-items: center; }
+    .checkout-item-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .checkout-item-qty { color: var(--text-3); font-size: 0.8rem; }
+    .checkout-item-price { font-size: 0.9rem; font-weight: 700; color: var(--blue); }
+    .checkout-coupon { display: flex; gap: 12px; margin-bottom: 32px; }
+    .checkout-input { flex: 1; padding: 14px 20px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: var(--font); font-size: 0.9rem; transition: border-color .2s; }
+    .checkout-input:focus { outline: none; border-color: var(--blue); }
+    .checkout-coupon button { background: var(--surface); color: var(--text); border: 1px solid var(--border); padding: 0 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all .2s; }
+    .checkout-coupon button:hover { background: var(--text); color: var(--bg); }
+    .checkout-totals { display: flex; flex-direction: column; gap: 12px; }
+    .tot-row { display: flex; justify-content: space-between; font-size: 0.95rem; color: var(--text-2); font-weight: 500; }
+    .tot-row.grand-total { font-size: 1.4rem; font-weight: 900; color: var(--text); border-top: 1px solid var(--border); padding-top: 16px; margin-top: 8px; }
+    
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-2); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .pay-methods { display: flex; gap: 16px; margin-bottom: 24px; }
+    .pay-method-label { flex: 1; border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; cursor: pointer; font-weight: 600; color: var(--text-2); transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--bg); }
+    .pay-method-label:hover { border-color: rgba(255,255,255,0.3); }
+    .pay-method-label input { display: none; }
+    .pay-method-label:has(input:checked) { border-color: var(--blue); color: var(--blue); background: rgba(30,144,255,0.05); }
+    .pix-box { padding: 40px 20px; text-align: center; background: var(--bg); border: 1px dashed var(--border); border-radius: 12px; }
+    .pix-box p { color: var(--text-2); font-size: 0.9rem; margin-top: 16px; }
+
+    @media (max-width: 768px) {
+      .checkout-grid { grid-template-columns: 1fr; gap: 40px; }
+      .checkout-summary, .checkout-form { padding: 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    /* NAV BUTTONS WRAPPER */
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .cart-btn { background: none; border: none; color: var(--text); cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; transition: background .2s; }
+    .cart-btn:hover { background: var(--surface); }
+    .cart-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .cart-count { position: absolute; top: 0px; right: 0px; background: var(--blue); color: #fff; font-size: 0.6rem; font-weight: 800; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg); }
+
+    /* FOOTER */
+    .footer{background:var(--bg-2);border-top:1px solid var(--border);padding:72px var(--page-px) 36px}
+    .footer-top{display:flex;justify-content:space-between;gap:60px;margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border)}
+    .footer-logo{font-size:1.4rem;font-weight:900;letter-spacing:-0.03em;display:block;margin-bottom:14px;color:var(--text)}
+    .footer-brand p{font-size:0.82rem;color:var(--text-3);line-height:1.7}
+    .footer-links{display:flex;gap:72px}
+    .footer-col{display:flex;flex-direction:column;gap:12px}
+    .footer-col h4{font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:4px}
+    .footer-col a{font-size:0.82rem;color:var(--text-2);transition:color .2s}
+    .footer-col a:hover{color:var(--text)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--text-3)}
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){.lines-grid{grid-template-columns:repeat(3,1fr)}.products-grid{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:1024px){:root{--section-pad:80px 5vw}.featured-card{min-width:calc(33.333% - 14px)}.reviews-grid{grid-template-columns:repeat(2,1fr)}.values-inner{grid-template-columns:1fr;gap:48px}.values-grid-right{grid-template-columns:repeat(2,1fr)}.product-detail{grid-template-columns:1fr;gap:40px}.pd-visual{height:320px}.about-content{grid-template-columns:1fr}.lines-header{flex-direction:column;align-items:flex-start;gap:12px}.lines-header-right{text-align:left;max-width:100%}}
+    @media (max-width:768px){:root{--section-pad:60px 5vw}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.hero-inner{padding:60px 5vw 40px}.hero-stats{gap:20px}.hstat-num{font-size:1.5rem}.hero-cta{flex-direction:column;width:100%}.btn-hero-primary{width:100%;justify-content:center}.lines-grid{grid-template-columns:repeat(2,1fr);gap:10px}.line-card{min-height:220px;padding:22px 18px 18px}.featured-card{min-width:calc(50% - 10px)}.carousel-btn{display:none}.reviews-grid{grid-template-columns:1fr}.featured-card-visual{height:200px}.featured-card-info{padding:16px}.stats-section{flex-wrap:wrap;gap:24px 0}.stat{flex:50%}.stat-divider{display:none}.products-grid{grid-template-columns:repeat(2,1fr);gap:10px}.pc-visual{height:200px}.product-detail{grid-template-columns:1fr}.pd-visual{height:260px}.about-pillars{grid-template-columns:1fr}.footer-top{flex-direction:column;gap:36px}.footer-links{gap:36px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}.values-grid-right{grid-template-columns:1fr}}
+    @media (max-width:480px){.lines-grid{grid-template-columns:1fr}.featured-card{min-width:85%}.products-grid{grid-template-columns:repeat(2,1fr)}.hero-stats{flex-wrap:wrap;justify-content:center}.hstat-div{display:none}}
+  </style>
 </head>
 <body>
 
@@ -19,10 +528,16 @@
       <li><a href="#" onclick="showPage('produtos')">Produtos</a></li>
       <li><a href="#" onclick="showPage('sobre')">Sobre</a></li>
     </ul>
-    <button class="nav-cta" onclick="showPage('produtos')">Explorar</button>
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="cart-btn" onclick="toggleCart()" aria-label="Carrinho">
+        <svg viewBox="0 0 24 24"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-9.8-2h11.6L21 8H7M4 4h2l1.6 8.5"></path></svg>
+        <span class="cart-count" id="navCartCount">0</span>
+      </button>
+      <button class="nav-cta" onclick="showPage('produtos')">Explorar</button>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- MOBILE MENU -->
@@ -71,7 +586,7 @@
           </div>
           <div class="hstat-div"></div>
           <div class="hstat">
-            <span class="hstat-num">6</span>
+            <span class="hstat-num">5</span>
             <span class="hstat-label">Linhas</span>
           </div>
           <div class="hstat-div"></div>
@@ -86,152 +601,246 @@
           </div>
         </div>
       </div>
-
-      <div class="hero-lines-strip">
-        <span class="hls-label">Nossas linhas</span>
-        <div class="hls-items">
-          <div class="hls-item hls--core" onclick="showProductsLine('core')">CORE</div>
-          <div class="hls-item hls--next" onclick="showProductsLine('next')">NEXT</div>
-          <div class="hls-item hls--pure" onclick="showProductsLine('pure')">PURE</div>
-          <div class="hls-item hls--hydrate" onclick="showProductsLine('hydrate')">HYDRATE</div>
-          <div class="hls-item hls--mind" onclick="showProductsLine('mind')">MIND+</div>
-          <div class="hls-item hls--pro" onclick="showProductsLine('pro')">PRO</div>
-        </div>
-      </div>
     </section>
 
     <!-- LINHAS -->
     <section class="lines-section">
-      <p class="section-label">Nossas linhas</p>
-      <h2 class="section-title">Cada linha,<br>um propósito.</h2>
+      <div class="lines-header">
+        <div class="lines-header-left">
+          <p class="section-label">Nossas linhas</p>
+          <h2>Cada linha,<br>um propósito.</h2>
+        </div>
+        <p class="lines-header-right">5 linhas especializadas. Cada uma com fórmula, propósito e identidade próprios.</p>
+      </div>
       <div class="lines-grid">
 
-        <div class="line-card line-card--core" onclick="showProductsLine('core')">
-          <div class="line-card-tag">01</div>
-          <h3 class="line-card-name">CORE</h3>
-          <p class="line-card-desc">Os essenciais. Resultados consistentes.</p>
-          <div class="line-card-sub">Whey · Creatina · Pré-treino · Recover · Focus · Barras</div>
-          <span class="line-card-arrow">→</span>
+        <div class="line-card line-card--core" data-icon="⚙️" onclick="showProductsLine('core')">
+          <span class="lc-num">01</span>
+          <span class="lc-badge">CORE</span>
+          <h3 class="lc-name">CORE</h3>
+          <div class="lc-products" style="margin-top: 12px;">
+            <span class="lc-product">Base sólida</span>
+            <span class="lc-product">Equilíbrio diário</span>
+            <span class="lc-product">Suporte contínuo</span>
+          </div>
+          <span class="lc-arrow">Ver linha →</span>
         </div>
 
-        <div class="line-card line-card--next" onclick="showProductsLine('next')">
-          <div class="line-card-tag">02</div>
-          <h3 class="line-card-name">NEXT</h3>
-          <p class="line-card-desc">O próximo nível da sua rotina.</p>
-          <div class="line-card-sub">Whey Next · Focus · Energy · Pre · Daily · Bar</div>
-          <span class="line-card-arrow">→</span>
+        <div class="line-card line-card--next" data-icon="⚡" onclick="showProductsLine('next')">
+          <span class="lc-num">02</span>
+          <span class="lc-badge">NEXT</span>
+          <h3 class="lc-name">NEXT <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.4); display: block; margin-top: 4px;">(Adolescentes)</span></h3>
+          <div class="lc-products" style="margin-top: 12px;">
+            <span class="lc-product">Energia equilibrada</span>
+            <span class="lc-product">Foco para estudar</span>
+            <span class="lc-product">Leve e seguro</span>
+          </div>
+          <span class="lc-arrow">Ver linha →</span>
         </div>
 
-        <div class="line-card line-card--pure" onclick="showProductsLine('pure')">
-          <div class="line-card-tag">03</div>
-          <h3 class="line-card-name">PURE</h3>
-          <p class="line-card-desc">Naturalmente essencial. 100% Vegano.</p>
-          <div class="line-card-sub">Pure Protein · Pure Creatine · Pure Daily · Pure Bar</div>
-          <span class="line-card-arrow">→</span>
+        <div class="line-card line-card--pure" data-icon="🌿" onclick="showProductsLine('pure')">
+          <span class="lc-num">03</span>
+          <span class="lc-badge">PURE</span>
+          <h3 class="lc-name">PURE <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.4); display: block; margin-top: 4px;">(Vegana)</span></h3>
+          <div class="lc-products" style="margin-top: 12px;">
+            <span class="lc-product">100% vegano</span>
+            <span class="lc-product">Fórmula limpa</span>
+            <span class="lc-product">Só o essencial</span>
+          </div>
+          <span class="lc-arrow">Ver linha →</span>
         </div>
 
-        <div class="line-card line-card--hydrate" onclick="showProductsLine('hydrate')">
-          <div class="line-card-tag">04</div>
-          <h3 class="line-card-name">HYDRATE</h3>
-          <p class="line-card-desc">Hidrate. Reponha. Renda mais.</p>
-          <div class="line-card-sub">Electrolytes · Energy · Zero · Tablets · Sticks</div>
-          <span class="line-card-arrow">→</span>
+        <div class="line-card line-card--hydrate" data-icon="💧" onclick="showProductsLine('hydrate')">
+          <span class="lc-num">04</span>
+          <span class="lc-badge">HYDRATE</span>
+          <h3 class="lc-name">HYDRATE</h3>
+          <div class="lc-products" style="margin-top: 12px;">
+            <span class="lc-product">Hidratação eficiente</span>
+            <span class="lc-product">Reposição essencial</span>
+            <span class="lc-product">Leve no dia a dia</span>
+          </div>
+          <span class="lc-arrow">Ver linha →</span>
         </div>
 
-        <div class="line-card line-card--mind" onclick="showProductsLine('mind')">
-          <div class="line-card-tag">05</div>
-          <h3 class="line-card-name">MIND+</h3>
-          <p class="line-card-desc">Foco que conecta. Mente que evolui.</p>
-          <div class="line-card-sub">Focus · Memory · Calm · Drink · Focus Shot</div>
-          <span class="line-card-arrow">→</span>
+        <div class="line-card line-card--mind" data-icon="🧠" onclick="showProductsLine('mind')">
+          <span class="lc-num">05</span>
+          <span class="lc-badge">MIND+</span>
+          <h3 class="lc-name">MIND+</h3>
+          <div class="lc-products" style="margin-top: 12px;">
+            <span class="lc-product">Foco prolongado</span>
+            <span class="lc-product">Clareza mental</span>
+            <span class="lc-product">Alta concentração</span>
+          </div>
+          <span class="lc-arrow">Ver linha →</span>
         </div>
 
-        <div class="line-card line-card--pro" onclick="showProductsLine('core')">
-          <div class="line-card-tag">06</div>
-          <h3 class="line-card-name">PRO</h3>
-          <p class="line-card-desc">Alta performance. Para quem busca mais.</p>
-          <div class="line-card-sub">Fórmulas avançadas para atletas</div>
-          <span class="line-card-arrow">→</span>
-        </div>
+
 
       </div>
     </section>
 
     <!-- DESTAQUES -->
     <section class="featured-section">
-      <p class="section-label">Em destaque</p>
-      <h2 class="section-title">Os mais escolhidos.</h2>
-      <div class="featured-grid">
+      <div class="featured-header">
+        <h2>Os mais escolhidos.</h2>
+        <span class="featured-header-link" onclick="showPage('produtos')">Ver todos →</span>
+      </div>
+      <div class="featured-carousel-wrapper">
+        <button class="carousel-btn prev" onclick="scrollFeatured(-1)">←</button>
+        <button class="carousel-btn next" onclick="scrollFeatured(1)">→</button>
+        <div class="featured-grid" id="featuredGridCarousel">
 
-        <div class="featured-card" onclick="showProduct('whey-core')">
-          <div class="featured-card-visual fc--dark">
-            <img src="images/whey-core.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-          <img src="images/whey-core.png" class="fc-img" alt="" onerror="this.style.display=\'none\'" />
-            <div class="product-mock pm--dark">
-              <span class="pm-brand">murilabs</span>
-              <span class="pm-name">WHEY<br>CORE.</span>
-              <span class="pm-size">900g · 21g proteína</span>
+          <div class="featured-card" onclick="showProduct('whey-core')">
+            <div class="featured-card-visual fc--dark">
+              <span class="fc-badge hot">Mais Vendido</span>
+              <img src="images/whey-core.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+              <div class="product-mock pm--dark">
+                <span class="pm-brand">murilabs</span>
+                <span class="pm-name">WHEY<br>CORE.</span>
+                <span class="pm-size">900g · 21g proteína</span>
+              </div>
+            </div>
+            <div class="featured-card-info">
+              <span class="fc-line">CORE</span>
+              <h3>Whey Core</h3>
+              <p>Proteína concentrada do soro do leite.</p>
+              <span class="fc-link">Ver produto →</span>
             </div>
           </div>
-          <div class="featured-card-info">
-            <span class="fc-line">CORE</span>
-            <h3>Whey Core</h3>
-            <p>Proteína concentrada do soro do leite.</p>
-            <span class="fc-link">Ver produto →</span>
-          </div>
-        </div>
 
-        <div class="featured-card" onclick="showProduct('pure-protein')">
-          <div class="featured-card-visual fc--green">
-            <img src="images/pure-protein.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-            <div class="product-mock pm--green">
-              <span class="pm-brand">murilabs</span>
-              <span class="pm-name">PURE<br>PROTEIN</span>
-              <span class="pm-size">900g · 20g proteína</span>
+          <div class="featured-card" onclick="showProduct('pure-protein')">
+            <div class="featured-card-visual fc--green">
+              <span class="fc-badge">Lançamento</span>
+              <img src="images/pure-protein.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+              <div class="product-mock pm--green">
+                <span class="pm-brand">murilabs</span>
+                <span class="pm-name">PURE<br>PROTEIN</span>
+                <span class="pm-size">900g · 20g proteína</span>
+              </div>
+            </div>
+            <div class="featured-card-info">
+              <span class="fc-line">PURE</span>
+              <h3>Pure Protein</h3>
+              <p>Proteína vegetal de alta qualidade.</p>
+              <span class="fc-link">Ver produto →</span>
             </div>
           </div>
-          <div class="featured-card-info">
-            <span class="fc-line">PURE</span>
-            <h3>Pure Protein</h3>
-            <p>Proteína vegetal de alta qualidade.</p>
-            <span class="fc-link">Ver produto →</span>
-          </div>
-        </div>
 
-        <div class="featured-card" onclick="showProduct('focus-mind')">
-          <div class="featured-card-visual fc--purple">
-            <img src="images/mind-focus.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-            <div class="product-mock pm--purple">
-              <span class="pm-brand">murilabs</span>
-              <span class="pm-name">MIND+<br>FOCUS</span>
-              <span class="pm-size">60 cápsulas</span>
+          <div class="featured-card" onclick="showProduct('mind-focus')">
+            <div class="featured-card-visual fc--purple">
+              <span class="fc-badge" style="background:var(--purple);">Em Alta</span>
+              <img src="images/mind-focus.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+              <div class="product-mock pm--purple">
+                <span class="pm-brand">murilabs</span>
+                <span class="pm-name">MIND+<br>FOCUS</span>
+                <span class="pm-size">60 cápsulas</span>
+              </div>
+            </div>
+            <div class="featured-card-info">
+              <span class="fc-line">MIND+</span>
+              <h3>Mind+ Focus</h3>
+              <p>Foco e concentração para o dia a dia.</p>
+              <span class="fc-link">Ver produto →</span>
             </div>
           </div>
-          <div class="featured-card-info">
-            <span class="fc-line">MIND+</span>
-            <h3>Mind+ Focus</h3>
-            <p>Foco e concentração para o dia a dia.</p>
-            <span class="fc-link">Ver produto →</span>
-          </div>
-        </div>
 
-        <div class="featured-card" onclick="showProduct('hydrate-electrolytes')">
-          <div class="featured-card-visual fc--cyan">
-            <img src="images/hydrate-electrolytes.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-            <div class="product-mock pm--cyan">
-              <span class="pm-brand">murilabs</span>
-              <span class="pm-name">HYDRATE<br>ELECTRO</span>
-              <span class="pm-size">300g · 30 doses</span>
+          <div class="featured-card" onclick="showProduct('hydrate-electrolytes')">
+            <div class="featured-card-visual fc--cyan">
+              <span class="fc-badge" style="background:var(--cyan); color:#000;">Essencial</span>
+              <img src="images/hydrate-electrolytes.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+              <div class="product-mock pm--cyan">
+                <span class="pm-brand">murilabs</span>
+                <span class="pm-name">HYDRATE<br>ELECTRO</span>
+                <span class="pm-size">300g · 30 doses</span>
+              </div>
+            </div>
+            <div class="featured-card-info">
+              <span class="fc-line">HYDRATE</span>
+              <h3>Hydrate Electrolytes</h3>
+              <p>Eletrólitos essenciais para hidratação.</p>
+              <span class="fc-link">Ver produto →</span>
             </div>
           </div>
-          <div class="featured-card-info">
-            <span class="fc-line">HYDRATE</span>
-            <h3>Hydrate Electrolytes</h3>
-            <p>Eletrólitos essenciais para hidratação.</p>
-            <span class="fc-link">Ver produto →</span>
+
+          <div class="featured-card" onclick="showProduct('pre-ignite')">
+            <div class="featured-card-visual fc--dark">
+              <span class="fc-badge hot">Mais Força</span>
+              <img src="images/pre-ignite.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+              <div class="product-mock pm--dark">
+                <span class="pm-brand">murilabs</span>
+                <span class="pm-name">PRE<br>IGNITE.</span>
+                <span class="pm-size">300g · Energia Extra</span>
+              </div>
+            </div>
+            <div class="featured-card-info">
+              <span class="fc-line">CORE</span>
+              <h3>Pre Ignite</h3>
+              <p>Energia e performance para treinos.</p>
+              <span class="fc-link">Ver produto →</span>
+            </div>
+          </div>
+
+          <div class="featured-card" onclick="showProduct('pure-bar')">
+            <div class="featured-card-visual fc--green">
+              <span class="fc-badge" style="background:var(--green); color:#000;">Snack Saudável</span>
+              <img src="images/pure-bar.png" class="fc-img" alt="" onerror="this.style.display='none'" />
+              <div class="product-mock pm--green">
+                <span class="pm-brand">murilabs</span>
+                <span class="pm-name">PURE<br>BAR</span>
+                <span class="pm-size">50g · 10g proteína</span>
+              </div>
+            </div>
+            <div class="featured-card-info">
+              <span class="fc-line">PURE</span>
+              <h3>Pure Bar</h3>
+              <p>Barra vegana de cacau e avelã.</p>
+              <span class="fc-link">Ver produto →</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROVA SOCIAL (REVIEWS) -->
+    <section class="reviews-section">
+      <div class="reviews-header">
+        <h2>O que dizem de nós.</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"O Whey Core é simplesmente o melhor que já provei. Não me deixa estufado e o sabor é incrível. Virou parte da rotina!"</p>
+          <div class="review-author">
+            <div class="review-avatar">RC</div>
+            <div>
+              <span class="review-name">Rafael Costa</span>
+              <span class="review-badge">Cliente Verificado</span>
+            </div>
           </div>
         </div>
-
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Uso o Mind+ Focus para estudar e a diferença é brutal. Consigo manter a concentração por horas sem aquela quebra de energia."</p>
+          <div class="review-author">
+            <div class="review-avatar">LM</div>
+            <div>
+              <span class="review-name">Letícia Mendes</span>
+              <span class="review-badge">Cliente Verificado</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"A transparência da Murilabs ganhou-me logo. Saber que não tem corantes nem aditivos artificiais dá muita paz de espírito."</p>
+          <div class="review-author">
+            <div class="review-avatar">TS</div>
+            <div>
+              <span class="review-name">Tiago Silva</span>
+              <span class="review-badge">Cliente Verificado</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -271,9 +880,9 @@
 
     <!-- STATS -->
     <section class="stats-section">
-      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Linhas de produto</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Linhas de produto</span></div>
       <div class="stat-divider"></div>
-      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Produtos ativos</span></div>
+      <div class="stat"><span class="stat-num">25+</span><span class="stat-label">Produtos ativos</span></div>
       <div class="stat-divider"></div>
       <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Feito no Brasil</span></div>
       <div class="stat-divider"></div>
@@ -309,7 +918,6 @@
         <div class="product-card" data-line="core" onclick="showProduct('whey-core')">
           <div class="pc-visual pc--dark">
             <img src="images/whey-core.png" class="pc-img" alt="" onerror="this.style.display='none'" />
-            <img src="images/whey-core.png" class="pc-img" alt="" onerror="this.style.display=\'none\'" />
             <div class="product-mock pm--dark pm--sm">
               <span class="pm-brand">murilabs</span>
               <span class="pm-name">WHEY<br>CORE.</span>
@@ -595,6 +1203,21 @@
           </div>
         </div>
 
+        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-drink')">
+          <div class="pc-visual pc--cyan">
+            <img src="images/hydrate-drink.png" class="pc-img" alt="" onerror="this.style.display='none'" />
+            <div class="product-mock pm--cyan pm--sm">
+              <span class="pm-brand">murilabs</span>
+              <span class="pm-name">HYDRATE<br>DRINK</span>
+            </div>
+          </div>
+          <div class="pc-info">
+            <span class="pc-line">HYDRATE</span>
+            <h3 class="pc-name">Hydrate Drink</h3>
+            <p class="pc-desc">Bebida pronta · Eletrólitos · 500ml</p>
+          </div>
+        </div>
+
         <!-- MIND+ -->
         <div class="product-card" data-line="mind" onclick="showProduct('mind-focus')">
           <div class="pc-visual pc--lilac">
@@ -676,7 +1299,7 @@
 
     <section class="about-hero">
       <p class="section-label">Sobre a Murilabs</p>
-      <h1 class="about-title">Performance<br>começa pela<br>mente.</h1>
+      <h1 class="about-title">Performance<br>começa pela<br><span>mente.</span></h1>
     </section>
 
     <section class="about-content">
@@ -720,6 +1343,126 @@
   </div>
   <!-- END SOBRE -->
 
+  <!-- ======================== CHECKOUT ======================== -->
+  <div id="page-checkout" class="page">
+    <div class="checkout-container">
+      <button class="back-btn" onclick="showPage('produtos')">← Continuar a comprar</button>
+      <h1 class="checkout-title">Finalizar Compra</h1>
+      <div class="checkout-grid">
+        
+        <div class="checkout-summary">
+          <h2>Resumo do Pedido</h2>
+          <div class="checkout-items-list" id="checkoutItemsList">
+            <!-- filled by JS -->
+          </div>
+          <div class="checkout-coupon">
+            <input type="text" id="couponCode" class="checkout-input" placeholder="Cupom (ex: BORA10)">
+            <button onclick="applyCoupon()">Aplicar</button>
+          </div>
+          <div class="checkout-totals">
+            <div class="tot-row"><span>Subtotal</span><span id="chkSubtotal">R$ 0,00</span></div>
+            <div class="tot-row"><span>Frete</span><span id="chkFrete">Grátis</span></div>
+            <div class="tot-row"><span style="color: var(--green);">Desconto</span><span id="chkDiscount" style="color: var(--green);">R$ 0,00</span></div>
+            <div class="tot-row grand-total"><span>Total</span><span id="chkTotal">R$ 0,00</span></div>
+          </div>
+        </div>
+
+        <div class="checkout-form">
+          <h2>1. Dados Pessoais e Entrega</h2>
+          <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" class="checkout-input" placeholder="Seu nome">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>E-mail</label>
+              <input type="email" class="checkout-input" placeholder="seu@email.com">
+            </div>
+            <div class="form-group">
+              <label>CPF</label>
+              <input type="text" class="checkout-input" placeholder="000.000.000-00">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>CEP</label>
+              <input type="text" class="checkout-input" placeholder="00000-000">
+            </div>
+            <div class="form-group">
+              <label>Endereço</label>
+              <input type="text" class="checkout-input" placeholder="Rua, número, complemento">
+            </div>
+          </div>
+
+          <h2 style="margin-top: 40px;">2. Pagamento</h2>
+          <div class="pay-methods">
+            <label class="pay-method-label">
+              <input type="radio" name="paymethod" value="credito" checked onchange="togglePayMethod()">
+              💳 Cartão
+            </label>
+            <label class="pay-method-label">
+              <input type="radio" name="paymethod" value="pix" onchange="togglePayMethod()">
+              ❖ PIX
+            </label>
+          </div>
+
+          <div id="payCredito">
+            <div class="form-group">
+              <label>Número do Cartão</label>
+              <input type="text" class="checkout-input" placeholder="0000 0000 0000 0000">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Validade</label>
+                <input type="text" class="checkout-input" placeholder="MM/AA">
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="text" class="checkout-input" placeholder="123">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Parcelamento</label>
+              <select id="installments" class="checkout-input" style="appearance: auto; cursor: pointer;">
+                <!-- filled by JS -->
+              </select>
+            </div>
+          </div>
+
+          <div id="payPix" style="display:none;">
+            <div class="pix-box">
+              <h3 style="color:var(--text); font-size: 1.2rem;">Pagamento via PIX</h3>
+              <p>O QR Code e o código "Copia e Cola" serão gerados na próxima etapa, após a confirmação.</p>
+              <p style="color: var(--green); font-weight: bold; margin-top: 10px;">Aprovação instantânea!</p>
+            </div>
+          </div>
+
+          <button class="btn-primary w-full" style="margin-top:40px; padding: 20px; font-size: 1rem;" onclick="finishOrderFinal()">Confirmar Pedido →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END CHECKOUT -->
+
+  <!-- CARRINHO SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>O Seu Carrinho</h3>
+      <button class="cart-close" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Preenchido pelo JS -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-val" id="cartTotalValue">R$ 0,00</span>
+      </div>
+      <button class="btn-primary w-full" onclick="checkout()">Finalizar Compra</button>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-top">
@@ -745,11 +1488,730 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Murilabs. Todos os direitos reservados.</span>
+      <span>© 2026 Murilabs. Todos os direitos reservados.</span>
       <span>🇧🇷 Feito no Brasil</span>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    /* ===================================
+       MURILABS — JAVASCRIPT
+       =================================== */
+
+    // ── Page data ──────────────────────────────────────────────────────────────
+
+    const products = {
+      'whey-core': {
+        line: 'CORE',
+        name: 'Whey Core',
+        tagline: 'Proteína concentrada do soro do leite para construção muscular eficiente.',
+        size: '900g',
+        serving: '21g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Proteína de alto valor biológico' },
+          { icon: '◈', text: 'Perfil completo de aminoácidos essenciais' },
+          { icon: '◇', text: 'Auxilia na recuperação e crescimento muscular' },
+          { icon: '△', text: 'Sem corantes ou aromas artificiais' },
+        ],
+        visual: 'pm--dark',
+        bg: 'pc--dark',
+        bgPage: 'var(--navy)',
+      },
+      'creatine-core': {
+        line: 'CORE',
+        name: 'Creatine Core',
+        tagline: 'Creatina monohidratada 100% pura. Força, desempenho e recuperação.',
+        size: '300g',
+        serving: '3g',
+        doses: '100',
+        benefits: [
+          { icon: '◎', text: '100% creatina monohidratada' },
+          { icon: '◈', text: 'Aumenta força e desempenho nos treinos' },
+          { icon: '◇', text: 'Acelera a recuperação muscular' },
+          { icon: '△', text: 'Sem adição de açúcares' },
+        ],
+        visual: 'pm--dark',
+        bg: 'pc--dark',
+        bgPage: 'var(--navy)',
+      },
+      'pre-ignite': {
+        line: 'CORE',
+        name: 'Pre Ignite',
+        tagline: 'Energia, foco e performance para treinos que exigem o máximo.',
+        size: '300g',
+        serving: '10g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Energia explosiva antes do treino' },
+          { icon: '◈', text: 'Foco e clareza mental' },
+          { icon: '◇', text: 'Ingredientes clinicamente dosados' },
+          { icon: '△', text: 'Sabor limão' },
+        ],
+        visual: 'pm--dark',
+        bg: 'pc--dark',
+        bgPage: 'var(--navy)',
+      },
+      'recover-restore': {
+        line: 'CORE',
+        name: 'Recover Restore',
+        tagline: 'Recuperação pós-treino eficiente para evoluir mais rápido.',
+        size: '500g',
+        serving: '16g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Reduz dores musculares após o treino' },
+          { icon: '◈', text: 'Acelera a recuperação e reparação' },
+          { icon: '◇', text: 'Vitaminas e minerais essenciais' },
+          { icon: '△', text: 'Sabor uva' },
+        ],
+        visual: 'pm--dark',
+        bg: 'pc--dark',
+        bgPage: 'var(--navy)',
+      },
+      'focus-mind-core': {
+        line: 'CORE',
+        name: 'Focus Mind',
+        tagline: 'Suplemento para foco, memória e clareza mental no dia a dia.',
+        size: '60 cáps',
+        serving: '1000mg',
+        doses: '60',
+        benefits: [
+          { icon: '◎', text: 'Mais foco e concentração' },
+          { icon: '◈', text: 'Apoia a memória e o aprendizado' },
+          { icon: '◇', text: 'Cafeína natural + L-teanina' },
+          { icon: '△', text: 'Uso diário seguro' },
+        ],
+        visual: 'pm--dark',
+        bg: 'pc--dark',
+        bgPage: 'var(--navy)',
+      },
+      'fuel-bar': {
+        line: 'CORE',
+        name: 'Fuel Bar',
+        tagline: 'Barra proteica para matar a fome e manter a energia em movimento.',
+        size: '60g',
+        serving: '12g',
+        doses: '1',
+        benefits: [
+          { icon: '◎', text: '12g de proteína por barra' },
+          { icon: '◈', text: 'Ingredientes reais, sem excessos' },
+          { icon: '◇', text: 'Prático para levar a qualquer lugar' },
+          { icon: '△', text: 'Vários sabores disponíveis' },
+        ],
+        visual: 'pm--dark',
+        bg: 'pc--dark',
+        bgPage: 'var(--navy)',
+      },
+      'whey-next': {
+        line: 'NEXT',
+        name: 'Whey Next',
+        tagline: 'Proteína concentrada para quem está sempre evoluindo.',
+        size: '900g',
+        serving: '21g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: '21g de proteína por dose' },
+          { icon: '◈', text: '4,6g de BCAAs naturais' },
+          { icon: '◇', text: 'Low açúcar' },
+          { icon: '△', text: 'Sabor chocolate' },
+        ],
+        visual: 'pm--blue',
+        bg: 'pc--blue',
+        bgPage: 'linear-gradient(135deg, #1E90FF, #0060CC)',
+      },
+      'focus-next': {
+        line: 'NEXT',
+        name: 'Focus Next',
+        tagline: 'Foco e concentração para quem não pode parar.',
+        size: '60 cáps',
+        serving: '500mg',
+        doses: '60',
+        benefits: [
+          { icon: '◎', text: 'Mais atenção e clareza' },
+          { icon: '◈', text: 'Fórmula inteligente com cafeína natural' },
+          { icon: '◇', text: 'Para estudos e trabalho' },
+          { icon: '△', text: 'Uso diário' },
+        ],
+        visual: 'pm--blue',
+        bg: 'pc--blue',
+        bgPage: 'linear-gradient(135deg, #1E90FF, #0060CC)',
+      },
+      'energy-next': {
+        line: 'NEXT',
+        name: 'Energy Next',
+        tagline: 'Energia para o dia todo, com baixo teor de açúcar.',
+        size: 'Pó',
+        serving: '–',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Energia sustentada ao longo do dia' },
+          { icon: '◈', text: 'Low açúcar, sabor limão' },
+          { icon: '◇', text: 'Vitaminas do complexo B' },
+          { icon: '△', text: 'Pronto para misturar' },
+        ],
+        visual: 'pm--teal',
+        bg: 'pc--teal',
+        bgPage: 'linear-gradient(135deg, #00E0A0, #00B07A)',
+      },
+      'pre-next': {
+        line: 'NEXT',
+        name: 'Pre Next',
+        tagline: 'Pré-treino inteligente para o próximo nível do seu desempenho.',
+        size: '300g',
+        serving: '10g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Energia e foco para treinos intensos' },
+          { icon: '◈', text: '2g de creatina por dose' },
+          { icon: '◇', text: 'Beta-alanina para resistência' },
+          { icon: '△', text: 'Sabor tropical' },
+        ],
+        visual: 'pm--purple-dark',
+        bg: 'pc--purple',
+        bgPage: 'linear-gradient(135deg, #7B61FF, #4F3ACC)',
+      },
+      'bar-next': {
+        line: 'NEXT',
+        name: 'Bar Next',
+        tagline: 'Barra de proteína com adição de vitaminas para o dia a dia.',
+        size: '60g',
+        serving: '12g',
+        doses: '1',
+        benefits: [
+          { icon: '◎', text: '12g de proteína por barra' },
+          { icon: '◈', text: 'Com adição de vitaminas' },
+          { icon: '◇', text: 'Sabor cookies & cream' },
+          { icon: '△', text: 'Prático e nutritivo' },
+        ],
+        visual: 'pm--teal',
+        bg: 'pc--teal',
+        bgPage: 'linear-gradient(135deg, #00E0A0, #00B07A)',
+      },
+      'pure-protein': {
+        line: 'PURE',
+        name: 'Pure Protein',
+        tagline: 'Proteína vegetal de alta qualidade, fácil digestão e completa em aminoácidos.',
+        size: '900g',
+        serving: '20g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: '100% vegana, sem ingredientes animais' },
+          { icon: '◈', text: 'Fácil digestão e absorção' },
+          { icon: '◇', text: 'Fórmula limpa e transparente' },
+          { icon: '△', text: 'Sabores naturais: baunilha, cacau, coco' },
+        ],
+        visual: 'pm--green',
+        bg: 'pc--green',
+        bgPage: 'linear-gradient(135deg, #4CAF6F, #2E7D4F)',
+      },
+      'pure-creatine': {
+        line: 'PURE',
+        name: 'Pure Creatine',
+        tagline: 'Creatina 100% pura em fórmula vegana. Performance com consciência.',
+        size: '200g',
+        serving: '3g',
+        doses: '66',
+        benefits: [
+          { icon: '◎', text: 'Creatina monohidratada 100% pura' },
+          { icon: '◈', text: 'Fórmula vegana e sustentável' },
+          { icon: '◇', text: 'Embalagem reciclável' },
+          { icon: '△', text: 'Sem adição de aromas ou corantes' },
+        ],
+        visual: 'pm--green',
+        bg: 'pc--green',
+        bgPage: 'linear-gradient(135deg, #4CAF6F, #2E7D4F)',
+      },
+      'pure-daily': {
+        line: 'PURE',
+        name: 'Pure Daily',
+        tagline: 'Multivitamínico vegano para mais saúde e equilíbrio todos os dias.',
+        size: '60 cáps',
+        serving: '1 cáps',
+        doses: '60',
+        benefits: [
+          { icon: '◎', text: 'Vitaminas e minerais essenciais' },
+          { icon: '◈', text: '100% vegano, sem lactose ou glúten' },
+          { icon: '◇', text: 'Ingredientes de origem natural' },
+          { icon: '△', text: 'Uso diário' },
+        ],
+        visual: 'pm--green',
+        bg: 'pc--green',
+        bgPage: 'linear-gradient(135deg, #4CAF6F, #2E7D4F)',
+      },
+      'pure-bar': {
+        line: 'PURE',
+        name: 'Pure Bar',
+        tagline: 'Barra vegana de cacau e avelã. Real, simples, deliciosa.',
+        size: '50g',
+        serving: '10g',
+        doses: '1',
+        benefits: [
+          { icon: '◎', text: '10g de proteína vegetal' },
+          { icon: '◈', text: 'Ingredientes reais e naturais' },
+          { icon: '◇', text: 'Sem corantes ou adoçantes artificiais' },
+          { icon: '△', text: 'Sabor cacau & avelã' },
+        ],
+        visual: 'pm--green',
+        bg: 'pc--green',
+        bgPage: 'linear-gradient(135deg, #4CAF6F, #2E7D4F)',
+      },
+      'hydrate-electrolytes': {
+        line: 'HYDRATE',
+        name: 'Hydrate Electrolytes',
+        tagline: 'Eletrólitos essenciais para manter o corpo em equilíbrio todos os dias.',
+        size: '300g',
+        serving: '10g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Sódio, potássio, magnésio e cloreto' },
+          { icon: '◈', text: 'Sem açúcar, baixas calorias' },
+          { icon: '◇', text: '100% vegano, sem corantes' },
+          { icon: '△', text: 'Sabores: limão, frutas vermelhas, natural' },
+        ],
+        visual: 'pm--cyan',
+        bg: 'pc--cyan',
+        bgPage: 'linear-gradient(135deg, #00D4FF, #0098CC)',
+      },
+      'hydrate-energy': {
+        line: 'HYDRATE',
+        name: 'Hydrate Energy',
+        tagline: 'Eletrólitos + energia para treinos e dias intensos.',
+        size: '300g',
+        serving: '10g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Eletrólitos + Coenzima Q10 + B12' },
+          { icon: '◈', text: 'Energia extra sem excesso de calorias' },
+          { icon: '◇', text: 'Vegano, sem glúten e sem lactose' },
+          { icon: '△', text: 'Hidratação inteligente' },
+        ],
+        visual: 'pm--cyan',
+        bg: 'pc--cyan',
+        bgPage: 'linear-gradient(135deg, #00D4FF, #0098CC)',
+      },
+      'hydrate-zero': {
+        line: 'HYDRATE',
+        name: 'Hydrate Zero',
+        tagline: 'Eletrólitos essenciais sem sabor e sem açúcar. O mais versátil da linha.',
+        size: '300g',
+        serving: '10g',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Eletrólitos puros, sem sabor' },
+          { icon: '◈', text: 'Zero açúcar, zero calorias' },
+          { icon: '◇', text: 'Mistura com qualquer bebida' },
+          { icon: '△', text: 'Ideal para hidratação no dia a dia' },
+        ],
+        visual: 'pm--cyan',
+        bg: 'pc--cyan',
+        bgPage: 'linear-gradient(135deg, #00D4FF, #0098CC)',
+      },
+      'hydrate-tablets': {
+        line: 'HYDRATE',
+        name: 'Hydrate Tablets',
+        tagline: 'Eletrólitos em tablet. Leve na bolsa, use em qualquer lugar.',
+        size: '60 tablets',
+        serving: '1 tablet',
+        doses: '60',
+        benefits: [
+          { icon: '◎', text: 'Prático e portátil' },
+          { icon: '◈', text: 'Dissolve rapidamente em água' },
+          { icon: '◇', text: 'Sem corantes artificiais' },
+          { icon: '△', text: 'Eletrólitos essenciais em formato compacto' },
+        ],
+        visual: 'pm--cyan',
+        bg: 'pc--cyan',
+        bgPage: 'linear-gradient(135deg, #00D4FF, #0098CC)',
+      },
+      'hydrate-drink': {
+        line: 'HYDRATE',
+        name: 'Hydrate Drink',
+        tagline: 'Bebida pronta · Eletrólitos · 500ml',
+        size: '500ml',
+        serving: '–',
+        doses: '1',
+        benefits: [
+          { icon: '◎', text: 'Pronto para beber' },
+          { icon: '◈', text: 'Rápida absorção' },
+          { icon: '◇', text: 'Sabor refrescante' },
+          { icon: '△', text: 'Eletrólitos balanceados' },
+        ],
+        visual: 'pm--cyan',
+        bg: 'pc--cyan',
+        bgPage: 'linear-gradient(135deg, #00D4FF, #0098CC)',
+      },
+      'mind-focus': {
+        line: 'MIND+',
+        name: 'Mind+ Focus',
+        tagline: 'Fórmula inteligente para foco, concentração e performance mental.',
+        size: '60 cáps',
+        serving: '2 cáps',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Cafeína natural + L-teanina + tirosina' },
+          { icon: '◈', text: 'Mais concentração nos estudos e no trabalho' },
+          { icon: '◇', text: 'Vitaminas do complexo B' },
+          { icon: '△', text: 'Para estudantes, profissionais e atletas' },
+        ],
+        visual: 'pm--lilac',
+    bg: 'pc--lilac',
+    bgPage: 'linear-gradient(135deg, #C4ACFF, #9B7CFF)',
+  },
+};
+
+// Adiciona preços reais gerados aos produtos programaticamente
+const basePrices = {
+  'whey-core': 149.90, 'creatine-core': 89.90, 'pre-ignite': 119.90, 'recover-restore': 129.90,
+  'focus-mind-core': 89.90, 'fuel-bar': 12.90, 'whey-next': 179.90, 'focus-next': 109.90,
+  'energy-next': 139.90, 'pre-next': 159.90, 'bar-next': 14.90, 'pure-protein': 199.90,
+  'pure-creatine': 119.90, 'pure-daily': 79.90, 'pure-bar': 15.90, 'hydrate-electrolytes': 99.90,
+  'hydrate-energy': 109.90, 'hydrate-zero': 89.90, 'hydrate-tablets': 69.90, 'hydrate-drink': 9.90,
+  'mind-focus': 129.90, 'mind-memory': 139.90, 'mind-calm': 119.90, 'mind-drink': 14.90, 'focus-mind': 129.90
+};
+for (let key in products) {
+  products[key].priceVal = basePrices[key] || 149.90;
+  products[key].priceStr = `R$ ${products[key].priceVal.toFixed(2).replace('.', ',')}`;
+}
+
+// ── State ───────────────────────────────────────────────────────────────────
+
+let currentPage = 'home';
+    let previousPage = 'home';
+
+    // ── Navigation ──────────────────────────────────────────────────────────────
+
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show target
+      const target = document.getElementById('page-' + pageId);
+      if (target) {
+        target.classList.add('active');
+        previousPage = currentPage;
+        currentPage = pageId;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function showProductsLine(lineId) {
+      showPage('produtos');
+      // Delay filter until page shows
+      setTimeout(() => {
+        const btn = document.querySelector(`.filter-btn[data-filter="${lineId}"]`);
+        if (btn) filterProducts(btn, lineId);
+      }, 100);
+    }
+
+    function goBack() {
+      showPage(previousPage === 'produto' ? 'produtos' : previousPage);
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    function scrollFeatured(direction) {
+      const grid = document.getElementById('featuredGridCarousel');
+      if(grid) {
+        const card = grid.querySelector('.featured-card');
+        const scrollAmount = (card.offsetWidth + 16) * 2; // Desliza 2 cartões de cada vez
+        grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    // ── Products Filter ─────────────────────────────────────────────────────────
+
+    function filterProducts(btn, filter) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Update label
+      const label = document.getElementById('products-line-label');
+      if (filter === 'all') {
+        label.textContent = 'Todos os produtos';
+      } else {
+        const names = { core: 'Linha Core', next: 'Linha Next', pure: 'Linha Pure', hydrate: 'Linha Hydrate', mind: 'Linha Mind+' };
+        label.textContent = names[filter] || 'Todos os produtos';
+      }
+
+      // Filter cards
+      document.querySelectorAll('.product-card').forEach(card => {
+        const line = card.getAttribute('data-line');
+        if (filter === 'all' || line === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // ── Image helper ────────────────────────────────────────────────────────────
+
+    function productImageTag(productId, cssClass, fallbackHtml) {
+      return `<img src="images/${productId}.png" class="${cssClass}" alt="" onerror="this.style.display='none'" />${fallbackHtml}`;
+    }
+
+    // ── Product Detail ──────────────────────────────────────────────────────────
+
+    function showProduct(productId) {
+      const p = products[productId];
+      if (!p) return;
+
+      previousPage = currentPage;
+
+      const detail = document.getElementById('productDetail');
+      detail.innerHTML = `
+        <div class="pd-visual ${p.bg}" style="background: ${p.bgPage}; position: relative;">
+          <img src="images/${productId}.png" class="pd-img" alt="${p.name}" onerror="this.style.display='none'" />
+          <div class="product-mock ${p.visual}" style="z-index:1;">
+            <span class="pm-brand">murilabs</span>
+            <span class="pm-name">${p.name.toUpperCase()}</span>
+            <span class="pm-size">${p.size}</span>
+          </div>
+        </div>
+        <div class="pd-content">
+          <p class="pd-line">${p.line}</p>
+          <h1 class="pd-name">${p.name}</h1>
+          <p class="pd-tagline">${p.tagline}</p>
+
+          <div class="pd-meta">
+            <div class="pd-meta-item">
+              <span class="pd-meta-val">${p.size}</span>
+              <span class="pd-meta-key">Tamanho</span>
+            </div>
+            <div class="pd-meta-item">
+              <span class="pd-meta-val">${p.serving}</span>
+              <span class="pd-meta-key">Por dose</span>
+            </div>
+            <div class="pd-meta-item">
+              <span class="pd-meta-val">${p.doses}</span>
+              <span class="pd-meta-key">Doses</span>
+            </div>
+          </div>
+
+          <div class="pd-benefits">
+            ${p.benefits.map(b => `
+              <div class="pd-benefit">
+                <div class="pd-benefit-icon">${b.icon}</div>
+                <span class="pd-benefit-text">${b.text}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="pd-cta">
+            <div class="pd-price-block">
+              <span class="pd-price-label">Preço</span>
+              <span class="pd-price">${p.priceStr}</span>
+            </div>
+            <button class="btn-primary" onclick="addToCart('${productId}')">Comprar agora</button>
+            <button class="btn-ghost" onclick="showPage('produtos')">Ver todos os produtos</button>
+          </div>
+        </div>
+      `;
+
+      showPage('produto');
+    }
+
+    // ── Nav scroll effect ───────────────────────────────────────────────────────
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('nav');
+      if (window.scrollY > 20) {
+        nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+
+    // ── Close mobile menu on resize ─────────────────────────────────────────────
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    });
+
+    // ── Lógica do Carrinho ──────────────────────────────────────────────────────
+
+    let cart = [];
+
+    function toggleCart() {
+      document.getElementById('cartOverlay').classList.toggle('open');
+      document.getElementById('cartSidebar').classList.toggle('open');
+    }
+
+    function addToCart(productId) {
+      const product = products[productId];
+      if (!product) return;
+
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.qty += 1;
+      } else {
+        cart.push({
+          id: productId,
+          name: product.name,
+          price: product.priceVal,
+          qty: 1,
+          bg: product.bgPage || 'var(--surface)'
+        });
+      }
+
+      updateCartUI();
+      
+      // Abre o carrinho automaticamente ao adicionar
+      if (!document.getElementById('cartSidebar').classList.contains('open')) {
+        toggleCart();
+      }
+    }
+
+    function updateItemQty(productId, change) {
+      const item = cart.find(i => i.id === productId);
+      if (item) {
+        item.qty += change;
+        if (item.qty <= 0) {
+          cart = cart.filter(i => i.id !== productId);
+        }
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const cartCountEl = document.getElementById('navCartCount');
+      const cartTotalEl = document.getElementById('cartTotalValue');
+
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+      let count = 0;
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p style="color: var(--text-2); text-align: center; margin-top: 40px;">O seu carrinho está vazio.</p>';
+      } else {
+        cart.forEach(item => {
+          total += item.price * item.qty;
+          count += item.qty;
+
+          const itemEl = document.createElement('div');
+          itemEl.className = 'cart-item';
+          itemEl.innerHTML = `
+            <img src="images/${item.id}.png" class="cart-item-img" style="background: ${item.bg};" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIiByeD0iOCIvPjwvc3ZnPg=='" />
+            <div class="cart-item-info">
+              <span class="cart-item-title">${item.name}</span>
+              <span class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+              <div class="cart-item-qty">
+                <button class="cart-qty-btn" onclick="updateItemQty('${item.id}', -1)">-</button>
+                <span class="cart-qty-val">${item.qty}</span>
+                <button class="cart-qty-btn" onclick="updateItemQty('${item.id}', 1)">+</button>
+              </div>
+            </div>
+          `;
+          cartItemsContainer.appendChild(itemEl);
+        });
+      }
+
+      cartCountEl.textContent = count;
+      cartTotalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('O seu carrinho está vazio!');
+        return;
+      }
+      toggleCart(); // Fecha a sidebar
+      showPage('checkout'); // Abre a página de checkout
+      updateCheckoutUI();
+    }
+
+    // ── Lógica de Checkout ──────────────────────────────────────────────────────
+    let checkoutDiscount = 0;
+
+    function updateCheckoutUI() {
+      const listEl = document.getElementById('checkoutItemsList');
+      const subEl = document.getElementById('chkSubtotal');
+      const discEl = document.getElementById('chkDiscount');
+      const totalEl = document.getElementById('chkTotal');
+      const installEl = document.getElementById('installments');
+
+      listEl.innerHTML = '';
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        listEl.innerHTML += `
+          <div class="checkout-item">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span class="checkout-item-name">${item.name}</span>
+              <span class="checkout-item-qty">Qtd: ${item.qty}</span>
+            </div>
+            <span class="checkout-item-price">R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}</span>
+          </div>
+        `;
+      });
+
+      const total = Math.max(0, subtotal - checkoutDiscount);
+
+      subEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      discEl.textContent = checkoutDiscount > 0 ? `- R$ ${checkoutDiscount.toFixed(2).replace('.', ',')}` : `R$ 0,00`;
+      totalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      // Atualiza opções de parcelamento
+      installEl.innerHTML = '';
+      for (let i = 1; i <= 6; i++) {
+        const valParcela = total / i;
+        installEl.innerHTML += `<option value="${i}">${i}x de R$ ${valParcela.toFixed(2).replace('.', ',')} ${i===1?'(Sem juros)':''}</option>`;
+      }
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('couponCode').value.toUpperCase();
+      let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      
+      if (code === 'BORA10') {
+        checkoutDiscount = subtotal * 0.10; // 10% desconto
+        alert('Cupom de 10% aplicado com sucesso!');
+      } else if (code === 'MURILABS20') {
+        checkoutDiscount = subtotal * 0.20; // 20% desconto
+        alert('Cupom de 20% aplicado com sucesso!');
+      } else {
+        checkoutDiscount = 0;
+        alert('Cupom inválido ou expirado.');
+      }
+      updateCheckoutUI();
+    }
+
+    function togglePayMethod() {
+      const method = document.querySelector('input[name="paymethod"]:checked').value;
+      if (method === 'credito') {
+        document.getElementById('payCredito').style.display = 'block';
+        document.getElementById('payPix').style.display = 'none';
+      } else {
+        document.getElementById('payCredito').style.display = 'none';
+        document.getElementById('payPix').style.display = 'block';
+      }
+    }
+
+    function finishOrderFinal() {
+      if (cart.length === 0) {
+        alert('Ocorreu um erro: Carrinho vazio.');
+        showPage('produtos');
+        return;
+      }
+      alert('🎉 Pedido confirmado com sucesso! Obrigado por comprar na Murilabs. (Isto é apenas uma demonstração)');
+      cart = [];
+      checkoutDiscount = 0;
+      updateCartUI();
+      showPage('home');
+      window.scrollTo(0,0);
+    }
+
+    // Inicializar a Interface do Carrinho vazia
+    updateCartUI();
+  </script>
 </body>
 </html>
