@@ -37,23 +37,66 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Performance Inteligente</p>
-        <h1 class="hero-title">Ciência aplicada<br>ao seu corpo.</h1>
-        <p class="hero-sub">Fórmulas limpas. Ingredientes reais.<br>Resultados que você sente.</p>
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="showPage('produtos')">Ver produtos</button>
-          <button class="btn-ghost" onclick="showPage('sobre')">Nossa história</button>
+      <div class="hero-bg">
+        <div class="hero-glow hero-glow--1"></div>
+        <div class="hero-glow hero-glow--2"></div>
+        <div class="hero-glow hero-glow--3"></div>
+        <div class="hero-grid-lines"></div>
+      </div>
+
+      <div class="hero-inner">
+        <div class="hero-top">
+          <span class="hero-tag">Suplementação inteligente</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="ht-line ht-line--1">Seu corpo</span>
+          <span class="ht-line ht-line--2">merece mais<span class="ht-dot">.</span></span>
+        </h1>
+
+        <p class="hero-sub">Fórmulas limpas, ingredientes reais e ciência aplicada — do atleta de elite a quem quer viver melhor.</p>
+
+        <div class="hero-cta">
+          <button class="btn-hero-primary" onclick="showPage('produtos')">
+            Explorar produtos
+            <span class="btn-arrow">→</span>
+          </button>
+          <button class="btn-hero-ghost" onclick="showPage('sobre')">Nossa história</button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hstat">
+            <span class="hstat-num">25<span class="hstat-plus">+</span></span>
+            <span class="hstat-label">Produtos</span>
+          </div>
+          <div class="hstat-div"></div>
+          <div class="hstat">
+            <span class="hstat-num">6</span>
+            <span class="hstat-label">Linhas</span>
+          </div>
+          <div class="hstat-div"></div>
+          <div class="hstat">
+            <span class="hstat-num">0</span>
+            <span class="hstat-label">Corantes artificiais</span>
+          </div>
+          <div class="hstat-div"></div>
+          <div class="hstat">
+            <span class="hstat-num">100<span class="hstat-plus">%</span></span>
+            <span class="hstat-label">Transparência</span>
+          </div>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-pill hero-pill--blue">CORE</div>
-        <div class="hero-pill hero-pill--green">PURE</div>
-        <div class="hero-pill hero-pill--purple">MIND+</div>
-        <div class="hero-pill hero-pill--cyan">NEXT</div>
-        <div class="hero-orb hero-orb--1"></div>
-        <div class="hero-orb hero-orb--2"></div>
-        <div class="hero-orb hero-orb--3"></div>
+
+      <div class="hero-lines-strip">
+        <span class="hls-label">Nossas linhas</span>
+        <div class="hls-items">
+          <div class="hls-item hls--core" onclick="showProductsLine('core')">CORE</div>
+          <div class="hls-item hls--next" onclick="showProductsLine('next')">NEXT</div>
+          <div class="hls-item hls--pure" onclick="showProductsLine('pure')">PURE</div>
+          <div class="hls-item hls--hydrate" onclick="showProductsLine('hydrate')">HYDRATE</div>
+          <div class="hls-item hls--mind" onclick="showProductsLine('mind')">MIND+</div>
+          <div class="hls-item hls--pro" onclick="showProductsLine('pro')">PRO</div>
+        </div>
       </div>
     </section>
 
@@ -492,21 +535,6 @@
         </div>
 
         <!-- HYDRATE -->
-        <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-drink')">
-          <div class="pc-visual pc--cyan">
-            <img src="images/hydrate-drink.png" class="pc-img" alt="" onerror="this.style.display='none'" />
-            <div class="product-mock pm--cyan pm--sm">
-              <span class="pm-brand">murilabs</span>
-              <span class="pm-name">HYDRATE<br>DRINK</span>
-            </div>
-          </div>
-          <div class="pc-info">
-            <span class="pc-line">HYDRATE</span>
-            <h3 class="pc-name">Hydrate Drink</h3>
-            <p class="pc-desc">Bebida pronta · Eletrólitos · 500ml</p>
-          </div>
-        </div>
-
         <div class="product-card" data-line="hydrate" onclick="showProduct('hydrate-electrolytes')">
           <div class="pc-visual pc--cyan">
             <img src="images/hydrate-electrolytes.png" class="pc-img" alt="" onerror="this.style.display='none'" />
