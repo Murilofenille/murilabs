@@ -327,36 +327,51 @@
     .pc-desc{font-size:0.75rem;color:#6b7280;line-height:1.6;margin:0 0 10px}
     .pc-price{font-size:0.88rem;font-weight:800;color:#0d0f1a;letter-spacing:-0.01em;margin-top:auto}
 
-    /* PRODUCT DETAIL */
-    .product-page-inner{padding:110px var(--page-px) 80px;max-width:1200px;margin:0 auto}
-    #page-produto{background:#f7f8fc}
-    .back-btn{font-family:var(--font);font-size:0.82rem;font-weight:600;color:#9ca3b4;cursor:pointer;padding:0;margin-bottom:56px;transition:color .2s;display:block;background:none;border:none}
-    .back-btn:hover{color:#0d0f1a}
-    .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-    .pd-visual{border-radius:24px;overflow:hidden;height:500px;display:flex;align-items:center;justify-content:center}
-    .pd-visual .product-mock{border-radius:0;width:100%;height:100%;min-height:unset}
-    .pd-visual .pm-name{font-size:2.2rem}
-    .pd-line{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9ca3b4;margin-bottom:14px}
-    .pd-name{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.04em;color:#0d0f1a;line-height:1.0;margin-bottom:18px}
-    .pd-tagline{font-size:0.95rem;color:#555;line-height:1.75;margin-bottom:36px;max-width:380px}
-    .pd-benefits{display:flex;flex-direction:column;gap:10px;margin-bottom:44px}
-    .pd-benefit{display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(255,255,255,0.6);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.8);border-radius:12px;transition:border-color .2s;box-shadow:0 4px 12px rgba(0,0,0,0.02)}
-    .pd-benefit:hover{border-color:#fff;background:rgba(255,255,255,0.9)}
-    .pd-benefit-icon{width:32px;height:32px;border-radius:50%;background:#eef0f8;color:#6b7280;display:flex;align-items:center;justify-content:center;font-size:0.72rem;flex-shrink:0}
-    .pd-benefit-text{font-size:0.84rem;font-weight:500;color:#0d0f1a}
-    .pd-meta{display:flex;gap:28px;margin-bottom:40px}
-    .pd-meta-item{display:flex;flex-direction:column;gap:4px}
-    .pd-meta-val{font-size:1.25rem;font-weight:900;color:#0d0f1a}
-    .pd-meta-key{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4}
-    .pd-content{display:flex;flex-direction:column;}
-    .pd-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-    .pd-price{font-size:2rem;font-weight:900;color:#0d0f1a;letter-spacing:-0.03em}
-    .pd-price-label{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4;display:block;margin-bottom:4px}
-    .pd-price-block{display:flex;flex-direction:column;margin-right:8px}
-    #page-produto .btn-primary{font-family:var(--font);font-size:0.82rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;background:#0d0f1a;color:#fff;padding:14px 32px;border-radius:100px;transition:all .25s var(--ease);border:none;cursor:pointer}
-    #page-produto .btn-primary:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 12px 32px rgba(30,144,255,0.35)}
-    #page-produto .btn-ghost{font-family:var(--font);font-size:0.82rem;font-weight:600;color:#9ca3b4;padding:14px 0;background:none;border:none;cursor:pointer;transition:color .2s}
-    #page-produto .btn-ghost:hover{color:#0d0f1a}
+    /* ===================================
+       NOVO PRODUCT DETAIL DISRUPTIVO
+       =================================== */
+    #page-produto { background: var(--bg); color: #fff; }
+    .product-page-inner { padding: 0; max-width: 100%; margin: 0; }
+    
+    .back-btn-float { position: fixed; top: 90px; left: var(--page-px); z-index: 100; font-family: var(--font); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 12px 24px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all .3s; }
+    .back-btn-float:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+    .pd-grid-disruptive { display: flex; align-items: flex-start; min-height: 100vh; position: relative; }
+    
+    /* Lado Esquerdo - Fixo (Sticky) */
+    .pd-sticky-left { width: 50%; height: 100vh; position: sticky; top: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border-right: 1px solid rgba(255,255,255,0.05); }
+    .pd-huge-text { position: absolute; font-size: 22vw; font-weight: 900; color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; z-index: 0; top: 50%; left: 50%; transform: translate(-50%, -50%); letter-spacing: -0.05em; }
+    
+    /* Nova estrutura da Imagem Quadrada com Brilho */
+    .pd-img-box-disruptive { position: relative; width: 75%; max-width: 520px; z-index: 2; animation: floatImg 6s ease-in-out infinite; }
+    .pd-glow-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; filter: blur(100px); z-index: 1; opacity: 0.45; border-radius: 50%; pointer-events: none; }
+    .pd-hero-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 36px; z-index: 2; position: relative; box-shadow: 0 40px 100px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1); background: var(--bg-2); }
+
+    @keyframes floatImg { 0%, 100% { transform: translateY(15px); } 50% { transform: translateY(-15px); } }
+
+    /* Lado Direito - Rolagem */
+    .pd-scroll-right { width: 50%; padding: 140px var(--page-px) 140px 6vw; display: flex; flex-direction: column; justify-content: center; min-height: 100vh; }
+    
+    .pd-badge-line { display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; width: fit-content; }
+    .pd-title-large { font-size: clamp(3.5rem, 6vw, 5.5rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; color: #fff; text-transform: uppercase; }
+    .pd-desc-large { font-size: 1.15rem; color: var(--text-2); line-height: 1.7; margin-bottom: 48px; max-width: 500px; }
+    
+    .pd-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; padding: 32px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; backdrop-filter: blur(10px); }
+    .pd-stat-box { display: flex; flex-direction: column; gap: 8px; }
+    .pd-stat-val { font-size: 1.8rem; font-weight: 900; color: #fff; letter-spacing: -0.02em; }
+    .pd-stat-lbl { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); }
+
+    .pd-benefits-list { display: flex; flex-direction: column; gap: 20px; margin-bottom: 80px; max-width: 500px; }
+    .pd-benefit-item { display: flex; align-items: flex-start; gap: 16px; font-size: 0.95rem; font-weight: 500; color: var(--text-2); line-height: 1.6; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .pd-benefit-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .pd-benefit-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: -2px; }
+
+    /* Checkout Bar Fixa (Sticky Bottom) */
+    .pd-checkout-bar { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); position: sticky; bottom: 40px; z-index: 10; box-shadow: 0 30px 60px rgba(0,0,0,0.6); }
+    .pd-price-final { font-size: 2.2rem; font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+    .pd-price-lbl { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-3); display: block; margin-bottom: 6px; }
+    .pd-btn-buy { background: #fff; color: #0d0f1a; padding: 18px 40px; font-size: 0.85rem; font-weight: 800; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; transition: all .3s; font-family: var(--font); border: none; cursor: pointer;}
+    .pd-btn-buy:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(255,255,255,0.2); }
 
     /* SOBRE */
     .about-hero{padding:180px var(--page-px) 100px;background:var(--bg);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
@@ -476,8 +491,15 @@
       .hero-stats{gap:28px}
       .hstat-num{font-size:1.5rem}
 
-      /* Lines */
-            
+      /* Disruptive Product Page Mobile */
+      .pd-grid-disruptive { flex-direction: column; }
+      .pd-sticky-left { width: 100%; height: 60vh; position: relative; border-right: none; }
+      .pd-scroll-right { width: 100%; padding: 40px var(--page-px) 140px; }
+      .pd-huge-text { font-size: 35vw; }
+      .pd-checkout-bar { flex-direction: column; gap: 24px; border-radius: 24px; padding: 24px; }
+      .pd-btn-buy { width: 100%; text-align: center; }
+      .back-btn-float { top: 80px; }
+
       /* Featured */
       .featured-section{padding:60px 0 40px}
       .featured-card{flex:0 0 calc(50% - 10px)}
@@ -530,6 +552,11 @@
       /* Nav */
       .nav{height:60px}
       .mobile-menu{top:60px}
+
+      /* Disruptive Product Page Mobile Small */
+      .pd-stats-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+      .pd-stat-box { align-items: center; }
+      .pd-checkout-bar { bottom: 20px; padding: 20px; }
 
       /* Hero */
       .hero{padding-top:60px}
@@ -2248,32 +2275,66 @@
       if (!p) return;
       previousPage = currentPage;
       const detail = document.getElementById('productDetail');
+
+      // Extrair a cor de destaque com base na linha para detalhes finos
+      let accentColor = 'var(--blue)';
+      if(p.line === 'CORE') accentColor = '#8faaff';
+      if(p.line === 'NEXT') accentColor = '#1E90FF';
+      if(p.line === 'PURE') accentColor = '#4ADE80';
+      if(p.line === 'HYDRATE') accentColor = '#38BDF8';
+      if(p.line === 'MIND+') accentColor = '#A78BFA';
+
+      // HTML Disruptivo
       detail.innerHTML = `
-        <div class="pd-visual ${p.bg}" style="background: ${p.bgPage}; position: relative;">
-          <img src="images/${productId}.png" class="pd-img" alt="${p.name}" onerror="this.style.display='none'" />
-          <div class="product-mock ${p.visual}" style="z-index:1;">
-            <span class="pm-brand">murilabs</span>
-            <span class="pm-name">${p.name.toUpperCase()}</span>
-            <span class="pm-size">${p.size}</span>
+        <button class="back-btn-float" onclick="goBack()">← Voltar</button>
+        
+        <div class="pd-grid-disruptive">
+          
+          <div class="pd-sticky-left">
+            <div class="pd-huge-text">${p.line}</div>
+            <div class="pd-img-box-disruptive">
+              <div class="pd-glow-bg" style="background: ${accentColor};"></div>
+              <img src="images/${productId}.png" class="pd-hero-img" alt="${p.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgcng9IjQwIi8+PC9zdmc+'" />
+            </div>
           </div>
-        </div>
-        <div class="pd-content">
-          <p class="pd-line">${p.line}</p>
-          <h1 class="pd-name">${p.name}</h1>
-          <p class="pd-tagline">${p.tagline}</p>
-          <div class="pd-meta">
-            <div class="pd-meta-item"><span class="pd-meta-val">${p.size}</span><span class="pd-meta-key">Tamanho</span></div>
-            <div class="pd-meta-item"><span class="pd-meta-val">${p.serving}</span><span class="pd-meta-key">Por dose</span></div>
-            <div class="pd-meta-item"><span class="pd-meta-val">${p.doses}</span><span class="pd-meta-key">Doses</span></div>
+
+          <div class="pd-scroll-right">
+            <div class="pd-badge-line" style="color: ${accentColor}; border-color: ${accentColor};">${p.line} SERIES</div>
+            <h1 class="pd-title-large">${p.name}</h1>
+            <p class="pd-desc-large">${p.tagline}</p>
+
+            <div class="pd-stats-grid">
+              <div class="pd-stat-box">
+                <span class="pd-stat-lbl">Formato</span>
+                <span class="pd-stat-val">${p.size}</span>
+              </div>
+              <div class="pd-stat-box">
+                <span class="pd-stat-lbl">Por dose</span>
+                <span class="pd-stat-val">${p.serving}</span>
+              </div>
+              <div class="pd-stat-box">
+                <span class="pd-stat-lbl">Doses</span>
+                <span class="pd-stat-val">${p.doses}</span>
+              </div>
+            </div>
+
+            <div class="pd-benefits-list">
+              ${p.benefits.map(b => `
+                <div class="pd-benefit-item">
+                  <span class="pd-benefit-icon" style="color: ${accentColor}">${b.icon}</span>
+                  ${b.text}
+                </div>
+              `).join('')}
+            </div>
+
+            <div class="pd-checkout-bar">
+              <div>
+                <span class="pd-price-final">${p.priceStr}</span>
+              </div>
+              <button class="pd-btn-buy" onclick="addToCart('${productId}')">Adicionar ao Carrinho</button>
+            </div>
           </div>
-          <div class="pd-benefits">
-            ${p.benefits.map(b => `<div class="pd-benefit"><div class="pd-benefit-icon">${b.icon}</div><span class="pd-benefit-text">${b.text}</span></div>`).join('')}
-          </div>
-          <div class="pd-cta">
-            <div class="pd-price-block"><span class="pd-price-label">Preço</span><span class="pd-price">${p.priceStr}</span></div>
-            <button class="btn-primary" onclick="addToCart('${productId}')">Comprar agora</button>
-            <button class="btn-ghost" onclick="showPage('produtos')">Ver todos os produtos</button>
-          </div>
+
         </div>
       `;
       showPage('produto');
