@@ -42,13 +42,11 @@
       --font: 'Montserrat', sans-serif;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
       --page-px: 5vw;
-      --section-pad: 120px 5vw;
     }
 
-
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    html{scroll-behavior:smooth;overflow-x:hidden;width:100%;max-width:100vw;}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;width:100%;max-width:100vw;position:relative;}
     a{text-decoration:none;color:inherit}
     button{cursor:pointer;border:none;background:none;font-family:var(--font)}
     ul{list-style:none}
@@ -102,7 +100,7 @@
     .hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:90px var(--page-px) 70px;text-align:center;display:flex;flex-direction:column;align-items:center;flex:1;justify-content:center}
     .hero-top{margin-bottom:28px;animation:fadeUp .6s var(--ease) both}
     .hero-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border);padding:7px 16px;border-radius:100px;background:var(--surface)}
-    .hero-title{display:flex;flex-direction:column;align-items:center;font-size:clamp(3.8rem,8.5vw,8.5rem);font-weight:900;letter-spacing:-0.045em;line-height:0.93;margin-bottom:32px}
+    .hero-title{display:flex;flex-direction:column;align-items:center;font-size:clamp(2.5rem,8.5vw,8.5rem);font-weight:900;letter-spacing:-0.045em;line-height:0.93;margin-bottom:32px}
     .ht-line{display:block;white-space:nowrap}
     .ht-line--1{color:var(--text-3);animation:fadeUp .6s var(--ease) .1s both}
     .ht-line--2{background:linear-gradient(100deg,#fff 25%,var(--blue) 65%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fadeUp .6s var(--ease) .2s both}
@@ -124,16 +122,8 @@
 
 
     /* LINES SECTION */
-    .lines-section{padding:100px var(--page-px) 120px;background:#0a0c14;position:relative;overflow:hidden}
-    .lines-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border)}
     /* subtle ambient glow behind cards */
-    .lines-section::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 60%, rgba(30,144,255,0.05) 0%, transparent 70%);pointer-events:none}
-    .lines-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;position:relative;z-index:1}
-    .lines-header-left .section-label{margin-bottom:12px}
-    .lines-header-left h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.035em;line-height:1.05;color:var(--text)}
-    .lines-header-right{font-size:0.82rem;color:var(--text-3);max-width:260px;line-height:1.7;text-align:right}
 
-    .lines-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;position:relative;z-index:1}
 
     /* color tokens per line */
     :root{
@@ -145,160 +135,115 @@
       --c-pro:    #FF7A59;
     }
 
-    .line-card{
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 22px;
-      padding: 28px 20px 24px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all .35s var(--ease);
-      display: flex;
-      flex-direction: column;
-      min-height: 310px;
-    }
 
     /* glass shine at top */
-    .line-card::before{
-      content:'';
-      position:absolute;
-      top:0;left:0;right:0;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      border-radius:22px 22px 0 0;
-    }
 
     /* large background icon */
-    .line-card::after{
-      content: attr(data-icon);
-      position:absolute;
-      bottom:-16px;right:-8px;
-      font-size:5.5rem;
-      opacity:0.06;
-      line-height:1;
-      pointer-events:none;
-      transition: opacity .35s, transform .35s var(--ease);
-    }
 
-    .line-card:hover{
-      border-color: rgba(255,255,255,0.18);
-      transform:translateY(-6px);
-      background: rgba(255,255,255,0.07);
-    }
-    .line-card:hover::after{opacity:0.11;transform:scale(1.1) rotate(-5deg)}
 
     /* color accent strip at bottom edge */
-    .line-card--core  {border-bottom:2px solid rgba(107,140,255,0.35)}
-    .line-card--next  {border-bottom:2px solid rgba(59,158,255,0.35)}
-    .line-card--pure  {border-bottom:2px solid rgba(62,207,164,0.35)}
-    .line-card--hydrate{border-bottom:2px solid rgba(56,200,240,0.35)}
-    .line-card--mind  {border-bottom:2px solid rgba(167,139,250,0.35)}
-    .line-card--pro   {border-bottom:2px solid rgba(255,122,89,0.35)}
 
-    .line-card:hover.line-card--core   {box-shadow:0 28px 64px rgba(107,140,255,0.15), inset 0 0 40px rgba(107,140,255,0.04)}
-    .line-card:hover.line-card--next   {box-shadow:0 28px 64px rgba(59,158,255,0.15), inset 0 0 40px rgba(59,158,255,0.04)}
-    .line-card:hover.line-card--pure   {box-shadow:0 28px 64px rgba(62,207,164,0.15), inset 0 0 40px rgba(62,207,164,0.04)}
-    .line-card:hover.line-card--hydrate{box-shadow:0 28px 64px rgba(56,200,240,0.15), inset 0 0 40px rgba(56,200,240,0.04)}
-    .line-card:hover.line-card--mind   {box-shadow:0 28px 64px rgba(167,139,250,0.15), inset 0 0 40px rgba(167,139,250,0.04)}
-    .line-card--pro    {box-shadow:0 28px 64px rgba(255,122,89,0.13),  inset 0 0 40px rgba(255,122,89,0.04)}
 
-    .lc-num{font-size:0.55rem;font-weight:700;letter-spacing:0.16em;color:rgba(255,255,255,0.25);margin-bottom:22px;display:block}
 
     /* color pill badge replacing the dot */
-    .lc-badge{
-      display:inline-flex;align-items:center;gap:6px;
-      font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-      padding:4px 10px;border-radius:100px;
-      margin-bottom:16px;
-      width:fit-content;
-    }
-    .line-card--core   .lc-badge{background:rgba(107,140,255,0.15);color:#8faaff;border:1px solid rgba(107,140,255,0.25)}
-    .line-card--next   .lc-badge{background:rgba(59,158,255,0.15); color:#7dc4ff;border:1px solid rgba(59,158,255,0.25)}
-    .line-card--pure   .lc-badge{background:rgba(62,207,164,0.15); color:#5ddfc0;border:1px solid rgba(62,207,164,0.25)}
-    .line-card--hydrate.lc-badge{background:rgba(56,200,240,0.15); color:#5ed8f8;border:1px solid rgba(56,200,240,0.25)}
-    .line-card--mind   .lc-badge{background:rgba(167,139,250,0.15);color:#c4acff;border:1px solid rgba(167,139,250,0.25)}
-    .line-card--pro    .lc-badge{background:rgba(255,122,89,0.15); color:#ffaa8f;border:1px solid rgba(255,122,89,0.25)}
-    .line-card--hydrate .lc-badge{background:rgba(56,200,240,0.15);color:#5ed8f8;border:1px solid rgba(56,200,240,0.25)}
 
-    .lc-name{
-      font-size:1.9rem;font-weight:900;letter-spacing:-0.04em;
-      margin-bottom:8px;line-height:1;
-    }
-    .line-card--core   .lc-name{color:#8faaff}
-    .line-card--next   .lc-name{color:#7dc4ff}
-    .line-card--pure   .lc-name{color:#5ddfc0}
-    .line-card--hydrate .lc-name{color:#5ed8f8}
-    .line-card--mind   .lc-name{color:#c4acff}
-    .line-card--pro    .lc-name{color:#ffaa8f}
-
-    .lc-desc{font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:18px;flex:1}
-
-    .lc-products{display:flex;flex-direction:column;gap:4px;margin-bottom:20px}
-    .lc-product{
-      font-size:0.62rem;font-weight:500;
-      color:rgba(255,255,255,0.4);
-      letter-spacing:0.02em;
-      padding:6px 0;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      cursor: pointer;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .lc-product:last-child{border-bottom:none}
     .lc-product:hover{color: var(--text); transform: translateX(4px);}
 
-    .lc-arrow{
-      font-size:0.7rem;font-weight:700;
-      color:rgba(255,255,255,0.25);
-      letter-spacing:0.04em;
-      transition:all .25s var(--ease);
-      align-self:flex-start;
-      margin-top:auto;
-    }
-    .line-card:hover .lc-arrow{color:rgba(255,255,255,0.7);transform:translateX(5px)}
 
 
     /* FEATURED */
-    .featured-section{padding:100px var(--page-px) 50px;background:#f7f8fc}
-    .featured-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px}
-    .featured-header h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.035em;color:#0d0f1a}
-    .featured-header-link{font-size:0.82rem;font-weight:600;color:#9ca3b4;cursor:pointer;transition:color .2s}
-    .featured-header-link:hover{color:#0d0f1a}
-    
-    .featured-carousel-wrapper { position:relative; z-index: 10; }
-    
-    /* Espaçamentos ajustados para criar uma área de 'respiro' para as sombras */
-    .featured-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding:24px 20px 48px 20px;margin:-24px -20px -16px -20px;scrollbar-width:none;-ms-overflow-style:none;}
-    .featured-grid::-webkit-scrollbar { display: none; }
-    
-    .featured-card{min-width:calc(25% - 15px);flex-shrink:0;scroll-snap-align:start;cursor:pointer;border-radius:20px;overflow:hidden;border:1px solid #e8eaf2;transition:all .35s var(--ease);background:#fff;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,50,0.02);position:relative; z-index:1;}
-    .featured-card:hover{transform:translateY(-8px);border-color:#d0d4e8;box-shadow:0 24px 60px rgba(0,0,50,0.1); z-index:2;}
-    
-    /* Botões reposicionados e minimalistas */
-    .carousel-btn { position:absolute; top:40%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.35); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.6); color:#0d0f1a; box-shadow:0 4px 16px rgba(0,0,50,0.05); z-index:100; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .3s var(--ease); font-size: 1.2rem;}
-    .carousel-btn:hover { background:rgba(255,255,255,0.9); transform:translateY(-50%) scale(1.05); }
-    .carousel-btn.prev { left: 10px; }
-    .carousel-btn.next { right: 10px; }
-    
-    .featured-card-visual{height:300px;position:relative;overflow:hidden}
-    .fc-badge { position:absolute; top:20px; left:20px; z-index:10; background:var(--blue); color:#fff; font-size:0.65rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:6px 14px; border-radius:100px; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
-    .fc-badge.hot { background: var(--orange); }
-    
-    .fc--dark{background:linear-gradient(145deg,#0f1628,#1a2040)}
-    .fc--green{background:linear-gradient(145deg,#071a0f,#0d2d18)}
-    .fc--purple{background:linear-gradient(145deg,#110d24,#1c1438)}
-    .fc--cyan{background:linear-gradient(145deg,#071520,#0d2538)}
-    .fc-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:2}
-    .featured-card-visual .product-mock{border-radius:0;min-height:100%;position:relative;z-index:1}
-    
-    .featured-card-info { padding:24px; background:#fff; border-top:1px solid #e8eaf2; display:flex; flex-direction:column; flex:1; }
-    .fc-line { font-size:0.65rem; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:#bbc0d4; margin-bottom:8px; }
-    .featured-card-info h3 { font-size:1.15rem; font-weight:900; letter-spacing:-0.02em; color:#0d0f1a; margin:0 0 8px; }
-    .featured-card-info p { font-size:0.8rem; color:#6b7280; margin-bottom:16px; line-height:1.6; flex:1; }
-    .fc-link { font-size:0.8rem; font-weight:800; color:#9ca3b4; transition:color .2s; margin-top:auto; }
-    .featured-card:hover .fc-link { color:var(--blue); }
+    .featured-section { padding: 80px 0 60px; background: linear-gradient(to bottom, #100d20 0%, #060810 200px); }
+    .featured-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:36px; padding:0 var(--page-px); }
+    .featured-header h2 { font-size:clamp(2rem,4vw,3.2rem); font-weight:900; letter-spacing:-0.035em; color:#fff; }
+    .featured-header-link { font-size:0.82rem; font-weight:600; color:rgba(255,255,255,0.35); cursor:pointer; transition:color .2s; white-space:nowrap; }
+    .featured-header-link:hover { color:#fff; }
+    .featured-carousel-wrapper { position:relative; }
+    .carousel-btn { display:none; }
+
+    /* scroll row */
+    .frow {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 4px var(--page-px) 36px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .frow::-webkit-scrollbar { display:none; }
+
+    /* individual card */
+    .fcard {
+      flex-shrink: 0;
+      flex-grow: 0;
+      flex-basis: 260px;
+      width: 260px;
+      scroll-snap-align: start;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+      transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
+    }
+    .fcard:hover { transform: translateY(-6px); }
+    .fcard[data-glow="core"]:hover   { border-color:rgba(96,165,250,0.4);  box-shadow:0 20px 48px rgba(96,165,250,0.15); }
+    .fcard[data-glow="pure"]:hover   { border-color:rgba(74,222,128,0.4);  box-shadow:0 20px 48px rgba(74,222,128,0.15); }
+    .fcard[data-glow="mind"]:hover   { border-color:rgba(167,139,250,0.4); box-shadow:0 20px 48px rgba(167,139,250,0.15); }
+    .fcard[data-glow="hydrate"]:hover{ border-color:rgba(56,189,248,0.4);  box-shadow:0 20px 48px rgba(56,189,248,0.15); }
+
+    /* image area */
+    .fcard-top {
+      width: 260px;
+      height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+    .fcard-top img {
+      width: 260px;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+    .fcard-top.bg-dark   { background: linear-gradient(145deg,#0f1628,#1a2040); }
+    .fcard-top.bg-green  { background: linear-gradient(145deg,#071a0f,#0d2d18); }
+    .fcard-top.bg-purple { background: linear-gradient(145deg,#110d24,#1c1438); }
+    .fcard-top.bg-cyan   { background: linear-gradient(145deg,#071520,#0d2538); }
+
+    .fcard-badge {
+      position: absolute; top:14px; left:14px; z-index:2;
+      font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;
+      color:#fff; background:var(--orange);
+      padding:5px 11px; border-radius:100px;
+    }
+    .fcard-badge.b-blue   { background:var(--blue); }
+    .fcard-badge.b-purple { background:var(--purple); }
+    .fcard-badge.b-cyan   { background:var(--cyan); color:#000; }
+    .fcard-badge.b-green  { background:var(--green); color:#000; }
+
+    /* text area */
+    .fcard-bot {
+      padding: 18px 20px 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .fcard-line  { display:block; font-size:0.6rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:5px; }
+    .fcard-name  { display:block; font-size:1rem; font-weight:800; color:#fff; letter-spacing:-0.02em; margin-bottom:5px; }
+    .fcard-desc  { display:block; font-size:0.72rem; color:rgba(255,255,255,0.4); line-height:1.5; margin-bottom:10px; }
+    .fcard-link  { display:block; font-size:0.72rem; font-weight:700; color:rgba(255,255,255,0.22); transition:color .2s; }
+    .fcard:hover .fcard-link { color:#fff; }
+
+    @media(max-width:850px){
+      .fcard,.fcard-top,.fcard-top img { width:220px; }
+      .fcard { flex-basis:220px; }
+      .fcard-top,.fcard-top img { height:220px; }
+    }
+    @media(max-width:540px){
+      .featured-section { padding:56px 0 36px; }
+      .fcard,.fcard-top,.fcard-top img { width:72vw; }
+      .fcard { flex-basis:72vw; }
+      .fcard-top,.fcard-top img { height:200px; }
+    }
 
     /* PROVA SOCIAL (REVIEWS) */
     .reviews-section { padding: 60px var(--page-px) 80px; background: #f7f8fc; position: relative; }
@@ -316,7 +261,7 @@
     .review-badge { font-size: 0.6rem; background: rgba(74,222,128,0.15); color: #2E7D4F; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; margin-top: 2px; display: inline-block; }
 
     /* VALUES */
-    .values-section{background:#eef0f8;padding:var(--section-pad);border-top:1px solid #e0e4ef;border-bottom:1px solid #e0e4ef}
+    .values-section{background:#eef0f8;padding:100px var(--page-px);border-top:1px solid #e0e4ef;border-bottom:1px solid #e0e4ef}
     .values-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
     .values-text .section-label{margin-bottom:16px;color:#9ca3b4}
     .values-text h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-0.035em;line-height:1.1;color:#0d0f1a;margin-bottom:20px}
@@ -376,17 +321,18 @@
     .pc--cyan{background:linear-gradient(145deg,#061420,#0c2538)}
     .pc--lilac{background:linear-gradient(145deg,#100c28,#201548)}
     .pc--purple{background:linear-gradient(145deg,#0e0820,#1c1040)}
-    .pc-info{padding:24px;background:transparent;flex:1;display:flex;flex-direction:column}
+    .pc-info{padding:20px 22px 22px;background:transparent;flex:1;display:flex;flex-direction:column}
     .pc-line{font-size:0.65rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#bbc0d4;margin-bottom:8px}
     .pc-name{font-size:1.1rem;font-weight:800;letter-spacing:-0.01em;color:#0d0f1a;margin:0 0 8px}
-    .pc-desc{font-size:0.75rem;color:#6b7280;line-height:1.6;margin:0}
+    .pc-desc{font-size:0.75rem;color:#6b7280;line-height:1.6;margin:0 0 10px}
+    .pc-price{font-size:0.88rem;font-weight:800;color:#0d0f1a;letter-spacing:-0.01em;margin-top:auto}
 
     /* PRODUCT DETAIL */
     .product-page-inner{padding:110px var(--page-px) 80px;max-width:1200px;margin:0 auto}
     #page-produto{background:#f7f8fc}
     .back-btn{font-family:var(--font);font-size:0.82rem;font-weight:600;color:#9ca3b4;cursor:pointer;padding:0;margin-bottom:56px;transition:color .2s;display:block;background:none;border:none}
     .back-btn:hover{color:#0d0f1a}
-    .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
     .pd-visual{border-radius:24px;overflow:hidden;height:500px;display:flex;align-items:center;justify-content:center}
     .pd-visual .product-mock{border-radius:0;width:100%;height:100%;min-height:unset}
     .pd-visual .pm-name{font-size:2.2rem}
@@ -402,6 +348,7 @@
     .pd-meta-item{display:flex;flex-direction:column;gap:4px}
     .pd-meta-val{font-size:1.25rem;font-weight:900;color:#0d0f1a}
     .pd-meta-key{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4}
+    .pd-content{display:flex;flex-direction:column;}
     .pd-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
     .pd-price{font-size:2rem;font-weight:900;color:#0d0f1a;letter-spacing:-0.03em}
     .pd-price-label{font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9ca3b4;display:block;margin-bottom:4px}
@@ -486,12 +433,6 @@
     .pix-box { padding: 40px 20px; text-align: center; background: var(--bg); border: 1px dashed var(--border); border-radius: 12px; }
     .pix-box p { color: var(--text-2); font-size: 0.9rem; margin-top: 16px; }
 
-    @media (max-width: 768px) {
-      .checkout-grid { grid-template-columns: 1fr; gap: 40px; }
-      .checkout-summary, .checkout-form { padding: 24px; }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
-    }
-
     /* NAV BUTTONS WRAPPER */
     .nav-actions { display: flex; align-items: center; gap: 16px; }
     .cart-btn { background: none; border: none; color: var(--text); cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; transition: background .2s; }
@@ -511,11 +452,349 @@
     .footer-col a:hover{color:var(--text)}
     .footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:var(--text-3)}
 
-    /* RESPONSIVE */
-    @media (max-width:1100px){.lines-grid{grid-template-columns:repeat(3,1fr)}.products-grid{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:1024px){:root{--section-pad:80px 5vw}.featured-card{min-width:calc(33.333% - 14px)}.reviews-grid{grid-template-columns:repeat(2,1fr)}.values-inner{grid-template-columns:1fr;gap:48px}.values-grid-right{grid-template-columns:repeat(2,1fr)}.product-detail{grid-template-columns:1fr;gap:40px}.pd-visual{height:320px}.about-content{grid-template-columns:1fr}.lines-header{flex-direction:column;align-items:flex-start;gap:12px}.lines-header-right{text-align:left;max-width:100%}}
-    @media (max-width:768px){:root{--section-pad:60px 5vw}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.hero-inner{padding:60px 5vw 40px}.hero-stats{gap:20px}.hstat-num{font-size:1.5rem}.hero-cta{flex-direction:column;width:100%}.btn-hero-primary{width:100%;justify-content:center}.lines-grid{grid-template-columns:repeat(2,1fr);gap:10px}.line-card{min-height:220px;padding:22px 18px 18px}.featured-card{min-width:calc(50% - 10px)}.carousel-btn{display:none}.reviews-grid{grid-template-columns:1fr}.featured-card-visual{height:200px}.featured-card-info{padding:16px}.stats-section{flex-wrap:wrap;gap:24px 0}.stat{flex:50%}.stat-divider{display:none}.products-grid{grid-template-columns:repeat(2,1fr);gap:10px}.pc-visual{height:200px}.product-detail{grid-template-columns:1fr}.pd-visual{height:260px}.about-pillars{grid-template-columns:1fr}.footer-top{flex-direction:column;gap:36px}.footer-links{gap:36px}.footer-bottom{flex-direction:column;gap:10px;text-align:center}.values-grid-right{grid-template-columns:1fr}}
-    @media (max-width:480px){.lines-grid{grid-template-columns:1fr}.featured-card{min-width:85%}.products-grid{grid-template-columns:repeat(2,1fr)}.hero-stats{flex-wrap:wrap;justify-content:center}.hstat-div{display:none}}
+    /* ===================================
+       RESPONSIVIDADE (MOBILE OPTIMIZATION)
+       =================================== */
+
+    /* ===== TABLET GRANDE (≤1200px) ===== */
+    @media (max-width:1200px){
+        .products-grid{grid-template-columns:repeat(3,1fr)}
+      .featured-card{min-width:calc(33.333% - 14px)}
+    }
+
+    /* ===== TABLET (≤900px) ===== */
+    @media (max-width:900px){
+      :root{--page-px:24px}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+
+      /* Hero */
+      .hero-inner{padding:60px var(--page-px) 48px}
+      .hero-title{font-size:clamp(2.8rem,9vw,5rem)}
+      .hero-sub{font-size:0.95rem}
+      .hero-cta{gap:12px}
+      .hero-stats{gap:28px}
+      .hstat-num{font-size:1.5rem}
+
+      /* Lines */
+            
+      /* Featured */
+      .featured-section{padding:60px 0 40px}
+      .featured-card{flex:0 0 calc(50% - 10px)}
+
+      /* Reviews */
+      .reviews-section{padding:60px var(--page-px)}
+      .reviews-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+
+      /* Values */
+      .values-section{padding:72px var(--page-px)}
+      .values-inner{grid-template-columns:1fr;gap:40px}
+      .values-desc{max-width:100%}
+      .values-grid-right{grid-template-columns:repeat(2,1fr)}
+
+      /* Stats */
+      .stats-section{flex-wrap:wrap;gap:32px 0;padding:56px var(--page-px)}
+      .stat{flex:0 0 50%}
+      .stat-divider{display:none}
+
+      /* Product detail */
+      .product-detail{grid-template-columns:1fr;gap:32px}
+      .pd-visual{height:340px}
+
+      /* About */
+      .about-hero{padding:130px var(--page-px) 72px}
+      .about-content{grid-template-columns:1fr;gap:48px;padding:72px var(--page-px)}
+      .about-pillars{grid-template-columns:repeat(2,1fr)}
+      .about-cta{padding:80px var(--page-px)}
+
+      /* Products page */
+      .products-hero{padding:110px var(--page-px) 36px}
+      .products-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+      .products-grid-section{padding:32px var(--page-px) 80px}
+
+      /* Checkout */
+      .checkout-grid{grid-template-columns:1fr;gap:28px}
+      .checkout-container{padding:100px var(--page-px) 60px}
+      .checkout-summary,.checkout-form{padding:28px}
+
+      /* Footer */
+      .footer-top{flex-direction:column;gap:40px}
+      .footer-links{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+      .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+    }
+
+    /* ===== MOBILE (≤540px) ===== */
+    @media (max-width:540px){
+      :root{--page-px:18px}
+
+      /* Nav */
+      .nav{height:60px}
+      .mobile-menu{top:60px}
+
+      /* Hero */
+      .hero{padding-top:60px}
+      .hero-inner{padding:48px var(--page-px) 40px}
+      .hero-title{font-size:clamp(2.4rem,11vw,3.8rem)}
+      .hero-sub{font-size:0.88rem;margin-bottom:32px}
+      .hero-cta{flex-direction:column;width:100%;gap:8px;margin-bottom:44px}
+      .btn-hero-primary{width:100%;justify-content:center;padding:14px 24px}
+      .btn-hero-ghost{padding:10px 8px}
+      .hero-stats{flex-wrap:wrap;justify-content:center;gap:20px 28px}
+      .hstat-div{display:none}
+      .hstat-num{font-size:1.35rem}
+      .hstat-label{font-size:0.58rem}
+      .hero-glow--1{width:260px;height:260px}
+      .hero-glow--2{width:200px;height:200px}
+
+      /* Lines */
+                        .lc-product:hover{transform:none}
+  
+      /* Featured */
+      .featured-section{padding:48px 0 32px}
+      .featured-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:28px;padding:0 var(--page-px)}
+      .featured-card{flex:0 0 72vw}
+      .carousel-btn{display:none}
+
+      /* Reviews */
+      .reviews-section{padding:48px var(--page-px)}
+      .reviews-grid{grid-template-columns:1fr}
+      .review-card{padding:24px}
+
+      /* Values */
+      .values-section{padding:56px var(--page-px)}
+      .values-grid-right{grid-template-columns:1fr;gap:12px}
+      .value-item{padding:20px}
+
+      /* Stats */
+      .stats-section{padding:48px var(--page-px);gap:24px}
+      .stat{flex:0 0 100%}
+
+      /* Products */
+      .products-hero{padding:92px var(--page-px) 28px}
+      .products-hero-title{font-size:clamp(1.8rem,7vw,2.5rem)}
+      .line-filter{gap:8px;padding:16px var(--page-px) 24px}
+      .filter-btn{font-size:0.68rem;padding:8px 14px}
+      .products-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+      .products-grid-section{padding:24px var(--page-px) 60px}
+      .pc-visual{height:180px}
+      .pc-info{padding:14px 14px 16px}
+      .pc-name{font-size:0.88rem}
+      .pc-desc{font-size:0.66rem}
+
+      /* Product detail */
+      .product-page-inner{padding:88px var(--page-px) 48px}
+      .pd-visual{height:260px;border-radius:16px}
+      .pd-name{font-size:1.8rem}
+      .pd-meta{gap:16px;flex-wrap:wrap}
+      .pd-cta{flex-direction:column;align-items:flex-start;gap:12px}
+      .pd-cta .btn-primary{width:100%;text-align:center;justify-content:center}
+
+      /* About */
+      .about-hero{padding:110px var(--page-px) 56px}
+      .about-title{font-size:clamp(2.5rem,10vw,3.5rem)}
+      .about-content{padding:56px var(--page-px);gap:36px}
+      .about-pillars{grid-template-columns:1fr;gap:12px}
+      .pillar{padding:24px 20px}
+      .about-cta{padding:60px var(--page-px)}
+      .about-cta h2{font-size:clamp(1.8rem,7vw,2.5rem)}
+
+      /* Checkout */
+      .checkout-container{padding:88px var(--page-px) 48px}
+      .checkout-summary,.checkout-form{padding:20px 16px}
+      .form-row{grid-template-columns:1fr}
+      .pay-methods{flex-direction:column;gap:10px}
+
+      /* Cart */
+      .cart-sidebar{max-width:100%;width:100%}
+
+      /* Footer */
+      .footer{padding:56px var(--page-px) 28px}
+      .footer-links{grid-template-columns:1fr;gap:28px}
+      .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+    }
+
+    /* ===================================
+       LINES SHOWCASE — SCROLL NORMAL
+       =================================== */
+
+    .lines-showcase {
+      /* Fade in from hero top, fade out to featured bottom */
+      /* Single continuous gradient blending all line colors */
+      background:
+        radial-gradient(ellipse 70% 30% at 15% 10%,  rgba(96,165,250,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 25% at 85% 28%,  rgba(30,144,255,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 65% 25% at 20% 50%,  rgba(74,222,128,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 25% at 80% 72%,  rgba(56,189,248,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 65% 30% at 40% 92%,  rgba(167,139,250,0.18) 0%, transparent 60%),
+        #060810;
+      position: relative;
+    }
+
+    /* Fade from hero dark into showcase */
+    .lines-showcase::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 180px;
+      background: linear-gradient(to bottom, #060810, transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Smooth color fade from MIND+ purple to featured dark at bottom */
+    .lines-showcase::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 220px;
+      background: linear-gradient(to bottom, transparent, rgba(167,139,250,0.10) 40%, #100d20); pointer-events: none; z-index: 1;
+    }
+
+    .ls-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px var(--page-px);
+      gap: 6vw; /* Distância fixa e consistente entre texto e imagem! */
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .ls-block.reverse {
+      flex-direction: row-reverse;
+    }
+
+    /* Text side */
+    .ls-text {
+      flex: 1;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* TEXTO À ESQUERDA -> Alinha os elementos à direita (abraçando a imagem) */
+    .ls-block:not(.reverse) .ls-text {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    /* TEXTO À DIREITA -> Alinha os elementos à esquerda (abraçando a imagem) */
+    .ls-block.reverse .ls-text {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .ls-num {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ls-accent, rgba(255,255,255,0.3));
+      display: block; margin-bottom: 20px;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .ls-name {
+      font-size: clamp(3.5rem, 6vw, 7rem);
+      font-weight: 900; letter-spacing: -0.05em;
+      line-height: 0.88; color: var(--ls-accent, #fff);
+      display: block; margin-bottom: 18px;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .7s ease .1s, transform .7s ease .1s;
+    }
+    .ls-tagline {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      display: block; margin-bottom: 16px;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .6s ease .15s, transform .6s ease .15s;
+    }
+    .ls-desc {
+      font-size: 0.95rem; color: rgba(255,255,255,0.5);
+      line-height: 1.8; max-width: 380px; margin-bottom: 36px;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .6s ease .2s, transform .6s ease .2s;
+    }
+    .ls-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-size: 0.76rem;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff; border: 1px solid var(--ls-accent, rgba(255,255,255,0.2));
+      padding: 12px 24px; border-radius: 100px;
+      background: rgba(255,255,255,0.05); cursor: pointer;
+      transition: all .25s ease;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity .6s ease .28s, transform .6s ease .28s, background .25s, border-color .25s;
+    }
+    .ls-btn:hover { background: rgba(255,255,255,0.12); transform: translateX(4px) !important; }
+
+    /* Image side */
+    .ls-img-wrap {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      perspective: 1200px;
+      height: 480px; /* Aumentado de 380px para dar espaço à imagem maior */
+    }
+    .ls-img {
+      width: min(480px, 45vw); height: auto; max-height: 480px; /* Imagens significativamente maiores (era 340px) */
+      object-fit: contain;
+      transform: rotateY(-10deg) rotateX(4deg) translateY(20px) scale(0.88);
+      filter: drop-shadow(0 60px 100px rgba(0,0,0,0.7))
+              drop-shadow(0 0 60px var(--ls-shadow, rgba(30,144,255,0.2)));
+      opacity: 0;
+      transition: transform 1s cubic-bezier(0.22,1,0.36,1) .15s,
+                  opacity .8s ease .1s,
+                  filter 1s ease .1s;
+    }
+    /* Reverse blocks: flip the tilt */
+    .ls-block.reverse .ls-img {
+      transform: rotateY(10deg) rotateX(4deg) translateY(20px) scale(0.88);
+    }
+
+    /* Ground glow */
+    .ls-glow {
+      position: absolute; bottom: 6%; left: 50%;
+      transform: translateX(-50%);
+      width: 220px; height: 40px;
+      border-radius: 50%; filter: blur(20px);
+      background: var(--ls-shadow, rgba(30,144,255,0.3));
+      opacity: 0; transition: opacity .8s ease .3s;
+    }
+
+    /* Visible state — triggered by IntersectionObserver */
+    .ls-block.in-view .ls-num,
+    .ls-block.in-view .ls-name,
+    .ls-block.in-view .ls-tagline,
+    .ls-block.in-view .ls-desc,
+    .ls-block.in-view .ls-btn {
+      opacity: 1; transform: translateY(0);
+    }
+    .ls-block.in-view .ls-img {
+      opacity: 1;
+      transform: rotateY(-8deg) rotateX(3deg) translateY(-8px) scale(1);
+    }
+    .ls-block.in-view.reverse .ls-img {
+      transform: rotateY(8deg) rotateX(3deg) translateY(-8px) scale(1);
+    }
+    .ls-block.in-view .ls-glow { opacity: 0.55; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .ls-block {
+        grid-template-columns: 1fr;
+        padding: 56px var(--page-px) 52px;
+        gap: 24px;
+      }
+      .ls-block.reverse { direction: ltr; }
+      .ls-img-wrap { height: 320px; order: -1; } /* Aumentado para mobile */
+      .ls-img { width: min(360px, 80vw); max-height: 320px; } /* Aumentado para mobile */
+      .ls-name { font-size: clamp(3rem, 12vw, 4.5rem); }
+      .ls-desc { max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .ls-img-wrap { height: 260px; } /* Aumentado para telas muito pequenas */
+      .ls-img { width: min(300px, 75vw); max-height: 260px; } /* Aumentado para telas muito pequenas */
+    }
+
   </style>
 </head>
 <body>
@@ -603,80 +882,84 @@
       </div>
     </section>
 
-    <!-- LINHAS -->
-    <section class="lines-section">
-      <div class="lines-header">
-        <div class="lines-header-left">
-          <p class="section-label">Nossas linhas</p>
-          <h2>Cada linha,<br>um propósito.</h2>
+    <!-- LINHAS SHOWCASE -->
+    <section class="lines-showcase" id="linesShowcase">
+
+      <!-- CORE -->
+      <div class="ls-block ls-block--core" style="--ls-accent:#60A5FA; --ls-shadow:rgba(96,165,250,0.35)">
+        <div class="ls-text">
+          <span class="ls-num">01 / 05</span>
+          <span class="ls-name">CORE</span>
+          <span class="ls-tagline">Os essenciais</span>
+          <p class="ls-desc">Base sólida para qualquer rotina. Fórmulas testadas e resultados consistentes para quem não abre mão da evolução.</p>
+          <button class="ls-btn" onclick="showProductsLine('core')">Ver linha →</button>
         </div>
-        <p class="lines-header-right">5 linhas especializadas. Cada uma com fórmula, propósito e identidade próprios.</p>
+        <div class="ls-img-wrap">
+          <img class="ls-img" src="images/core-line.png" alt="CORE" onerror="this.style.opacity='0'" />
+          <div class="ls-glow"></div>
+        </div>
       </div>
-      <div class="lines-grid">
 
-        <div class="line-card line-card--core" data-icon="⚙️" onclick="showProductsLine('core')">
-          <span class="lc-num">01</span>
-          <span class="lc-badge">CORE</span>
-          <h3 class="lc-name">CORE</h3>
-          <div class="lc-products" style="margin-top: 12px;">
-            <span class="lc-product">Base sólida</span>
-            <span class="lc-product">Equilíbrio diário</span>
-            <span class="lc-product">Suporte contínuo</span>
-          </div>
-          <span class="lc-arrow">Ver linha →</span>
+      <!-- NEXT -->
+      <div class="ls-block ls-block--next reverse" style="--ls-accent:#1E90FF; --ls-shadow:rgba(30,144,255,0.35)">
+        <div class="ls-text">
+          <span class="ls-num">02 / 05</span>
+          <span class="ls-name">NEXT</span>
+          <span class="ls-tagline">O próximo nível</span>
+          <p class="ls-desc">Para quem quer ir além. Energia, foco e recuperação em equilíbrio para superar seus próprios limites.</p>
+          <button class="ls-btn" onclick="showProductsLine('next')">Ver linha →</button>
         </div>
-
-        <div class="line-card line-card--next" data-icon="⚡" onclick="showProductsLine('next')">
-          <span class="lc-num">02</span>
-          <span class="lc-badge">NEXT</span>
-          <h3 class="lc-name">NEXT <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.4); display: block; margin-top: 4px;">(Adolescentes)</span></h3>
-          <div class="lc-products" style="margin-top: 12px;">
-            <span class="lc-product">Energia equilibrada</span>
-            <span class="lc-product">Foco para estudar</span>
-            <span class="lc-product">Leve e seguro</span>
-          </div>
-          <span class="lc-arrow">Ver linha →</span>
+        <div class="ls-img-wrap">
+          <img class="ls-img" src="images/next-line.png" alt="NEXT" onerror="this.style.opacity='0'" />
+          <div class="ls-glow"></div>
         </div>
-
-        <div class="line-card line-card--pure" data-icon="🌿" onclick="showProductsLine('pure')">
-          <span class="lc-num">03</span>
-          <span class="lc-badge">PURE</span>
-          <h3 class="lc-name">PURE <span style="font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.4); display: block; margin-top: 4px;">(Vegana)</span></h3>
-          <div class="lc-products" style="margin-top: 12px;">
-            <span class="lc-product">100% vegano</span>
-            <span class="lc-product">Fórmula limpa</span>
-            <span class="lc-product">Só o essencial</span>
-          </div>
-          <span class="lc-arrow">Ver linha →</span>
-        </div>
-
-        <div class="line-card line-card--hydrate" data-icon="💧" onclick="showProductsLine('hydrate')">
-          <span class="lc-num">04</span>
-          <span class="lc-badge">HYDRATE</span>
-          <h3 class="lc-name">HYDRATE</h3>
-          <div class="lc-products" style="margin-top: 12px;">
-            <span class="lc-product">Hidratação eficiente</span>
-            <span class="lc-product">Reposição essencial</span>
-            <span class="lc-product">Leve no dia a dia</span>
-          </div>
-          <span class="lc-arrow">Ver linha →</span>
-        </div>
-
-        <div class="line-card line-card--mind" data-icon="🧠" onclick="showProductsLine('mind')">
-          <span class="lc-num">05</span>
-          <span class="lc-badge">MIND+</span>
-          <h3 class="lc-name">MIND+</h3>
-          <div class="lc-products" style="margin-top: 12px;">
-            <span class="lc-product">Foco prolongado</span>
-            <span class="lc-product">Clareza mental</span>
-            <span class="lc-product">Alta concentração</span>
-          </div>
-          <span class="lc-arrow">Ver linha →</span>
-        </div>
-
-
-
       </div>
+
+      <!-- PURE -->
+      <div class="ls-block ls-block--pure" style="--ls-accent:#4ADE80; --ls-shadow:rgba(74,222,128,0.35)">
+        <div class="ls-text">
+          <span class="ls-num">03 / 05</span>
+          <span class="ls-name">PURE</span>
+          <span class="ls-tagline">Ingredientes limpos</span>
+          <p class="ls-desc">100% vegano. Zero excessos, zero enganação. Só o que seu corpo realmente precisa, com total transparência.</p>
+          <button class="ls-btn" onclick="showProductsLine('pure')">Ver linha →</button>
+        </div>
+        <div class="ls-img-wrap">
+          <img class="ls-img" src="images/pure-line.png" alt="PURE" onerror="this.style.opacity='0'" />
+          <div class="ls-glow"></div>
+        </div>
+      </div>
+
+      <!-- HYDRATE -->
+      <div class="ls-block ls-block--hydrate reverse" style="--ls-accent:#38BDF8; --ls-shadow:rgba(56,189,248,0.35)">
+        <div class="ls-text">
+          <span class="ls-num">04 / 05</span>
+          <span class="ls-name">HYDRATE</span>
+          <span class="ls-tagline">Hidratação total</span>
+          <p class="ls-desc">Eletrólitos essenciais para qualquer ritmo. Do treino intenso ao dia a dia — hidratação que funciona de verdade.</p>
+          <button class="ls-btn" onclick="showProductsLine('hydrate')">Ver linha →</button>
+        </div>
+        <div class="ls-img-wrap">
+          <img class="ls-img" src="images/hydrate-line.png" alt="HYDRATE" onerror="this.style.opacity='0'" />
+          <div class="ls-glow"></div>
+        </div>
+      </div>
+
+      <!-- MIND+ -->
+      <div class="ls-block ls-block--mind" style="--ls-accent:#A78BFA; --ls-shadow:rgba(167,139,250,0.35)">
+        <div class="ls-text">
+          <span class="ls-num">05 / 05</span>
+          <span class="ls-name">MIND+</span>
+          <span class="ls-tagline">Foco e cognição</span>
+          <p class="ls-desc">Mente afiada, foco real. Cognição avançada para mente e corpo em sincronia — performance que vai além do físico.</p>
+          <button class="ls-btn" onclick="showProductsLine('mind')">Ver linha →</button>
+        </div>
+        <div class="ls-img-wrap">
+          <img class="ls-img" src="images/mind-line.png" alt="MIND+" onerror="this.style.opacity='0'" />
+          <div class="ls-glow"></div>
+        </div>
+      </div>
+
     </section>
 
     <!-- DESTAQUES -->
@@ -686,115 +969,83 @@
         <span class="featured-header-link" onclick="showPage('produtos')">Ver todos →</span>
       </div>
       <div class="featured-carousel-wrapper">
-        <button class="carousel-btn prev" onclick="scrollFeatured(-1)">←</button>
-        <button class="carousel-btn next" onclick="scrollFeatured(1)">→</button>
-        <div class="featured-grid" id="featuredGridCarousel">
+        <div class="frow" id="featuredGridCarousel">
 
-          <div class="featured-card" onclick="showProduct('whey-core')">
-            <div class="featured-card-visual fc--dark">
-              <span class="fc-badge hot">Mais Vendido</span>
-              <img src="images/whey-core.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-              <div class="product-mock pm--dark">
-                <span class="pm-brand">murilabs</span>
-                <span class="pm-name">WHEY<br>CORE.</span>
-                <span class="pm-size">900g · 21g proteína</span>
-              </div>
+          <div class="fcard" onclick="showProduct('whey-core')" data-glow="core">
+            <div class="fcard-top bg-dark">
+              <span class="fcard-badge">Mais Vendido</span>
+              <img src="images/whey-core.png" alt="Whey Core" onerror="this.style.display='none'" />
             </div>
-            <div class="featured-card-info">
-              <span class="fc-line">CORE</span>
-              <h3>Whey Core</h3>
-              <p>Proteína concentrada do soro do leite.</p>
-              <span class="fc-link">Ver produto →</span>
+            <div class="fcard-bot">
+              <span class="fcard-line">CORE</span>
+              <span class="fcard-name">Whey Core</span>
+              <span class="fcard-desc">Proteína concentrada do soro do leite.</span>
+              <span class="fcard-link">Ver produto →</span>
             </div>
           </div>
 
-          <div class="featured-card" onclick="showProduct('pure-protein')">
-            <div class="featured-card-visual fc--green">
-              <span class="fc-badge">Lançamento</span>
-              <img src="images/pure-protein.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-              <div class="product-mock pm--green">
-                <span class="pm-brand">murilabs</span>
-                <span class="pm-name">PURE<br>PROTEIN</span>
-                <span class="pm-size">900g · 20g proteína</span>
-              </div>
+          <div class="fcard" onclick="showProduct('pure-protein')" data-glow="pure">
+            <div class="fcard-top bg-green">
+              <span class="fcard-badge b-blue">Lançamento</span>
+              <img src="images/pure-protein.png" alt="Pure Protein" onerror="this.style.display='none'" />
             </div>
-            <div class="featured-card-info">
-              <span class="fc-line">PURE</span>
-              <h3>Pure Protein</h3>
-              <p>Proteína vegetal de alta qualidade.</p>
-              <span class="fc-link">Ver produto →</span>
+            <div class="fcard-bot">
+              <span class="fcard-line">PURE</span>
+              <span class="fcard-name">Pure Protein</span>
+              <span class="fcard-desc">Proteína vegetal de alta qualidade.</span>
+              <span class="fcard-link">Ver produto →</span>
             </div>
           </div>
 
-          <div class="featured-card" onclick="showProduct('mind-focus')">
-            <div class="featured-card-visual fc--purple">
-              <span class="fc-badge" style="background:var(--purple);">Em Alta</span>
-              <img src="images/mind-focus.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-              <div class="product-mock pm--purple">
-                <span class="pm-brand">murilabs</span>
-                <span class="pm-name">MIND+<br>FOCUS</span>
-                <span class="pm-size">60 cápsulas</span>
-              </div>
+          <div class="fcard" onclick="showProduct('mind-focus')" data-glow="mind">
+            <div class="fcard-top bg-purple">
+              <span class="fcard-badge b-purple">Em Alta</span>
+              <img src="images/mind-focus.png" alt="Mind+ Focus" onerror="this.style.display='none'" />
             </div>
-            <div class="featured-card-info">
-              <span class="fc-line">MIND+</span>
-              <h3>Mind+ Focus</h3>
-              <p>Foco e concentração para o dia a dia.</p>
-              <span class="fc-link">Ver produto →</span>
+            <div class="fcard-bot">
+              <span class="fcard-line">MIND+</span>
+              <span class="fcard-name">Mind+ Focus</span>
+              <span class="fcard-desc">Foco e concentração para o dia a dia.</span>
+              <span class="fcard-link">Ver produto →</span>
             </div>
           </div>
 
-          <div class="featured-card" onclick="showProduct('hydrate-electrolytes')">
-            <div class="featured-card-visual fc--cyan">
-              <span class="fc-badge" style="background:var(--cyan); color:#000;">Essencial</span>
-              <img src="images/hydrate-electrolytes.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-              <div class="product-mock pm--cyan">
-                <span class="pm-brand">murilabs</span>
-                <span class="pm-name">HYDRATE<br>ELECTRO</span>
-                <span class="pm-size">300g · 30 doses</span>
-              </div>
+          <div class="fcard" onclick="showProduct('hydrate-electrolytes')" data-glow="hydrate">
+            <div class="fcard-top bg-cyan">
+              <span class="fcard-badge b-cyan">Essencial</span>
+              <img src="images/hydrate-electrolytes.png" alt="Hydrate Electrolytes" onerror="this.style.display='none'" />
             </div>
-            <div class="featured-card-info">
-              <span class="fc-line">HYDRATE</span>
-              <h3>Hydrate Electrolytes</h3>
-              <p>Eletrólitos essenciais para hidratação.</p>
-              <span class="fc-link">Ver produto →</span>
+            <div class="fcard-bot">
+              <span class="fcard-line">HYDRATE</span>
+              <span class="fcard-name">Hydrate Electrolytes</span>
+              <span class="fcard-desc">Eletrólitos essenciais para hidratação.</span>
+              <span class="fcard-link">Ver produto →</span>
             </div>
           </div>
 
-          <div class="featured-card" onclick="showProduct('pre-ignite')">
-            <div class="featured-card-visual fc--dark">
-              <span class="fc-badge hot">Mais Força</span>
-              <img src="images/pre-ignite.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-              <div class="product-mock pm--dark">
-                <span class="pm-brand">murilabs</span>
-                <span class="pm-name">PRE<br>IGNITE.</span>
-                <span class="pm-size">300g · Energia Extra</span>
-              </div>
+          <div class="fcard" onclick="showProduct('pre-ignite')" data-glow="core">
+            <div class="fcard-top bg-dark">
+              <span class="fcard-badge">Mais Força</span>
+              <img src="images/pre-ignite.png" alt="Pre Ignite" onerror="this.style.display='none'" />
             </div>
-            <div class="featured-card-info">
-              <span class="fc-line">CORE</span>
-              <h3>Pre Ignite</h3>
-              <p>Energia e performance para treinos.</p>
-              <span class="fc-link">Ver produto →</span>
+            <div class="fcard-bot">
+              <span class="fcard-line">CORE</span>
+              <span class="fcard-name">Pre Ignite</span>
+              <span class="fcard-desc">Energia e performance para treinos.</span>
+              <span class="fcard-link">Ver produto →</span>
             </div>
           </div>
 
-          <div class="featured-card" onclick="showProduct('pure-bar')">
-            <div class="featured-card-visual fc--green">
-              <span class="fc-badge" style="background:var(--green); color:#000;">Snack Saudável</span>
-              <img src="images/pure-bar.png" class="fc-img" alt="" onerror="this.style.display='none'" />
-              <div class="product-mock pm--green">
-                <span class="pm-brand">murilabs</span>
-                <span class="pm-name">PURE<br>BAR</span>
-                <span class="pm-size">50g · 10g proteína</span>
-              </div>
+          <div class="fcard" onclick="showProduct('pure-bar')" data-glow="pure">
+            <div class="fcard-top bg-green">
+              <span class="fcard-badge b-green">Snack Saudável</span>
+              <img src="images/pure-bar.png" alt="Pure Bar" onerror="this.style.display='none'" />
             </div>
-            <div class="featured-card-info">
-              <span class="fc-line">PURE</span>
-              <h3>Pure Bar</h3>
-              <p>Barra vegana de cacau e avelã.</p>
-              <span class="fc-link">Ver produto →</span>
+            <div class="fcard-bot">
+              <span class="fcard-line">PURE</span>
+              <span class="fcard-name">Pure Bar</span>
+              <span class="fcard-desc">Barra vegana de cacau e avelã.</span>
+              <span class="fcard-link">Ver produto →</span>
             </div>
           </div>
 
@@ -927,6 +1178,7 @@
             <span class="pc-line">CORE</span>
             <h3 class="pc-name">Whey Core</h3>
             <p class="pc-desc">Proteína concentrada · 900g · 21g/dose</p>
+            <span class="pc-price">R$ 149,90</span>
           </div>
         </div>
 
@@ -942,6 +1194,7 @@
             <span class="pc-line">CORE</span>
             <h3 class="pc-name">Creatine Core</h3>
             <p class="pc-desc">Creatina 100% pura · 300g</p>
+            <span class="pc-price">R$ 89,90</span>
           </div>
         </div>
 
@@ -972,6 +1225,7 @@
             <span class="pc-line">CORE</span>
             <h3 class="pc-name">Recover Restore</h3>
             <p class="pc-desc">Recuperação pós-treino · 500g</p>
+            <span class="pc-price">R$ 129,90</span>
           </div>
         </div>
 
@@ -987,6 +1241,7 @@
             <span class="pc-line">CORE</span>
             <h3 class="pc-name">Focus Mind</h3>
             <p class="pc-desc">Foco · Memória · Clareza · 60 cáps</p>
+            <span class="pc-price">R$ 89,90</span>
           </div>
         </div>
 
@@ -1002,6 +1257,7 @@
             <span class="pc-line">CORE</span>
             <h3 class="pc-name">Fuel Bar</h3>
             <p class="pc-desc">Barra proteica · 12g proteína · 60g</p>
+            <span class="pc-price">R$ 12,90</span>
           </div>
         </div>
 
@@ -1018,6 +1274,7 @@
             <span class="pc-line">NEXT</span>
             <h3 class="pc-name">Whey Next</h3>
             <p class="pc-desc">Proteína concentrada · 900g · 21g/dose</p>
+            <span class="pc-price">R$ 179,90</span>
           </div>
         </div>
 
@@ -1033,6 +1290,7 @@
             <span class="pc-line">NEXT</span>
             <h3 class="pc-name">Focus Next</h3>
             <p class="pc-desc">Foco e concentração · 60 cápsulas</p>
+            <span class="pc-price">R$ 109,90</span>
           </div>
         </div>
 
@@ -1048,6 +1306,7 @@
             <span class="pc-line">NEXT</span>
             <h3 class="pc-name">Energy Next</h3>
             <p class="pc-desc">Energia para o dia · Low açúcar · 30 doses</p>
+            <span class="pc-price">R$ 139,90</span>
           </div>
         </div>
 
@@ -1063,6 +1322,7 @@
             <span class="pc-line">NEXT</span>
             <h3 class="pc-name">Pre Next</h3>
             <p class="pc-desc">Pré-treino · Energia · Foco · 300g</p>
+            <span class="pc-price">R$ 159,90</span>
           </div>
         </div>
 
@@ -1078,6 +1338,7 @@
             <span class="pc-line">NEXT</span>
             <h3 class="pc-name">Bar Next</h3>
             <p class="pc-desc">Barra de proteína · 12g proteína · 60g</p>
+            <span class="pc-price">R$ 14,90</span>
           </div>
         </div>
 
@@ -1109,6 +1370,7 @@
             <span class="pc-line">PURE</span>
             <h3 class="pc-name">Pure Creatine</h3>
             <p class="pc-desc">Creatina 100% pura · Vegana · 200g</p>
+            <span class="pc-price">R$ 119,90</span>
           </div>
         </div>
 
@@ -1124,6 +1386,7 @@
             <span class="pc-line">PURE</span>
             <h3 class="pc-name">Pure Daily</h3>
             <p class="pc-desc">Multivitamínico · Vegano · 60 cápsulas</p>
+            <span class="pc-price">R$ 79,90</span>
           </div>
         </div>
 
@@ -1170,6 +1433,7 @@
             <span class="pc-line">HYDRATE</span>
             <h3 class="pc-name">Hydrate Energy</h3>
             <p class="pc-desc">Eletrólitos + Energia · 300g</p>
+            <span class="pc-price">R$ 109,90</span>
           </div>
         </div>
 
@@ -1185,6 +1449,7 @@
             <span class="pc-line">HYDRATE</span>
             <h3 class="pc-name">Hydrate Zero</h3>
             <p class="pc-desc">Sem açúcar · Sem sabor · 300g</p>
+            <span class="pc-price">R$ 89,90</span>
           </div>
         </div>
 
@@ -1200,6 +1465,7 @@
             <span class="pc-line">HYDRATE</span>
             <h3 class="pc-name">Hydrate Tablets</h3>
             <p class="pc-desc">Eletrólitos em tablet · 60 unidades</p>
+            <span class="pc-price">R$ 69,90</span>
           </div>
         </div>
 
@@ -1215,6 +1481,7 @@
             <span class="pc-line">HYDRATE</span>
             <h3 class="pc-name">Hydrate Drink</h3>
             <p class="pc-desc">Bebida pronta · Eletrólitos · 500ml</p>
+            <span class="pc-price">R$ 9,90</span>
           </div>
         </div>
 
@@ -1246,6 +1513,7 @@
             <span class="pc-line">MIND+</span>
             <h3 class="pc-name">Mind+ Memory</h3>
             <p class="pc-desc">Memória e aprendizado · 60 cápsulas</p>
+            <span class="pc-price">R$ 139,90</span>
           </div>
         </div>
 
@@ -1261,6 +1529,7 @@
             <span class="pc-line">MIND+</span>
             <h3 class="pc-name">Mind+ Calm</h3>
             <p class="pc-desc">Relaxamento e equilíbrio · 60 cápsulas</p>
+            <span class="pc-price">R$ 119,90</span>
           </div>
         </div>
 
@@ -1276,6 +1545,7 @@
             <span class="pc-line">MIND+</span>
             <h3 class="pc-name">Mind+ Drink</h3>
             <p class="pc-desc">Foco e energia mental · 300ml</p>
+            <span class="pc-price">R$ 14,90</span>
           </div>
         </div>
 
@@ -1488,18 +1758,13 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Murilabs. Todos os direitos reservados.</span>
+      <span>© 2025 Murilabs. Todos os direitos reservados.</span>
       <span>🇧🇷 Feito no Brasil</span>
     </div>
   </footer>
 
   <script>
-    /* ===================================
-       MURILABS — JAVASCRIPT
-       =================================== */
-
-    // ── Page data ──────────────────────────────────────────────────────────────
-
+    // ── DATA ───────────────────────────────────────────────────────────────────
     const products = {
       'whey-core': {
         line: 'CORE',
@@ -1516,7 +1781,7 @@
         ],
         visual: 'pm--dark',
         bg: 'pc--dark',
-        bgPage: 'var(--navy)',
+        bgPage: 'var(--bg)',
       },
       'creatine-core': {
         line: 'CORE',
@@ -1533,7 +1798,7 @@
         ],
         visual: 'pm--dark',
         bg: 'pc--dark',
-        bgPage: 'var(--navy)',
+        bgPage: 'var(--bg)',
       },
       'pre-ignite': {
         line: 'CORE',
@@ -1550,7 +1815,7 @@
         ],
         visual: 'pm--dark',
         bg: 'pc--dark',
-        bgPage: 'var(--navy)',
+        bgPage: 'var(--bg)',
       },
       'recover-restore': {
         line: 'CORE',
@@ -1567,7 +1832,7 @@
         ],
         visual: 'pm--dark',
         bg: 'pc--dark',
-        bgPage: 'var(--navy)',
+        bgPage: 'var(--bg)',
       },
       'focus-mind-core': {
         line: 'CORE',
@@ -1584,7 +1849,7 @@
         ],
         visual: 'pm--dark',
         bg: 'pc--dark',
-        bgPage: 'var(--navy)',
+        bgPage: 'var(--bg)',
       },
       'fuel-bar': {
         line: 'CORE',
@@ -1601,7 +1866,7 @@
         ],
         visual: 'pm--dark',
         bg: 'pc--dark',
-        bgPage: 'var(--navy)',
+        bgPage: 'var(--bg)',
       },
       'whey-next': {
         line: 'NEXT',
@@ -1855,36 +2120,83 @@
           { icon: '△', text: 'Para estudantes, profissionais e atletas' },
         ],
         visual: 'pm--lilac',
-    bg: 'pc--lilac',
-    bgPage: 'linear-gradient(135deg, #C4ACFF, #9B7CFF)',
-  },
-};
+        bg: 'pc--lilac',
+        bgPage: 'linear-gradient(135deg, #C4ACFF, #9B7CFF)',
+      },
+      'mind-memory': {
+        line: 'MIND+',
+        name: 'Mind+ Memory',
+        tagline: 'Suporte à memória e aprendizado com ingredientes de origem natural.',
+        size: '60 cáps',
+        serving: '2 cáps',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Fosfatidilserina e Bacopa Monnieri' },
+          { icon: '◈', text: 'Ginkgo Biloba para circulação cerebral' },
+          { icon: '◇', text: 'Melhora retenção e aprendizado' },
+          { icon: '△', text: 'Vitaminas B6 e B12' },
+        ],
+        visual: 'pm--lilac',
+        bg: 'pc--lilac',
+        bgPage: 'linear-gradient(135deg, #C4ACFF, #9B7CFF)',
+      },
+      'mind-calm': {
+        line: 'MIND+',
+        name: 'Mind+ Calm',
+        tagline: 'Relaxamento e equilíbrio para uma mente mais tranquila e focada.',
+        size: '60 cáps',
+        serving: '2 cáps',
+        doses: '30',
+        benefits: [
+          { icon: '◎', text: 'Magnésio + Ashwagandha + L-triptofano' },
+          { icon: '◈', text: 'Controle do estresse e ansiedade' },
+          { icon: '◇', text: 'Apoia o equilíbrio emocional' },
+          { icon: '△', text: 'Vitamina B6 para o sistema nervoso' },
+        ],
+        visual: 'pm--lilac',
+        bg: 'pc--lilac',
+        bgPage: 'linear-gradient(135deg, #C4ACFF, #9B7CFF)',
+      },
+      'mind-drink': {
+        line: 'MIND+',
+        name: 'Mind+ Drink',
+        tagline: 'Foco e energia mental · 300ml',
+        size: '300ml',
+        serving: '–',
+        doses: '1',
+        benefits: [
+          { icon: '◎', text: 'Cafeína natural + L-teanina + taurina' },
+          { icon: '◈', text: 'Energia mental imediata' },
+          { icon: '◇', text: 'Zero açúcar, pronto para beber' },
+          { icon: '△', text: 'Colina para função cognitiva' },
+        ],
+        visual: 'pm--lilac',
+        bg: 'pc--lilac',
+        bgPage: 'linear-gradient(135deg, #C4ACFF, #9B7CFF)',
+      },
+    };
 
-// Adiciona preços reais gerados aos produtos programaticamente
-const basePrices = {
-  'whey-core': 149.90, 'creatine-core': 89.90, 'pre-ignite': 119.90, 'recover-restore': 129.90,
-  'focus-mind-core': 89.90, 'fuel-bar': 12.90, 'whey-next': 179.90, 'focus-next': 109.90,
-  'energy-next': 139.90, 'pre-next': 159.90, 'bar-next': 14.90, 'pure-protein': 199.90,
-  'pure-creatine': 119.90, 'pure-daily': 79.90, 'pure-bar': 15.90, 'hydrate-electrolytes': 99.90,
-  'hydrate-energy': 109.90, 'hydrate-zero': 89.90, 'hydrate-tablets': 69.90, 'hydrate-drink': 9.90,
-  'mind-focus': 129.90, 'mind-memory': 139.90, 'mind-calm': 119.90, 'mind-drink': 14.90, 'focus-mind': 129.90
-};
-for (let key in products) {
-  products[key].priceVal = basePrices[key] || 149.90;
-  products[key].priceStr = `R$ ${products[key].priceVal.toFixed(2).replace('.', ',')}`;
-}
+    // Preços
+    const basePrices = {
+      'whey-core': 149.90, 'creatine-core': 89.90, 'pre-ignite': 119.90, 'recover-restore': 129.90,
+      'focus-mind-core': 89.90, 'fuel-bar': 12.90, 'whey-next': 179.90, 'focus-next': 109.90,
+      'energy-next': 139.90, 'pre-next': 159.90, 'bar-next': 14.90, 'pure-protein': 199.90,
+      'pure-creatine': 119.90, 'pure-daily': 79.90, 'pure-bar': 15.90, 'hydrate-electrolytes': 99.90,
+      'hydrate-energy': 109.90, 'hydrate-zero': 89.90, 'hydrate-tablets': 69.90, 'hydrate-drink': 9.90,
+      'mind-focus': 129.90, 'mind-memory': 139.90, 'mind-calm': 119.90, 'mind-drink': 14.90, 'focus-mind': 129.90
+    };
+    for (let key in products) {
+      products[key].priceVal = basePrices[key] || 149.90;
+      products[key].priceStr = `R$ ${products[key].priceVal.toFixed(2).replace('.', ',')}`;
+    }
 
-// ── State ───────────────────────────────────────────────────────────────────
-
-let currentPage = 'home';
+    // State
+    let currentPage = 'home';
     let previousPage = 'home';
 
-    // ── Navigation ──────────────────────────────────────────────────────────────
-
+    // Nav
     function showPage(pageId) {
-      // Hide all pages
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      // Show target
       const target = document.getElementById('page-' + pageId);
       if (target) {
         target.classList.add('active');
@@ -1892,76 +2204,49 @@ let currentPage = 'home';
         currentPage = pageId;
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
+      document.getElementById('mobileMenu').classList.remove('open');
     }
 
     function showProductsLine(lineId) {
       showPage('produtos');
-      // Delay filter until page shows
       setTimeout(() => {
         const btn = document.querySelector(`.filter-btn[data-filter="${lineId}"]`);
         if (btn) filterProducts(btn, lineId);
       }, 100);
     }
 
-    function goBack() {
-      showPage(previousPage === 'produto' ? 'produtos' : previousPage);
-    }
-
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-    }
+    function goBack() { showPage(previousPage === 'produto' ? 'produtos' : previousPage); }
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
     function scrollFeatured(direction) {
       const grid = document.getElementById('featuredGridCarousel');
       if(grid) {
         const card = grid.querySelector('.featured-card');
-        const scrollAmount = (card.offsetWidth + 16) * 2; // Desliza 2 cartões de cada vez
+        const scrollAmount = (card.offsetWidth + 16) * 2;
         grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
       }
     }
 
-    // ── Products Filter ─────────────────────────────────────────────────────────
-
     function filterProducts(btn, filter) {
-      // Update active button
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      // Update label
       const label = document.getElementById('products-line-label');
-      if (filter === 'all') {
-        label.textContent = 'Todos os produtos';
-      } else {
+      if (filter === 'all') label.textContent = 'Todos os produtos';
+      else {
         const names = { core: 'Linha Core', next: 'Linha Next', pure: 'Linha Pure', hydrate: 'Linha Hydrate', mind: 'Linha Mind+' };
         label.textContent = names[filter] || 'Todos os produtos';
       }
-
-      // Filter cards
       document.querySelectorAll('.product-card').forEach(card => {
         const line = card.getAttribute('data-line');
-        if (filter === 'all' || line === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+        if (filter === 'all' || line === filter) card.classList.remove('hidden');
+        else card.classList.add('hidden');
       });
     }
-
-    // ── Image helper ────────────────────────────────────────────────────────────
-
-    function productImageTag(productId, cssClass, fallbackHtml) {
-      return `<img src="images/${productId}.png" class="${cssClass}" alt="" onerror="this.style.display='none'" />${fallbackHtml}`;
-    }
-
-    // ── Product Detail ──────────────────────────────────────────────────────────
 
     function showProduct(productId) {
       const p = products[productId];
       if (!p) return;
-
       previousPage = currentPage;
-
       const detail = document.getElementById('productDetail');
       detail.innerHTML = `
         <div class="pd-visual ${p.bg}" style="background: ${p.bgPage}; position: relative;">
@@ -1976,130 +2261,72 @@ let currentPage = 'home';
           <p class="pd-line">${p.line}</p>
           <h1 class="pd-name">${p.name}</h1>
           <p class="pd-tagline">${p.tagline}</p>
-
           <div class="pd-meta">
-            <div class="pd-meta-item">
-              <span class="pd-meta-val">${p.size}</span>
-              <span class="pd-meta-key">Tamanho</span>
-            </div>
-            <div class="pd-meta-item">
-              <span class="pd-meta-val">${p.serving}</span>
-              <span class="pd-meta-key">Por dose</span>
-            </div>
-            <div class="pd-meta-item">
-              <span class="pd-meta-val">${p.doses}</span>
-              <span class="pd-meta-key">Doses</span>
-            </div>
+            <div class="pd-meta-item"><span class="pd-meta-val">${p.size}</span><span class="pd-meta-key">Tamanho</span></div>
+            <div class="pd-meta-item"><span class="pd-meta-val">${p.serving}</span><span class="pd-meta-key">Por dose</span></div>
+            <div class="pd-meta-item"><span class="pd-meta-val">${p.doses}</span><span class="pd-meta-key">Doses</span></div>
           </div>
-
           <div class="pd-benefits">
-            ${p.benefits.map(b => `
-              <div class="pd-benefit">
-                <div class="pd-benefit-icon">${b.icon}</div>
-                <span class="pd-benefit-text">${b.text}</span>
-              </div>
-            `).join('')}
+            ${p.benefits.map(b => `<div class="pd-benefit"><div class="pd-benefit-icon">${b.icon}</div><span class="pd-benefit-text">${b.text}</span></div>`).join('')}
           </div>
-
           <div class="pd-cta">
-            <div class="pd-price-block">
-              <span class="pd-price-label">Preço</span>
-              <span class="pd-price">${p.priceStr}</span>
-            </div>
+            <div class="pd-price-block"><span class="pd-price-label">Preço</span><span class="pd-price">${p.priceStr}</span></div>
             <button class="btn-primary" onclick="addToCart('${productId}')">Comprar agora</button>
             <button class="btn-ghost" onclick="showPage('produtos')">Ver todos os produtos</button>
           </div>
         </div>
       `;
-
       showPage('produto');
     }
 
-    // ── Nav scroll effect ───────────────────────────────────────────────────────
-
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('nav');
-      if (window.scrollY > 20) {
-        nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
-      } else {
-        nav.style.boxShadow = 'none';
-      }
+      if (window.scrollY > 20) nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+      else nav.style.boxShadow = 'none';
     });
-
-    // ── Close mobile menu on resize ─────────────────────────────────────────────
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        document.getElementById('mobileMenu').classList.remove('open');
-      }
+      if (window.innerWidth > 850) document.getElementById('mobileMenu').classList.remove('open');
     });
 
-    // ── Lógica do Carrinho ──────────────────────────────────────────────────────
-
     let cart = [];
-
     function toggleCart() {
       document.getElementById('cartOverlay').classList.toggle('open');
       document.getElementById('cartSidebar').classList.toggle('open');
     }
-
     function addToCart(productId) {
       const product = products[productId];
       if (!product) return;
-
       const existingItem = cart.find(item => item.id === productId);
-      
-      if (existingItem) {
-        existingItem.qty += 1;
-      } else {
-        cart.push({
-          id: productId,
-          name: product.name,
-          price: product.priceVal,
-          qty: 1,
-          bg: product.bgPage || 'var(--surface)'
-        });
-      }
-
+      if (existingItem) existingItem.qty += 1;
+      else cart.push({ id: productId, name: product.name, price: product.priceVal, qty: 1, bg: product.bgPage || 'var(--surface)' });
       updateCartUI();
-      
-      // Abre o carrinho automaticamente ao adicionar
-      if (!document.getElementById('cartSidebar').classList.contains('open')) {
-        toggleCart();
-      }
+      if (!document.getElementById('cartSidebar').classList.contains('open')) toggleCart();
     }
-
     function updateItemQty(productId, change) {
       const item = cart.find(i => i.id === productId);
       if (item) {
         item.qty += change;
-        if (item.qty <= 0) {
-          cart = cart.filter(i => i.id !== productId);
-        }
+        if (item.qty <= 0) cart = cart.filter(i => i.id !== productId);
       }
       updateCartUI();
     }
-
     function updateCartUI() {
       const cartItemsContainer = document.getElementById('cartItems');
       const cartCountEl = document.getElementById('navCartCount');
       const cartTotalEl = document.getElementById('cartTotalValue');
-
       cartItemsContainer.innerHTML = '';
-      let total = 0;
-      let count = 0;
-
+      let total = 0, count = 0;
       if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p style="color: var(--text-2); text-align: center; margin-top: 40px;">O seu carrinho está vazio.</p>';
       } else {
         cart.forEach(item => {
           total += item.price * item.qty;
           count += item.qty;
-
           const itemEl = document.createElement('div');
           itemEl.className = 'cart-item';
           itemEl.innerHTML = `
-            <img src="images/${item.id}.png" class="cart-item-img" style="background: ${item.bg};" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIiByeD0iOCIvPjwvc3ZnPg=='" />
+            <div class="cart-item-img" style="background: ${item.bg};"></div>
             <div class="cart-item-info">
               <span class="cart-item-title">${item.name}</span>
               <span class="cart-item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
@@ -2113,34 +2340,26 @@ let currentPage = 'home';
           cartItemsContainer.appendChild(itemEl);
         });
       }
-
       cartCountEl.textContent = count;
       cartTotalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
     function checkout() {
-      if (cart.length === 0) {
-        alert('O seu carrinho está vazio!');
-        return;
-      }
-      toggleCart(); // Fecha a sidebar
-      showPage('checkout'); // Abre a página de checkout
+      if (cart.length === 0) return alert('O seu carrinho está vazio!');
+      toggleCart();
+      showPage('checkout');
       updateCheckoutUI();
     }
 
-    // ── Lógica de Checkout ──────────────────────────────────────────────────────
     let checkoutDiscount = 0;
-
     function updateCheckoutUI() {
       const listEl = document.getElementById('checkoutItemsList');
       const subEl = document.getElementById('chkSubtotal');
       const discEl = document.getElementById('chkDiscount');
       const totalEl = document.getElementById('chkTotal');
       const installEl = document.getElementById('installments');
-
       listEl.innerHTML = '';
       let subtotal = 0;
-
       cart.forEach(item => {
         subtotal += item.price * item.qty;
         listEl.innerHTML += `
@@ -2150,68 +2369,64 @@ let currentPage = 'home';
               <span class="checkout-item-qty">Qtd: ${item.qty}</span>
             </div>
             <span class="checkout-item-price">R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}</span>
-          </div>
-        `;
+          </div>`;
       });
-
       const total = Math.max(0, subtotal - checkoutDiscount);
-
       subEl.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
       discEl.textContent = checkoutDiscount > 0 ? `- R$ ${checkoutDiscount.toFixed(2).replace('.', ',')}` : `R$ 0,00`;
       totalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-
-      // Atualiza opções de parcelamento
-      installEl.innerHTML = '';
-      for (let i = 1; i <= 6; i++) {
-        const valParcela = total / i;
-        installEl.innerHTML += `<option value="${i}">${i}x de R$ ${valParcela.toFixed(2).replace('.', ',')} ${i===1?'(Sem juros)':''}</option>`;
+      if (installEl) {
+        installEl.innerHTML = '';
+        for (let i = 1; i <= 6; i++) {
+          const valParcela = total / i;
+          installEl.innerHTML += `<option value="${i}">${i}x de R$ ${valParcela.toFixed(2).replace('.', ',')} ${i===1?'(Sem juros)':''}</option>`;
+        }
       }
     }
 
     function applyCoupon() {
       const code = document.getElementById('couponCode').value.toUpperCase();
       let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-      
-      if (code === 'BORA10') {
-        checkoutDiscount = subtotal * 0.10; // 10% desconto
-        alert('Cupom de 10% aplicado com sucesso!');
-      } else if (code === 'MURILABS20') {
-        checkoutDiscount = subtotal * 0.20; // 20% desconto
-        alert('Cupom de 20% aplicado com sucesso!');
-      } else {
-        checkoutDiscount = 0;
-        alert('Cupom inválido ou expirado.');
-      }
+      if (code === 'BORA10') { checkoutDiscount = subtotal * 0.10; alert('Cupom de 10% aplicado com sucesso!'); }
+      else if (code === 'MURILABS20') { checkoutDiscount = subtotal * 0.20; alert('Cupom de 20% aplicado com sucesso!'); }
+      else { checkoutDiscount = 0; alert('Cupom inválido ou expirado.'); }
       updateCheckoutUI();
     }
 
     function togglePayMethod() {
       const method = document.querySelector('input[name="paymethod"]:checked').value;
-      if (method === 'credito') {
-        document.getElementById('payCredito').style.display = 'block';
-        document.getElementById('payPix').style.display = 'none';
-      } else {
-        document.getElementById('payCredito').style.display = 'none';
-        document.getElementById('payPix').style.display = 'block';
-      }
+      document.getElementById('payCredito').style.display = method === 'credito' ? 'block' : 'none';
+      document.getElementById('payPix').style.display = method === 'pix' ? 'block' : 'none';
     }
 
     function finishOrderFinal() {
-      if (cart.length === 0) {
-        alert('Ocorreu um erro: Carrinho vazio.');
-        showPage('produtos');
-        return;
-      }
+      if (cart.length === 0) return alert('Ocorreu um erro: Carrinho vazio.');
       alert('🎉 Pedido confirmado com sucesso! Obrigado por comprar na Murilabs. (Isto é apenas uma demonstração)');
-      cart = [];
-      checkoutDiscount = 0;
-      updateCartUI();
-      showPage('home');
-      window.scrollTo(0,0);
+      cart = []; checkoutDiscount = 0; updateCartUI(); showPage('home'); window.scrollTo(0,0);
     }
 
-    // Inicializar a Interface do Carrinho vazia
     updateCartUI();
+
+    // ── Scroll Showcase ─────────────────────────────────────────────────────────
+
+    // ── Lines Showcase — IntersectionObserver ───────────────────────────────
+    (function() {
+      const blocks = document.querySelectorAll('.ls-block');
+      if (!blocks.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      }, {
+        threshold: 0.15,
+      });
+
+      blocks.forEach(block => observer.observe(block));
+    })();
+
   </script>
 </body>
 </html>
