@@ -999,6 +999,77 @@
     }
     /* ── END COMMUNITY ──────────────────────────────────────────── */
 
+    /* ── TOAST NOTIFICATIONS ─────────────────────────────────────── */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(24px);
+      z-index: 9999; display: flex; align-items: center; gap: 14px;
+      padding: 16px 24px; border-radius: 100px;
+      background: rgba(14,18,36,0.95); backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      font-size: 0.88rem; font-weight: 600; color: #fff;
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity .35s ease, transform .35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .toast-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .toast.toast--success { border-color: rgba(74,222,128,0.3); }
+    .toast.toast--success .toast-icon { color: #4ade80; }
+    .toast.toast--error { border-color: rgba(248,113,113,0.3); }
+    .toast.toast--error .toast-icon { color: #f87171; }
+    .toast.toast--info { border-color: rgba(96,165,250,0.3); }
+    .toast.toast--info .toast-icon { color: #60a5fa; }
+
+    /* ── ORDER SUCCESS MODAL ─────────────────────────────────────── */
+    .order-modal-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(4,6,14,0.85); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity .4s ease;
+    }
+    .order-modal-overlay.show { opacity: 1; pointer-events: auto; }
+    .order-modal {
+      background: rgba(14,18,36,0.98); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px; padding: 56px 48px; max-width: 480px; width: 90%;
+      text-align: center; position: relative;
+      transform: scale(0.92) translateY(24px);
+      transition: transform .45s cubic-bezier(0.22,1,0.36,1);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+    }
+    .order-modal-overlay.show .order-modal { transform: scale(1) translateY(0); }
+    .order-modal-check {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #4ade80, #22c55e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 0 auto 28px;
+      box-shadow: 0 0 0 16px rgba(74,222,128,0.1);
+    }
+    .order-modal h2 {
+      font-size: 1.7rem; font-weight: 900; letter-spacing: -0.04em;
+      color: #fff; margin-bottom: 12px;
+    }
+    .order-modal p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.45);
+      line-height: 1.7; margin-bottom: 36px;
+    }
+    .order-modal-num {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.1);
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 36px;
+    }
+    .order-modal-btn {
+      display: block; width: 100%; padding: 16px;
+      background: #fff; color: #060810;
+      font-family: var(--font); font-size: 0.82rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; border-radius: 100px; cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+    .order-modal-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
   </style>
 </head>
 <body>
@@ -2656,11 +2727,56 @@
       cartTotalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 
+    function showToast(msg, type = 'info') {
+      const toast = document.getElementById('siteToast');
+      const icon = document.getElementById('toastIcon');
+      const text = document.getElementById('toastMsg');
+      const icons = { success: '✓', error: '✕', info: '●' };
+      toast.className = `toast toast--${type}`;
+      icon.textContent = icons[type];
+      text.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    function showOrderModal() {
+      const num = Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('orderNum').textContent = `Pedido #${num}`;
+      document.getElementById('orderModalOverlay').classList.add('show');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('orderModalOverlay').classList.remove('show');
+      cart = []; checkoutDiscount = 0; updateCartUI(); showPage('home'); window.scrollTo(0,0);
+    }
+
     function checkout() {
-      if (cart.length === 0) return alert('O seu carrinho está vazio!');
+      if (cart.length === 0) return showToast('Seu carrinho está vazio!', 'error');
       toggleCart();
       showPage('checkout');
       updateCheckoutUI();
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('couponCode').value.toUpperCase();
+      let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      if (code === 'EARDOG') {
+        checkoutDiscount = subtotal * 0.05;
+        showToast('Cupom aplicado! 5% de desconto.', 'success');
+      } else if (code === 'MURILABS20') {
+        checkoutDiscount = subtotal * 0.20;
+        showToast('Cupom aplicado! 20% de desconto.', 'success');
+      } else {
+        checkoutDiscount = 0;
+        showToast('Cupom inválido ou expirado.', 'error');
+      }
+      updateCheckoutUI();
+    }
+
+    function finishOrderFinal() {
+      if (cart.length === 0) return showToast('Ocorreu um erro: carrinho vazio.', 'error');
+      showOrderModal();
     }
 
     let checkoutDiscount = 0;
@@ -2696,25 +2812,10 @@
       }
     }
 
-    function applyCoupon() {
-      const code = document.getElementById('couponCode').value.toUpperCase();
-      let subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-      if (code === 'CACHORROORELHA5') { checkoutDiscount = subtotal * 0.05; alert('Cupom de 5% aplicado com sucesso!'); }
-      else if (code === 'MURILABS20') { checkoutDiscount = subtotal * 0.20; alert('Cupom de 20% aplicado com sucesso!'); }
-      else { checkoutDiscount = 0; alert('Cupom inválido ou expirado.'); }
-      updateCheckoutUI();
-    }
-
     function togglePayMethod() {
       const method = document.querySelector('input[name="paymethod"]:checked').value;
       document.getElementById('payCredito').style.display = method === 'credito' ? 'block' : 'none';
       document.getElementById('payPix').style.display = method === 'pix' ? 'block' : 'none';
-    }
-
-    function finishOrderFinal() {
-      if (cart.length === 0) return alert('Ocorreu um erro: Carrinho vazio.');
-      alert('🎉 Pedido confirmado com sucesso! Obrigado por comprar na Murilabs. (Isto é apenas uma demonstração)');
-      cart = []; checkoutDiscount = 0; updateCartUI(); showPage('home'); window.scrollTo(0,0);
     }
 
     updateCartUI();
@@ -2740,5 +2841,22 @@
     })();
 
   </script>
+  <!-- TOAST -->
+  <div class="toast" id="siteToast">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="order-modal-overlay" id="orderModalOverlay">
+    <div class="order-modal">
+      <div class="order-modal-check">✓</div>
+      <h2>Pedido confirmado!</h2>
+      <p>Obrigado por comprar na Murilabs.<br>Você receberá um e-mail com os detalhes em breve.</p>
+      <span class="order-modal-num" id="orderNum">Pedido #000000</span>
+      <button class="order-modal-btn" onclick="closeOrderModal()">Voltar para a loja</button>
+    </div>
+  </div>
+
 </body>
 </html>
