@@ -4406,9 +4406,7 @@
                     <!-- Dúvidas -->
                     <div class="kairo-card kairo-small-card" onclick="navTo('duvidas', document.querySelectorAll('.sidebar-item')[1])">
                         <div class="kairo-small-top">
-                            <div class="kairo-mascot-wrap kairo-mascot-purple">
-                                <iconify-icon icon="solar:chat-round-dots-bold" style="font-size:26px;width:26px;height:26px;color:#A78BFA;"></iconify-icon>
-                            </div>
+                            <img src="kairoquestion.png" alt="Chat" style="width:60px;height:60px;">
                         </div>
                         <p class="kairo-small-label">Dúvidas</p>
                         <p class="kairo-small-desc">Você já fez<br><strong class="kairo-small-num" id="stat-doubts">09</strong> dúvidas<br></p>
@@ -4418,9 +4416,7 @@
                     <!-- Simulados -->
                     <div class="kairo-card kairo-small-card" onclick="navTo('simulados', document.querySelectorAll('.sidebar-item')[3])">
                         <div class="kairo-small-top">
-                            <div class="kairo-mascot-wrap kairo-mascot-green">
-                                <iconify-icon icon="solar:pen-new-square-bold" style="font-size:26px;width:26px;height:26px;color:#34D399;"></iconify-icon>
-                            </div>
+                            <img src="kairosimulado.png" alt="Chat" style="width:60px;height:60px;">
                         </div>
                         <p class="kairo-small-label">Simulados</p>
                         <p class="kairo-small-desc"><strong class="kairo-small-num" id="stat-simulados">01</strong> simulado<br>disponível</p>
@@ -4490,7 +4486,7 @@
                                 <p class="kairo-study-label">Sequência atual</p>
                                 <div style="display:flex;align-items:center;gap:0.35rem;">
                                     <p class="kairo-study-time" id="kairo-streak">7</p>
-                                    <span style="font-size:1.6rem;line-height:1;">🔥</span>
+                                    <img src="fire.png" alt="Chat" style="width:35px;height:35px;">
                                 </div>
                                 <p class="kairo-study-delta" style="color:var(--text3);">dias consecutivos<br>de estudo</p>
                             </div>
@@ -7155,7 +7151,7 @@
             if (!currentUser || currentUser.id === 'guest') return [];
             try {
                 const since = new Date();
-                since.setDate(since.getDate() - 30); // 30 dias pra calcular streak corretamente
+                since.setDate(since.getDate() - 90); // 90 dias pra calcular streak corretamente
                 const { data, error } = await sb.from('atividades')
                     .select('created_at')
                     .eq('user_id', currentUser.id)
@@ -7179,7 +7175,7 @@
             }));
             let streak = 0;
             const today = new Date();
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 90; i++) {
                 const d = new Date(today);
                 d.setDate(today.getDate() - i);
                 const key = toLocalKey(d);
@@ -7198,7 +7194,7 @@
             await loadD3();
 
             const width = parent.clientWidth;
-            const height = 120;
+            const height = parent.clientHeight && parent.clientHeight > 0 ? parent.clientHeight : 110;
             if (width === 0) return;
             if (Math.abs(width - lastChartWidth) < 2 && Math.abs(height - lastChartHeight) < 2 && activities === null) return;
             lastChartWidth = width;
@@ -7228,14 +7224,20 @@
                 .attr('height', height)
                 .style('display', 'block');
 
-            const x = d3.scalePoint().domain(data.map(d => d.day)).range([10, width - 10]);
-            const y = d3.scaleLinear().domain([0, maxVal]).range([height - 5, 5]);
+            // Definição cuidadosa de margens para que tudo caiba perfeitamente sem corte ou overlap
+            const margin = { top: 15, right: 18, bottom: 24, left: 18 };
+
+            const x = d3.scalePoint().domain(data.map(d => d.day)).range([margin.left, width - margin.right]);
+            const y = d3.scaleLinear().domain([0, maxVal]).range([height - margin.bottom, margin.top]);
 
             const area = d3.area()
-                .x(d => x(d.day)).y0(height).y1(d => y(d.val))
+                .x(d => x(d.day))
+                .y0(height - margin.bottom)
+                .y1(d => y(d.val))
                 .curve(d3.curveMonotoneX);
             const line = d3.line()
-                .x(d => x(d.day)).y(d => y(d.val))
+                .x(d => x(d.day))
+                .y(d => y(d.val))
                 .curve(d3.curveMonotoneX);
 
             const defs = svg.append('defs');
@@ -7246,7 +7248,10 @@
             gradient.append('stop').attr('offset', '0%').attr('stop-color', 'var(--blue)').attr('stop-opacity', 0.4);
             gradient.append('stop').attr('offset', '100%').attr('stop-color', 'var(--blue)').attr('stop-opacity', 0);
 
+            // Área sob a linha
             svg.append('path').datum(data).attr('fill', 'url(#chart-gradient)').attr('d', area);
+            
+            // Linha do gráfico
             svg.append('path').datum(data).attr('fill', 'none')
                 .attr('stroke', 'var(--blue)').attr('stroke-width', 3).attr('d', line);
 
@@ -7255,24 +7260,24 @@
                 .append('circle')
                 .attr('cx', d => x(d.day))
                 .attr('cy', d => y(d.val))
-                .attr('r', 5)
+                .attr('r', 4.5)
                 .attr('fill', d => d.val > 0 ? 'var(--blue)' : 'var(--card-bg)')
                 .attr('stroke', 'var(--blue)')
-                .attr('stroke-width', 2)
+                .attr('stroke-width', 2.5)
                 .style('cursor', 'pointer')
                 .append('title')
                 .text(d => d.val > 0 ? `${d.day}: ${d.val} atividade${d.val > 1 ? 's' : ''}` : `${d.day}: nenhuma atividade`);
 
-            // label do dia de hoje destacado
+            // label do dia de hoje destacado (com folga vertical segura em relação às bolinhas mais baixas)
             svg.selectAll('.day-label').data(data).enter()
                 .append('text')
                 .attr('x', d => x(d.day))
-                .attr('y', height - 2)
+                .attr('y', height - 4)
                 .attr('text-anchor', 'middle')
-                .attr('font-size', '9px')
+                .attr('font-size', '10px')
                 .attr('font-family', 'Inter, sans-serif')
                 .attr('fill', d => d.key === toLocalKey(today) ? 'var(--blue)' : 'var(--text3)')
-                .attr('font-weight', d => d.key === toLocalKey(today) ? '700' : '400')
+                .attr('font-weight', d => d.key === toLocalKey(today) ? '700' : '500')
                 .text(d => d.day);
         }
 
@@ -7293,6 +7298,13 @@
 
             // Calcula e mostra streak
             const streak = calcStreak(activities);
+            
+            // Atualiza o streak da dashboard Kairo
+            const kairoStreakEl = document.getElementById('kairo-streak');
+            if (kairoStreakEl) {
+                kairoStreakEl.textContent = streak;
+            }
+
             const badge = document.getElementById('streak-badge');
             const countEl = document.getElementById('streak-count');
             if (badge && countEl && streak > 0) {
